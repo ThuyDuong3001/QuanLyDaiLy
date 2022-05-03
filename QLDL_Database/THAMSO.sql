@@ -1,9 +1,0 @@
---Bang Tham So
-CREATE TABLE THAMSO(
-    SoDaiLyToiDa NUMBER,
-    TyLeDonGiaXuat DECIMAL,
-    KiemTraSoTienThu NUMBER DEFAULT 1 
-)
-DROP TABLE THAMSO;
---Insert Tham So
-INSERT INTO THAMSO VALUES(4,1.02,1);
