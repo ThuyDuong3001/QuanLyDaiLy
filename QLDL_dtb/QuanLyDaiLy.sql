@@ -228,5 +228,28 @@ END;
 /
 
 --FUNCTION BAOCAOCONGNO
-
+CREATE OR REPLACE FUNCTION Func_NoCuoi(var_madl IN daily.madaily%TYPE,thang IN NUMBER,nam IN NUMBER)
+        RETURN NUMBER
+AS
+    num_nocuoi NUMBER:=0;
+    num_nodau NUMBER:=0;
+    num_phatsinh NUMBER:=0;
+    tongtientra NUMBER:=0;    
+BEGIN
+    
+    SELECT SUM(SoTienThu)INTO tongtientra
+    FROM PHIEUTHUTIEN
+    WHERE EXTRACT(YEAR FROM NGAYTHUTIEN)=nam AND EXTRACT(MONTH FROM NGAYTHUTIEN)=thang
+        AND MaDaiLy=var_madl
+    GROUP BY MaDaiLy;
+    
+    SELECT NoDau, PhatSinh INTO num_nodau, num_phatsinh
+    FROM BAOCAOCONGNO
+    WHERE EXTRACT(YEAR FROM ThangVaNam)=nam AND EXTRACT(MONTH FROM ThangVaNam)=thang
+        AND MaDaiLy=var_madl;
+        
+   num_nocuoi:=num_nodau+num_phatsinh-tongtientra;
+    
+    RETURN num_nocuoi;
+END;
 SET SERVEROUTPUT ON;
