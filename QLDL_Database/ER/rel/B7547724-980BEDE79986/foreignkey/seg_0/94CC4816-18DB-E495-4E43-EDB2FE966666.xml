@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="94CC4816-18DB-E495-4E43-EDB2FE966666" containerWithKeyObject="D05A77CF-57D4-5630-8633-71606D33B279" localFKIndex="69EB381A-5F53-6DF4-45D9-66D8F2533CE4" name="FK_PHIEUNHAPHANG_NHANVIEN">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>FK_PHIEUNHAPHANG_NHANVIEN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>SYSTEM.NHANVIEN</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>E4465D95-2867-EC9C-3D6D-905784800A1E</referredTableID>
+<keyObject>8F4FDE4D-3166-98E0-FB86-78C9F910D4A4</keyObject>
+<referredKeyID>8F4FDE4D-3166-98E0-FB86-78C9F910D4A4</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>CMND</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

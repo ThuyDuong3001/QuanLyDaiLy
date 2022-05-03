@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="12081B65-F6B9-EC7F-4AEE-1CF525BC8996" containerWithKeyObject="B6B1A0DB-FE87-1A04-C46E-6545925E6C3C" localFKIndex="1EB4178E-C02F-69B2-C335-3023AB3757C7" name="FK01_DAILY_LOAIDAILY">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>FK01_DAILY_LOAIDAILY</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>SYSTEM.LOAIDAILY</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>7E805D91-2CCD-F8A2-8357-05A343F76271</referredTableID>
+<keyObject>A3A0AF03-5B84-388A-F9C4-001B943BE9D7</keyObject>
+<referredKeyID>A3A0AF03-5B84-388A-F9C4-001B943BE9D7</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>MALOAIDAILY</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

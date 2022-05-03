@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D05A77CF-57D4-5630-8633-71606D33B279" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="PHIEUNHAPHANG">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PHIEUNHAPHANG</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MAPHIEUNHAP" id="6EE86FD6-491F-7C1E-71B3-9ADA784636F0">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>PHIEUNHAPHANG</sourceObjSchema>
+<sourceObjName>MAPHIEUNHAP</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NGAYLAP" id="DE2C911B-6B73-88FA-1F07-D757F4F17D9F">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>PHIEUNHAPHANG</sourceObjSchema>
+<sourceObjName>NGAYLAP</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TONGTIEN" id="C9A92389-9460-AA34-4C40-B8CBE9928642">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>PHIEUNHAPHANG</sourceObjSchema>
+<sourceObjName>TONGTIEN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CMND" id="4E16878A-0EFD-5678-BEF6-C6BBCF702719">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>PHIEUNHAPHANG</sourceObjSchema>
+<sourceObjName>CMND</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="94CC4816-18DB-E495-4E43-EDB2FE966666" referredColumn="171198BB-631B-C8A8-064A-DF3E16C2AA72"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F0F1E7E4-19BB-8343-720F-B48E1B3609C7" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="PHIEUNHAPHANG_PK">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>SYS_C008035</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6EE86FD6-491F-7C1E-71B3-9ADA784636F0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="69EB381A-5F53-6DF4-45D9-66D8F2533CE4" name="FK_PHIEUNHAPHANG_NHANVIEN">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E16878A-0EFD-5678-BEF6-C6BBCF702719"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

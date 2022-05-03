@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0D37DA29-DF91-00E7-2640-D01768CD2428" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="THAMSO">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>THAMSO</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="SODAILYTOIDA" id="EA6DA38A-195D-1FC2-818C-9FA35F0E93FA">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>THAMSO</sourceObjSchema>
+<sourceObjName>SODAILYTOIDA</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TYLEDONGIAXUAT" id="AE58355C-3335-CAB3-2F6F-2F5D16B2785A">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>THAMSO</sourceObjSchema>
+<sourceObjName>TYLEDONGIAXUAT</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,*,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="KIEMTRASOTIENTHU" id="5FED871E-684C-7FBA-9C38-06F8CF8E2074">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>THAMSO</sourceObjSchema>
+<sourceObjName>KIEMTRASOTIENTHU</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<defaultValue>1</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+</Table>

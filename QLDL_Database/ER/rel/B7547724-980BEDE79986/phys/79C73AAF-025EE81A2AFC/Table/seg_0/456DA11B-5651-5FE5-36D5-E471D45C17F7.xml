@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="BAOCAODOANHSO" directorySegmentName="seg_0" id="456DA11B-5651-5FE5-36D5-E471D45C17F7">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>11981A13-C1A3-0DB8-AC1F-92E69A199AE8</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>0DCB1903-071D-67AC-D0C8-29A71B7C258B</segment>
+<tableSpace>CDE312B3-71DA-3A8E-21C7-7D6062EE405A</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="SOPHIEUXUAT" id="1073A4DA-7D1F-B558-200C-E2FB9F48FD8E">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="THANGVANAM" id="20EEF362-3AEE-C29B-A445-C911771CFDD9">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TYLE" id="B19BBDB0-7005-FB79-A336-7E0D956683D1">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TONGTRIGIA" id="DEEF2AB3-65D6-FBC4-B230-F875980F65F6">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MADAILY" id="E3ABA14B-9604-4E1C-5F13-280A7EB35D6F">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_BAOCAODOANHSO" id="CBA12A21-F1E4-4BA9-79D9-E8075B9E9A1D">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>11981A13-C1A3-0DB8-AC1F-92E69A199AE8</schemaObject>
+<segment>218F55C8-9386-44BB-82CF-64B9F1D28B78</segment>
+<tableSpace>CDE312B3-71DA-3A8E-21C7-7D6062EE405A</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_BAOCAODOANHSO_DAILY" id="55903FD7-2C50-CC58-BD91-0CCCF0507056">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_BAOCAODOANHSO" id="D401568A-156C-FCF8-BF0D-B460B3592971">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<segment>218F55C8-9386-44BB-82CF-64B9F1D28B78</segment>
+<tableSpace>CDE312B3-71DA-3A8E-21C7-7D6062EE405A</tableSpace>
+<existingIndex>CBA12A21-F1E4-4BA9-79D9-E8075B9E9A1D</existingIndex>
+<indexSegment>218F55C8-9386-44BB-82CF-64B9F1D28B78</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

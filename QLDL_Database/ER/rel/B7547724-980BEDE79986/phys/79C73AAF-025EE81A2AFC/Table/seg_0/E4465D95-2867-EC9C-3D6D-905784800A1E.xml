@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="NHANVIEN" directorySegmentName="seg_0" id="E4465D95-2867-EC9C-3D6D-905784800A1E">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>11981A13-C1A3-0DB8-AC1F-92E69A199AE8</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>0DCB1903-071D-67AC-D0C8-29A71B7C258B</segment>
+<tableSpace>CDE312B3-71DA-3A8E-21C7-7D6062EE405A</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="CMND" id="171198BB-631B-C8A8-064A-DF3E16C2AA72">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SDT" id="4C95D9EB-E0E1-2454-D0D1-FDF71F85BAAB">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NGAYSINH" id="BA69792D-0766-DD3B-CC8A-3929F10C0810">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TENDANGNHAP" id="BF97AD1D-BE48-13F6-1220-B8D0EF87015A">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TENNV" id="FCC797A5-B1B3-2303-5E71-2A96785803B7">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK01_NHANVIEN_NGUOIDUNG" id="5512A139-2119-34F7-7E67-B99F83E369D4">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="NHANVIEN_PK" id="8F4FDE4D-3166-98E0-FB86-78C9F910D4A4">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>11981A13-C1A3-0DB8-AC1F-92E69A199AE8</schemaObject>
+<segment>218F55C8-9386-44BB-82CF-64B9F1D28B78</segment>
+<tableSpace>CDE312B3-71DA-3A8E-21C7-7D6062EE405A</tableSpace>
+<indexSegment>218F55C8-9386-44BB-82CF-64B9F1D28B78</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

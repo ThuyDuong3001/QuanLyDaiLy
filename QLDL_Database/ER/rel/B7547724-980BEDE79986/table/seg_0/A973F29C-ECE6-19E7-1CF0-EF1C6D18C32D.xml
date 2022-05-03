@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A973F29C-ECE6-19E7-1CF0-EF1C6D18C32D" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="PHANQUYEN">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PHANQUYEN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MANHOM" id="5EF8F033-86C2-99ED-2BDE-0985EE8B62B8">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>PHANQUYEN</sourceObjSchema>
+<sourceObjName>MANHOM</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D7F7851C-345D-3B36-1CB1-B9DB4E5D33C7" referredColumn="820B57D9-E9A6-A718-3DF7-0D2F7B3D7ACC"/>
+</associations>
+</Column>
+<Column name="MACHUCNANG" id="FA0AA303-8445-1354-17DD-C8AE9A6BACA5">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>PHANQUYEN</sourceObjSchema>
+<sourceObjName>MACHUCNANG</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F4D46E4F-77D9-EA47-D86A-A3F63198C502" referredColumn="46A65EBC-D7AB-7C2D-9AA7-D86FF97AFFED"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="990BA335-4471-012C-A4A8-8F80F049229B" name="PK_PHANQUYEN">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PK_PHANQUYEN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5EF8F033-86C2-99ED-2BDE-0985EE8B62B8"/>
+<colUsage columnID="FA0AA303-8445-1354-17DD-C8AE9A6BACA5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5ABB1874-5713-6653-6C48-F1F97F6A4AF5" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="PK_PHANQUYEN">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PK_PHANQUYEN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5EF8F033-86C2-99ED-2BDE-0985EE8B62B8"/>
+<colUsage columnID="FA0AA303-8445-1354-17DD-C8AE9A6BACA5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="11C235C9-CF72-B70A-ADFC-41C9758B221F" name="FK01_PHANQUYEN_CHUCNANG">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FA0AA303-8445-1354-17DD-C8AE9A6BACA5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EA37A364-9DD1-E4B6-C57C-7B5C62239CF8" name="FK02_PHANQUYEN_NHOMNGUOIDUNG">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5EF8F033-86C2-99ED-2BDE-0985EE8B62B8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

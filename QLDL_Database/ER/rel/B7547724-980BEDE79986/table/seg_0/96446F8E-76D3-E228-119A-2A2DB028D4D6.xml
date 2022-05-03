@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="96446F8E-76D3-E228-119A-2A2DB028D4D6" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="NHOMNGUOIDUNG">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>NHOMNGUOIDUNG</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MANHOM" id="820B57D9-E9A6-A718-3DF7-0D2F7B3D7ACC">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>NHOMNGUOIDUNG</sourceObjSchema>
+<sourceObjName>MANHOM</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TENNHOM" id="BBEA97BB-E1D7-2F2A-A4FE-DC05C5183E7A">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>NHOMNGUOIDUNG</sourceObjSchema>
+<sourceObjName>TENNHOM</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="11634DD2-40A7-FB46-3388-3004E9AC4A8A" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="NHOMNGUOIDUNG_PK">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>SYS_C008041</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="820B57D9-E9A6-A718-3DF7-0D2F7B3D7ACC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

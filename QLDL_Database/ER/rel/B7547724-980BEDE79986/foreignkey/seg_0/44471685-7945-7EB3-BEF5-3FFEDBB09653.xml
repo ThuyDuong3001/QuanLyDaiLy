@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="44471685-7945-7EB3-BEF5-3FFEDBB09653" containerWithKeyObject="DD345422-B235-ACDB-F262-412E0E534108" localFKIndex="B42DBA2F-AB32-61C4-DD71-01DFBC309B94" name="FK_PHIEUTHUTIEN_DAILY">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>FK_PHIEUTHUTIEN_DAILY</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>SYSTEM.DAILY</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>B6B1A0DB-FE87-1A04-C46E-6545925E6C3C</referredTableID>
+<keyObject>00F9DAAB-E07C-15EB-00DE-A5A4A219A95D</keyObject>
+<referredKeyID>00F9DAAB-E07C-15EB-00DE-A5A4A219A95D</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>MADAILY</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

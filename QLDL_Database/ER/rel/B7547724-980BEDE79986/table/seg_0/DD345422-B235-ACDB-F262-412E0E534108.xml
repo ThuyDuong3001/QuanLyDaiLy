@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DD345422-B235-ACDB-F262-412E0E534108" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="PHIEUTHUTIEN">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PHIEUTHUTIEN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MAPHIEUTHUTIEN" id="945C5FB2-D0AD-CD2D-35FF-393AFAF8A28B">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>PHIEUTHUTIEN</sourceObjSchema>
+<sourceObjName>MAPHIEUTHUTIEN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MADAILY" id="28670673-5CF9-E4D6-8F6D-4FD965A80D05">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>PHIEUTHUTIEN</sourceObjSchema>
+<sourceObjName>MADAILY</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="44471685-7945-7EB3-BEF5-3FFEDBB09653" referredColumn="6BBB01F8-1840-EE79-98B4-0CB8BEAB280B"/>
+</associations>
+</Column>
+<Column name="NGAYTHUTIEN" id="D610DEEB-4F53-C39E-E216-55156B4BFE9F">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>PHIEUTHUTIEN</sourceObjSchema>
+<sourceObjName>NGAYTHUTIEN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SOTIENTHU" id="FB153BF7-1856-E46E-637D-D897323A017B">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>PHIEUTHUTIEN</sourceObjSchema>
+<sourceObjName>SOTIENTHU</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="15FD96AA-088C-15E5-53D3-8A4FCA54366B" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="PHIEUTHUTIEN_PK">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>SYS_C008030</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="945C5FB2-D0AD-CD2D-35FF-393AFAF8A28B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B42DBA2F-AB32-61C4-DD71-01DFBC309B94" name="FK_PHIEUTHUTIEN_DAILY">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="28670673-5CF9-E4D6-8F6D-4FD965A80D05"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

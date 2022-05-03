@@ -1,0 +1,128 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A79CBB79-44C6-62C4-73F2-8BD5C9F12960" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="BAOCAOCONGNO">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>BAOCAOCONGNO</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MADAILY" id="BBF39DE0-8005-6A44-C3E8-095723800558">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>BAOCAOCONGNO</sourceObjSchema>
+<sourceObjName>MADAILY</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2006227D-3F99-4A89-BE80-808CE49CEEED" referredColumn="6BBB01F8-1840-EE79-98B4-0CB8BEAB280B"/>
+</associations>
+</Column>
+<Column name="THANGVANAM" id="42F02BBA-C2B4-748F-60C9-5AAD82A16A5D">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>BAOCAOCONGNO</sourceObjSchema>
+<sourceObjName>THANGVANAM</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NODAU" id="E8D90F19-B633-C968-ABF7-5436D9B7C64D">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>BAOCAOCONGNO</sourceObjSchema>
+<sourceObjName>NODAU</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PHATSINH" id="4B6A4C19-41FC-5A4D-0BE7-7F71B8403895">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>BAOCAOCONGNO</sourceObjSchema>
+<sourceObjName>PHATSINH</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOCUOI" id="C37A17C7-4F4D-47AF-B9A5-D2E8319FE136">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>BAOCAOCONGNO</sourceObjSchema>
+<sourceObjName>NOCUOI</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F09CD902-C9AC-9ADA-8188-7B1C7E1872C2" name="PK_BAOCAOCONGNO">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PK_BAOCAOCONGNO</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BBF39DE0-8005-6A44-C3E8-095723800558"/>
+<colUsage columnID="42F02BBA-C2B4-748F-60C9-5AAD82A16A5D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A5A9B012-F081-855D-3A8E-FA1C37295C54" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="PK_BAOCAOCONGNO">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PK_BAOCAOCONGNO</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BBF39DE0-8005-6A44-C3E8-095723800558"/>
+<colUsage columnID="42F02BBA-C2B4-748F-60C9-5AAD82A16A5D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C99E5705-F5D1-5391-4FB4-D4DC2AAAB985" name="FK_BAOCAOCONGNO_DAILY">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BBF39DE0-8005-6A44-C3E8-095723800558"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

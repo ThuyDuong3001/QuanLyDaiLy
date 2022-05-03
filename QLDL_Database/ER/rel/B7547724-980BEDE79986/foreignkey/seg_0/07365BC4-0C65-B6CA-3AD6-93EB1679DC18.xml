@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="07365BC4-0C65-B6CA-3AD6-93EB1679DC18" containerWithKeyObject="E4465D95-2867-EC9C-3D6D-905784800A1E" localFKIndex="5512A139-2119-34F7-7E67-B99F83E369D4" name="FK01_NHANVIEN_NGUOIDUNG">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>FK01_NHANVIEN_NGUOIDUNG</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>SYSTEM.NGUOIDUNG</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>F1A24851-D7FE-9264-F730-A256E5C46618</referredTableID>
+<keyObject>2DECCFA7-1782-09BE-0B28-ECAAC967334D</keyObject>
+<referredKeyID>2DECCFA7-1782-09BE-0B28-ECAAC967334D</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>TENDANGNHAP</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

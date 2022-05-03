@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="PHIEUTHUTIEN" directorySegmentName="seg_0" id="DD345422-B235-ACDB-F262-412E0E534108">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>11981A13-C1A3-0DB8-AC1F-92E69A199AE8</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>0DCB1903-071D-67AC-D0C8-29A71B7C258B</segment>
+<tableSpace>CDE312B3-71DA-3A8E-21C7-7D6062EE405A</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="MADAILY" id="28670673-5CF9-E4D6-8F6D-4FD965A80D05">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MAPHIEUTHUTIEN" id="945C5FB2-D0AD-CD2D-35FF-393AFAF8A28B">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NGAYTHUTIEN" id="D610DEEB-4F53-C39E-E216-55156B4BFE9F">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SOTIENTHU" id="FB153BF7-1856-E46E-637D-D897323A017B">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_PHIEUTHUTIEN_DAILY" id="B42DBA2F-AB32-61C4-DD71-01DFBC309B94">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PHIEUTHUTIEN_PK" id="15FD96AA-088C-15E5-53D3-8A4FCA54366B">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>11981A13-C1A3-0DB8-AC1F-92E69A199AE8</schemaObject>
+<segment>218F55C8-9386-44BB-82CF-64B9F1D28B78</segment>
+<tableSpace>CDE312B3-71DA-3A8E-21C7-7D6062EE405A</tableSpace>
+<indexSegment>218F55C8-9386-44BB-82CF-64B9F1D28B78</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

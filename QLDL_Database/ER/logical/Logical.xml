@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="BDA00CD8-46EA-8786-5D10-82E5141DF7FA" mainViewID="B8DB0592-8F97-A9D0-8891-E3FF94F01248">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:57:55 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

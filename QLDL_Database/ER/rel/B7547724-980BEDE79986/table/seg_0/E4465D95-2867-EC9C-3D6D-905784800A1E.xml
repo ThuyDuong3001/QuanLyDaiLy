@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E4465D95-2867-EC9C-3D6D-905784800A1E" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="NHANVIEN">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>NHANVIEN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CMND" id="171198BB-631B-C8A8-064A-DF3E16C2AA72">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>NHANVIEN</sourceObjSchema>
+<sourceObjName>CMND</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TENNV" id="FCC797A5-B1B3-2303-5E71-2A96785803B7">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>NHANVIEN</sourceObjSchema>
+<sourceObjName>TENNV</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NGAYSINH" id="BA69792D-0766-DD3B-CC8A-3929F10C0810">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>NHANVIEN</sourceObjSchema>
+<sourceObjName>NGAYSINH</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SDT" id="4C95D9EB-E0E1-2454-D0D1-FDF71F85BAAB">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>NHANVIEN</sourceObjSchema>
+<sourceObjName>SDT</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TENDANGNHAP" id="BF97AD1D-BE48-13F6-1220-B8D0EF87015A">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>NHANVIEN</sourceObjSchema>
+<sourceObjName>TENDANGNHAP</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="07365BC4-0C65-B6CA-3AD6-93EB1679DC18" referredColumn="56204267-933A-5EFD-B092-AC04CD093F71"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8F4FDE4D-3166-98E0-FB86-78C9F910D4A4" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="NHANVIEN_PK">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>SYS_C008047</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="171198BB-631B-C8A8-064A-DF3E16C2AA72"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5512A139-2119-34F7-7E67-B99F83E369D4" name="FK01_NHANVIEN_NGUOIDUNG">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BF97AD1D-BE48-13F6-1220-B8D0EF87015A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

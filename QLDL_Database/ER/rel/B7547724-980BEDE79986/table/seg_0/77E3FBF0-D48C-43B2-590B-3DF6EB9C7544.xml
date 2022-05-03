@@ -1,0 +1,139 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="77E3FBF0-D48C-43B2-590B-3DF6EB9C7544" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="MATHANG">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>MATHANG</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MAMATHANG" id="0F113AE1-0482-36CC-09D2-AADF5990262E">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>MATHANG</sourceObjSchema>
+<sourceObjName>MAMATHANG</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TENMATHANG" id="4DAC2F47-E7BE-EE3C-6BFB-7152B48B3B66">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>MATHANG</sourceObjSchema>
+<sourceObjName>TENMATHANG</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DONGIANHAP" id="7FB97082-C73E-0A53-763A-91D7429420D2">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>MATHANG</sourceObjSchema>
+<sourceObjName>DONGIANHAP</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DONGIAXUAT" id="A0914CFB-8F30-0A99-E0B2-8566BA6916F6">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>MATHANG</sourceObjSchema>
+<sourceObjName>DONGIAXUAT</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SOLUONGTON" id="81DEBC11-3711-4FB0-1DDD-1145468F6FF1">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>MATHANG</sourceObjSchema>
+<sourceObjName>SOLUONGTON</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MADONVITINH" id="31E2FA8E-3362-0C40-D4C0-517B50329686">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>MATHANG</sourceObjSchema>
+<sourceObjName>MADONVITINH</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EA17B961-B055-9971-1819-01FF18DDD5A4" referredColumn="383BED41-D8E7-626F-9AE5-DD9CBF07B176"/>
+</associations>
+</Column>
+<Column name="TENNHACUNGCAP" id="102884B7-033E-17B8-7C58-271141B2AD30">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>MATHANG</sourceObjSchema>
+<sourceObjName>TENNHACUNGCAP</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8BFDF615-E4EF-3C52-7802-B482339B0E6B" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="MATHANG_PK">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>SYS_C008057</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0F113AE1-0482-36CC-09D2-AADF5990262E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="35EFE470-9470-B6B9-F165-650D7AFF402F" name="FK_MATHANG_DONVITINH">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="31E2FA8E-3362-0C40-D4C0-517B50329686"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

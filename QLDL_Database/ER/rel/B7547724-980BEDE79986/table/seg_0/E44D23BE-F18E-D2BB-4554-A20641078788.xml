@@ -1,0 +1,137 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E44D23BE-F18E-D2BB-4554-A20641078788" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="CHITIETPHIEUXUAT">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>CHITIETPHIEUXUAT</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MA_CTPX" id="4A4EA259-3A33-3A6D-B00B-87085A1DE903">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>CHITIETPHIEUXUAT</sourceObjSchema>
+<sourceObjName>MA_CTPX</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MAPHIEUXUAT" id="523BD556-3F3C-7F9D-59B7-A60629B27830">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>CHITIETPHIEUXUAT</sourceObjSchema>
+<sourceObjName>MAPHIEUXUAT</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6DE95684-5AA4-1C5F-83BE-74D958AAF37B" referredColumn="52F812F4-C220-B873-59AC-BBB632B48D1F"/>
+</associations>
+</Column>
+<Column name="MAMATHANG" id="C3B15B8C-8046-E928-3EAF-9086676B66E1">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>CHITIETPHIEUXUAT</sourceObjSchema>
+<sourceObjName>MAMATHANG</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="613CB1AB-53AC-0BBF-E1B2-55CFBFD0A049" referredColumn="0F113AE1-0482-36CC-09D2-AADF5990262E"/>
+</associations>
+</Column>
+<Column name="SOLUONG" id="F20322E5-45A8-1083-33EA-A3645E237F9B">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>CHITIETPHIEUXUAT</sourceObjSchema>
+<sourceObjName>SOLUONG</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DONGIAXUAT" id="07F87F11-D860-06F5-CF2F-73AA81258238">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>CHITIETPHIEUXUAT</sourceObjSchema>
+<sourceObjName>DONGIAXUAT</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="THANHTIEN" id="F675AC3D-0815-10B9-AE56-A3C6A9AEFD70">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>CHITIETPHIEUXUAT</sourceObjSchema>
+<sourceObjName>THANHTIEN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C173D980-0646-920C-9D30-F406985E91CD" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="CHITIETPHIEUXUAT_PK">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>SYS_C008078</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4A4EA259-3A33-3A6D-B00B-87085A1DE903"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="242E67A5-2F56-A266-FB0D-0A3750863FB9" name="FK01_CHITIETPHIEUXUAT_MATHANG">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C3B15B8C-8046-E928-3EAF-9086676B66E1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CF479EB1-60BF-38E4-7C1C-C86E9FAEDCD4" name="FK02_CHITIETPHIEUXUAT_PHIEUXUATHANG">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="523BD556-3F3C-7F9D-59B7-A60629B27830"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

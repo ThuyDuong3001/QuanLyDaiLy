@@ -1,0 +1,184 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B6B1A0DB-FE87-1A04-C46E-6545925E6C3C" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="DAILY">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>DAILY</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MADAILY" id="6BBB01F8-1840-EE79-98B4-0CB8BEAB280B">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>DAILY</sourceObjSchema>
+<sourceObjName>MADAILY</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TENDAILY" id="F2CB511F-D75E-4B2A-0112-53E4A96A359B">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>DAILY</sourceObjSchema>
+<sourceObjName>TENDAILY</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MALOAIDAILY" id="68B1B79E-02B1-2769-1BE0-90BD7466218D">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>DAILY</sourceObjSchema>
+<sourceObjName>MALOAIDAILY</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="12081B65-F6B9-EC7F-4AEE-1CF525BC8996" referredColumn="014AB440-C458-E1F2-B7AF-187C97893BCA"/>
+</associations>
+</Column>
+<Column name="DIACHI" id="B9E789A1-7736-7A51-A393-B3DDF323BAEA">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>DAILY</sourceObjSchema>
+<sourceObjName>DIACHI</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MAQUAN" id="4CDB2490-49D5-7931-EF53-3CC20A0BBCC7">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>DAILY</sourceObjSchema>
+<sourceObjName>MAQUAN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="211CC9D9-D4F6-8EE5-32F3-9D06FDFEEF45" referredColumn="5B00FA5B-6558-B896-FA61-F894409EE496"/>
+</associations>
+</Column>
+<Column name="NGAYTIEPNHAN" id="0671F214-4366-56C1-E676-2123B2351D1C">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>DAILY</sourceObjSchema>
+<sourceObjName>NGAYTIEPNHAN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DIENTHOAI" id="237A0014-2253-60BF-B3EF-0014F08A6A59">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>DAILY</sourceObjSchema>
+<sourceObjName>DIENTHOAI</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EMAIL" id="4D422667-B2CA-B4A6-8959-6775BD967089">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>DAILY</sourceObjSchema>
+<sourceObjName>EMAIL</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TONGNO" id="B8F87C5D-D873-48F3-9BDE-E4F14A1E9E9A">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>DAILY</sourceObjSchema>
+<sourceObjName>TONGNO</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="00F9DAAB-E07C-15EB-00DE-A5A4A219A95D" schemaObject="11981A13-C1A3-0DB8-AC1F-92E69A199AE8" name="DAILY_PK">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>SYS_C008067</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6BBB01F8-1840-EE79-98B4-0CB8BEAB280B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1EB4178E-C02F-69B2-C335-3023AB3757C7" name="FK01_DAILY_LOAIDAILY">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="68B1B79E-02B1-2769-1BE0-90BD7466218D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A5346935-2F0F-6DA6-6E6B-EC9C42555451" name="FK02_DAILY_QUAN">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-02 04:58:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4CDB2490-49D5-7931-EF53-3CC20A0BBCC7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
