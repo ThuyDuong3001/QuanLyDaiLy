@@ -1,8 +1,15 @@
 package View;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import java.util.ArrayList;
 /**
  *
@@ -125,25 +132,10 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         jLabel6.setText("Địa Chỉ");
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
 
         jTextField4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -165,6 +157,11 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear_32px.png"))); // NOI18N
         jButton5.setText("Xoá");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(217, 198, 236));
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -268,7 +265,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                 	value[4] = rs.getString("diachi");
                 	value[5] = rs.getString("dienthoai");
                 	value[6] = rs.getString("email");
-                	value[7] = rs.getString("ngaytiepnhan");
+                	value[7] = rs.getDate("ngaytiepnhan").toString();
                 	value[8] = rs.getString("tongno");
                 	
                 	queries[index] = value;
@@ -465,20 +462,10 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+    	// tim kiem
     	if (evt.getSource() == jButton3) {
     		
     		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
@@ -487,7 +474,17 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                     System.out.println("Connected to the database!");
                     Statement st =  conn.createStatement();
                     ResultSet rs;
-                    String query = "select * from daily where MADAILY = \'" + jTextField5.getText() +"\'";
+                    String query_text = jTextField5.getText();
+                    if (query_text.isBlank()) {
+                        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                                queries,
+                                new String [] {
+                                    "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
+                                }
+                            ));
+                        return;
+                    }
+                    String query = "select * from daily where MADAILY = \'" + query_text +"\'";
                     System.out.println(query);
                     rs = st.executeQuery(query);
                     int i = 0;
@@ -526,14 +523,201 @@ public class HoSoDaiLy extends javax.swing.JFrame {
     	}
     }//GEN-LAST:event_jButton6ActionPerformed
 
-
+    private String[][] removeElement(String[][] arr,int id) {
+    	if (id < 0 || arr == null || id >= arr.length)
+    		return arr;
+    	
+    	String[][] arr_temp = new String[arr.length-1][];
+    	index -= 1;
+    	
+    	for (int i = 0,k=0;i<arr.length;i++) {
+    		if (i == id) 
+    			continue;
+    		arr_temp[k++] = arr[i];
+    	}
+    	return arr_temp;
+    }
     
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private int countBlank(String[] arr) {
+    	int count = 0;
+    	for (int i =0;i<=8;i++) {
+    		if (arr[i].isBlank())
+    			count +=1;
+    	}
+    	return count;
+    }
+    private int countNull(String[] arr) {
+    	int count = 0;
+    	for (int i =0;i<=8;i++) {
+    		if (arr[i]== null)
+    			count +=1;
+    	}
+    	return count;
+    }
+    
+    private ArrayList<Integer> findComma(String address) {
+    	ArrayList<Integer> position = new ArrayList();
+    	for (int i=0;i<address.length();i++) {
+    		if (address.charAt(i) == ',')
+    			position.add(i);
+    	}
+    	return position;
+    }
+    
+    private int findSpace(String quan) {
+    	for (int i=0;i<quan.length();i++) {
+			if (quan.charAt(i) == ' ')
+    			return i;
+    	}
+    	return 0;
+    }
+    
+    private String Quan(String address) {
+		ArrayList<Integer> position = findComma(address);
+		String quan = address.substring(position.get(0)+2, position.get(1));
+		String abb_quan = address.charAt(position.get(0)+2) + quan.substring(findSpace(quan)+1,quan.length());
+		return abb_quan;
+    }
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+    	// xoa
+    	if (evt.getSource() == jButton5) {
+//    		jTable1.remove(jTable1.getSelectedRow());
+    		int row_select = jTable1.getSelectedRow();
+    		if (row_select >=0 ) {
+        		if (countNull(queries[row_select]) > 0) {
+                    JOptionPane.showMessageDialog(null,
+                            "This field is empty",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+        		}
+    		}
+    		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    		{
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    String delete_query = "Delete from daily where madaily = " + "\'" + queries[row_select][0] + "\'";
+                    System.out.println(delete_query);
+                    st.execute(delete_query);
+                    
+                } else {
+                    System.out.println("Failed to make connection!");
+                }
+
+            } catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }		
+    		queries = removeElement(queries,row_select);
+
+            jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            		queries,
+                    new String [] {
+                        "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
+                    }
+                ));
+    }
+    }//GEN-LAST:event_jButton6ActionPerformed
+    
+    @SuppressWarnings("deprecation")
+    private String convertMonth(String month) {
+    	switch (month) {
+    	case "JANUARY":
+    		return "01";
+    	case "FEBRUARY":
+    		return "02";
+    	case "MARCH":
+    		return "03";
+    	case "APRIL":
+    		return "04";
+    	case "MAY":
+    		return "05";
+    	case "JUNE":
+    		return "06";
+    	case "JULY":
+    		return "07";
+    	case "AUGUST":
+    		return "08";
+    	case "SEPTEMBER":
+    		return "09";
+    	case "OCTOBER":
+    		return "10";
+    	case "NOVEMBER":
+    		return "11";
+    	case "DECEMBER":
+    		return "12";
+    	}
+		return " ";
+    }
+    
+    
+	private int current_row = -2;
+	private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    	// thay doi
+    	if (evt.getSource() == jButton6) {
+    		
+    		int row_select = jTable1.getSelectedRow();
+    		
+    		if (current_row >= 0 )
+    		{
+    			
+    			jTable1.getSelectionModel().setSelectionInterval(current_row, current_row);
+    		}
+
+    		if (row_select >= 0) {
+    			if (current_row != row_select) {
+	    			jTextField1.setText(queries[row_select][0]);
+	    			jTextField2.setText(queries[row_select][1]);
+	    			if (queries[row_select][2].equals("L01"))
+	    				gp.setSelected(jRadioButton1.getModel(),true);
+	    			else 
+	    				gp.setSelected(jRadioButton2.getModel(),true);
+	    			jTextField4.setText(queries[row_select][4]);
+	    			jTextField9.setText(queries[row_select][5]);
+	    			jTextField6.setText(queries[row_select][6]);
+	    			try {
+						jDateChooser2.setDate(new SimpleDateFormat("yyyy-MM-dd").parse(queries[row_select][7]));
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	    			jTextField10.setText(queries[row_select][8]);
+    			}
+    			current_row = row_select;
+    			queries[row_select][0] = jTextField1.getText();
+    			queries[row_select][1] = jTextField2.getText();
+    			queries[row_select][2] = gp.getSelection().getActionCommand();
+    			queries[row_select][3] = Quan(jTextField4.getText());
+    			queries[row_select][4] = jTextField4.getText();
+    			queries[row_select][5] = jTextField9.getText();
+    			queries[row_select][6] = jTextField6.getText();
+    			
+    			DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy");
+    			LocalDate localDate1 = LocalDate.parse(jDateChooser2.getDate().toString(),fmt2);
+    			String date = localDate1.getYear() + "-" + convertMonth(localDate1.getMonth().toString()) + "-" + localDate1.getDayOfMonth();
+    			System.out.println(date);
+    			queries[row_select][7] = date;
+    			
+    			queries[row_select][8] = jTextField10.getText();
+    			
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                        queries,
+                        new String [] {
+                            "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
+                        }
+                    ));
+//	    		System.out.println(countNull(queries[row_select]));
+    		}
+    	}
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+    	// them
     	if (evt.getSource() == jButton7) {
 //            "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
 
@@ -544,19 +728,35 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                     Statement st =  conn.createStatement();
                     ResultSet rs;
                     String[] value = new String[100];
-                    
                     value[0] = jTextField1.getText();
                     value[1] = jTextField2.getText();
                     value[2] = gp.getSelection().getActionCommand();
-//                    value[3] = 
-                    value[3] = "Quan";
-                    value[4] = 	jTextField4.getText();
+        			value[3] = Quan(jTextField4.getText()	);
+                    value[4] = jTextField4.getText();
                     value[5] = jTextField9.getText();
                     value[6] = jTextField6.getText();
-                    value[7] = jDateChooser2.getDate().toString();
-                    value[8] = jTextField6.getText();
+                    value[8] = jTextField10.getText();
+        			
+                    System.out.println(jTextField4.getText());
+        			DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy");
+        			LocalDate localDate1 = LocalDate.parse(jDateChooser2.getDate().toString(),fmt2);
+        			String date = localDate1.getYear()+ "-" +  convertMonth(localDate1.getMonth().toString()) + "-" + localDate1.getDayOfMonth() ;
+        			value[7] = date;
+ 
+                    String insert_query = "Insert into daily values (\'" + value[0] + "\'" + ',' + "\'" + value[1] + "\'" +  "," +  "\'" + value[2] + "\'" +  "," + "\'" + value[4] + "\'" +  ","+ "\'" + value[3] + "\'" +  ","+ "\'" + date + "\'" +  ","+ "\'" + value[5] + "\'" +  ","+ "\'" + value[6] + "\'" +  ","+ "\'" + value[8] + "\')";
+                    System.out.println(insert_query);
+                    st.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY/MM/DD'");
+                    st.execute(insert_query);
+                    if (countNull(value) >0) {
+                        JOptionPane.showMessageDialog(null,
+                                "Field cannot null",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                     queries[index] = value;
                     index+=1;
+                
                     jTable1.setModel(new javax.swing.table.DefaultTableModel(
                             queries,
                             new String [] {
@@ -572,7 +772,13 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                 System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
             } catch (Exception e) {
                 e.printStackTrace();
-            }	
+                JOptionPane.showMessageDialog(null,
+                        "Field cannot null",
+                        "ERROR",
+                        JOptionPane.ERROR_MESSAGE);
+
+            } 	
+    		
     		
     	}
 

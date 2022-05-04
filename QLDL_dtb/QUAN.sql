@@ -4,6 +4,7 @@ CREATE TABLE QUAN(
     TenQuan VARCHAR2(255) NOT NULL
 )
 --Insert Quan
+select * from quan
 INSERT INTO QUAN VALUES ('Q1', 'Quận 1');
 INSERT INTO QUAN VALUES ('Q2', 'Quận 2');
 INSERT INTO QUAN VALUES ('Q3', 'Quận 3');

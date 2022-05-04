@@ -10,8 +10,9 @@ CREATE TABLE DAILY(
     Email VARCHAR2(255),
     TongNo NUMBER
 )
-ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY HH24:MI:SS';
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY';
 --Insert Dai Ly
+
 INSERT INTO DAILY VALUES ('DL001',N'Minh Phát','L01',N'50/34, Lê Đại Hành, Quận 1,TPHCM','Q1','20/07/2021','0925468217','minhphat@gmail.com',5400000);								
 INSERT INTO DAILY VALUES ('DL002',N'Văn Kim','L02', N'837 Lê Hồng Phong, Quận 2, TPHCM','Q2','24/06/2021','0984937552','vankim@gmail.com',4500000);							
 INSERT INTO DAILY VALUES ('DL003',N'Phúc Thọ','L02','45/2 An Dương Vương, Quận 3,TPHCM','Q3','27/04/2021','0973829127','phuctho@gmail.com',8900000)	;								
