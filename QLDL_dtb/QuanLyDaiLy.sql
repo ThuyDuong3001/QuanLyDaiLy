@@ -47,7 +47,7 @@ ALTER TABLE BAOCAODOANHSO ADD CONSTRAINT FK_BAOCAODOANHSO_DAILY FOREIGN KEY(MaDa
 SET SERVEROUTPUT ON;
 /*Cac procedure insert*/
 --Procedure INSERT NHANVIEN
-CREATE OR REPLACE PROCEDURE Insert_DAILY(var_cmnd nhanvien.cmnd%TYPE, var_hoten nhanvien.tennv%TYPE, 
+CREATE OR REPLACE PROCEDURE Insert_NHANVIEN(var_cmnd nhanvien.cmnd%TYPE, var_hoten nhanvien.tennv%TYPE, 
                                             ngsinh nhanvien.ngaysinh%TYPE, var_SDT nhanvien.sdt%TYPE, 
                                             tendn nhanvien.tendangnhap%TYPE) 
 AS
@@ -57,11 +57,12 @@ BEGIN
 END;
 /
 --Procedure INSERT DAILY
-CREATE OR REPLACE PROCEDURE Insert_NHANVIEN(var_madl daily.madaily%TYPE, var_tendl daily.tendaily%TYPE, 
-                                            var_maloai daily.maloaidaily%TYPE, var_diachi daily.diachi%TYPE, 
-                                            var_maquan daily.maquan%TYPE, ngaytn daily.ngaytiepnhan%TYPE,
-                                            sdt daily.dienthoai%TYPE, var_mail daily.email%TYPE,
-                                            num_tongno daily.tongno%TYPE) 
+CREATE OR REPLACE PROCEDURE Insert_DAILY(var_madl IN daily.madaily%TYPE, var_tendl IN daily.tendaily%TYPE, 
+                                            var_maloai IN daily.maloaidaily%TYPE, var_diachi IN daily.diachi%TYPE, 
+                                            var_maquan IN daily.maquan%TYPE, ngaytn IN daily.ngaytiepnhan%TYPE,
+                                            sdt IN daily.dienthoai%TYPE, var_mail IN daily.email%TYPE,
+                                            num_tongno IN daily.tongno%TYPE,
+                                            flag OUT number) 
 AS
     num_sodaily NUMBER:=0;
     count_daily NUMBER:=0;
@@ -75,10 +76,10 @@ BEGIN
     GROUP BY Q.MaQuan;
     
     IF(count_daily<num_sodaily) THEN
-        INSERT INTO DAILY VALUES (var_madl, var_tendl, var_maloai, var_diachi, var_maquan, 
-        ngaytn, sdt, var_mail, num_tongno);
+        flag := 1;
     ELSE
         DBMS_OUTPUT.PUT_LINE('So dai ly toi da trong quan da vuot qua quy dinh, khong the them dai ly');
+        flag := 0;
     END IF;
     COMMIT;
 END;
@@ -149,7 +150,8 @@ END;
 
 --PROCEDURE UPDATE TONGNO
 CREATE OR REPLACE PROCEDURE Pro_Update_TongNo(var_madl IN daily.madaily%TYPE, 
-                                        num_tongno IN daily.tongno%TYPE)
+                                        num_tongno IN daily.tongno%TYPE,
+                                        flag OUT number)
 AS
     num_maxno NUMBER :=0;
 BEGIN
@@ -160,7 +162,9 @@ BEGIN
     IF(num_tongno<=num_maxno) THEN
         UPDATE DaiLy
         SET TongNo=num_tongno WHERE MaDaiLy=var_madl;
+        flag := 1;
     ELSE
+        flag := 0;
         DBMS_OUTPUT.PUT_LINE('Tien no da vuot quy dinh, khong the cap nhat');
     END IF;
 END;

@@ -1,5 +1,13 @@
 package View;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author NDAT_UIT
@@ -51,19 +59,24 @@ public class BaoCaoCongNo extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Đại Lý", "Nợ Đầu", "Nợ Cuối"
+                "Đại Lý", "Nợ Đầu", "Phát Sinh","Nợ Cuối"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         jToggleButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jToggleButton1.setText("Xuất");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -150,10 +163,55 @@ public class BaoCaoCongNo extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
+//    	if (evt.getSource() == jComboBox1) {
+//    		System.out.println(jComboBox1.getModel().getSelectedItem());
+//    	}
+
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    private void  jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+		{
+            if (conn != null) {
+                System.out.println("Connected to the database!");
+                Statement st =  conn.createStatement();
+                String query = "select * from baocaocongno where extract(month from thangvanam) =  " + jComboBox1.getModel().getSelectedItem() ;
+                System.out.println(query);
+                ResultSet rs = st.executeQuery(query);
+                int index = 0;
+                while (rs.next()) {
+                    String[] value = new String[100];
+                	value[0] = rs.getString("madaily");
+                	value[1] = rs.getString("nodau");
+                	value[2] = rs.getString("phatsinh");
+                	value[3] = rs.getString("nocuoi");
+                	queries[index] = value;
+                	index += 1;
+                }
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                        queries,
+                        new String [] {
+                            "Đại Lý", "Nợ Đầu", "Phát Sinh","Nợ Cuối"
+                        }
+                    ));
+
+
+            } else {
+                System.out.println("Failed to make connection!");
+            }
+
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }		
+
+    	
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -201,5 +259,6 @@ public class BaoCaoCongNo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JToggleButton jToggleButton1;
+    private String[][] queries = new String[100][];
     // End of variables declaration//GEN-END:variables
 }
