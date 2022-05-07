@@ -276,5 +276,6 @@ public class QuyCheToChuc_TN extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
+    
     // End of variables declaration//GEN-END:variables
 }

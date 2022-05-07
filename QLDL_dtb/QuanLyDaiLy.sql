@@ -256,4 +256,25 @@ BEGIN
     
     RETURN num_nocuoi;
 END;
+
+CREATE OR REPLACE PROCEDURE Pro_HasLoaiDaiLy(var_maloaidl IN daily.maloaidaily%TYPE,flag OUT NUMBER)
+AS
+    count_maloaidaily NUMBER:=0;
+BEGIN
+    select count(*) into count_maloaidaily from loaidaily
+    where maloaidaily = var_maloaidl;
+    
+    IF (count_maloaidaily > 0) THEN
+        flag := 1;
+        DBMS_OUTPUT.PUT_LINE('Ton tai dai ly');
+    ELSE
+        flag := 0;
+    END IF;
+END;
+
+DECLARE
+begin
+    Pro_HASLOAIDAILY('L02');
+end;
+
 SET SERVEROUTPUT ON;
