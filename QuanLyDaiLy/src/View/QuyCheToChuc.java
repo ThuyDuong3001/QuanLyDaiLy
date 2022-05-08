@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -312,7 +314,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                 });
                 
                 jButton9sldl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-                jButton9sldl.setText("Sửa đổi");
+                jButton9sldl.setText("Cập nhật");
                 jButton9sldl.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         jButton9sldlActionPerformed(evt);
@@ -413,18 +415,20 @@ public class QuyCheToChuc extends javax.swing.JFrame {
         	                System.out.println(query);
 
         	                rs = st.executeQuery(query);
-
+        	                String[][] queries = new String[100][];
+        	                int i = 0;
         	                while (rs.next()) {
         	                	String[] value = new String[100];
         	                	value[0] = rs.getString("maloaidaily");
         	                	value[1] = rs.getString("tenloaidaily");
         	                	value[2] = rs.getString("sonotoida");
-        	                	queries_loaidaily[index_loaidaily] = value;
-        	                	index_loaidaily += 1;
+        	                	queries[i] = value;
+        	                	i += 1;
         	                }
-        	                
+        	                index_loaidaily = i;
+        	                queries_loaidaily = queries.clone();
         	                jTable1.setModel(new javax.swing.table.DefaultTableModel(
-        	                		queries_loaidaily,
+        	                		queries,
         	                        new String [] {
         	                            "Mã loại đại lý", "Tên loại đại lý", "Số nợ tối đa"
         	                        }
@@ -579,7 +583,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
         	jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
             jLabel1.setText("Mã Quận");
                   
-            javax.swing.JTextField jTextFieldmaquan = new javax.swing.JTextField() ;
+            jTextFieldmaquan = new javax.swing.JTextField() ;
             jTextFieldmaquan.setFont(new java.awt.Font("Tahoma", 0, 18));
             
             jPanelq.setBackground(new java.awt.Color(204, 229, 255));
@@ -605,7 +609,17 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton8qActionPerformed(evt);
                 }
+            });           
+            
+            jButton9q = new javax.swing.JButton();
+            jButton9q.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jButton9q.setText("Cập nhật");
+            jButton9q.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton9qActionPerformed(evt);
+                }
             });            
+
             
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
             
@@ -655,17 +669,21 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                                     )))
                         .addGap(20, 20, 20))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
                         .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                                 		.addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel1Layout.createSequentialGroup()
         	                                .addComponent(jButton7q)
-                                            .addGap(10, 10, 10)
+        	                                .addGap(110,110,110)
         	                                .addComponent(jButton8q)
         	                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
                         .addComponent(jButton7q)
                         .addComponent(jButton8q)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        		.addGap(350,350,350)
+                                .addComponent(jButton9q))
+                    		
                 );
                 jPanel1Layout.setVerticalGroup(
                     jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -683,9 +701,54 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jButton7q)
-                                .addComponent(jButton8q))
+                                .addComponent(jButton8q)
+                                .addComponent(jButton9q))
                         .addContainerGap())
                 );
+                
+    			try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    			{
+    	            if (conn != null) {
+    	                System.out.println("Connected to the database!");
+    	                Statement st =  conn.createStatement();
+    	                ResultSet rs;
+    	                String query = "Select * from quan";
+    	                System.out.println(query);
+
+    	                rs = st.executeQuery(query);
+    	                String[][] queries = new String[100][];
+    	                int i = 0;
+    	                while (rs.next()) {
+    	                	String[] value = new String[100];
+    	                	value[0] = rs.getString("maquan");
+    	                	value[1] = rs.getString("tenquan");
+    	                	queries[i] = value;
+    	                	i += 1;
+    	                }
+    	                index_quan = i;
+    	                queries_quan = queries.clone();
+    	                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+    	                		queries,
+    	                        new String [] {
+    	                            "Mã quận", "Tên quận"
+    	                        }
+    	                    ));
+
+    	                }
+    	             else {
+    	                System.out.println("Failed to make connection!");
+    	            }
+
+    	        } 
+    			catch (SQLException e) {
+    	            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+    	        } 
+    	        catch (Exception e) {
+    	            e.printStackTrace();
+    	        }	
+
+                
+                
                 if (strcurrent == null){
                 	current = jPanel1;
                 	strcurrent = "check";
@@ -700,6 +763,33 @@ public class QuyCheToChuc extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private String[][] removeElement(String[][] arr,int id,String type) {
+    	if (id < 0 || arr == null || id >= arr.length)
+    		return arr;
+    	
+    	String[][] arr_temp = new String[arr.length-1][];
+    	if (type == "ldl")
+    		index_loaidaily -= 1;
+    	else if (type == "q")
+    		index_quan -= 1;
+    	for (int i = 0,k=0;i<arr.length;i++) {
+    		if (i == id) 
+    			continue;
+    		arr_temp[k++] = arr[i];
+    	}
+    	return arr_temp;
+    }
+    
+    private int countBlank(String[] arr) {
+    	int count = 0;
+    	for (int i =0;i<=8;i++) {
+    		if (arr[i].isBlank())
+    			count +=1;
+    	}
+    	return count;
+    }
+
+    
 	private void jButton7sldlActionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub
 		if (evt.getSource() == jButton7sldl) {
@@ -709,15 +799,74 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                     System.out.println("Connected to the database!");
                     Statement st =  conn.createStatement();
                     ResultSet rs;
-                    String tenloaidaily = jTextField2.getText().substring(1,jTextField2.getText().length());
+                    if (jTextField2.getText().isBlank() && jTextFieldnotoida.getText().isBlank()) {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đúng và đầy đủ thông tin về loại đại lý",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+                    }
+                    
+                    else if (jTextField2.getText().isBlank()) {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập loại đại lý",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+
+                    }
+                    else if (jTextFieldnotoida.getText().isBlank()) {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập số nợ tối đa",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+
+                    }
+                    
+
+                    
+                    String tenloaidaily = null;
+                    try {
+                    	if (jTextField2.getText().charAt(0) != 'L') {
+                            JOptionPane.showMessageDialog(null,
+                                    "Vui lòng nhập đúng định dạng mã loại đại lý",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+                    	}
+                    }
+                    catch (java.lang.StringIndexOutOfBoundsException e) {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đúng định dạng mã loại đại lý",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+
+                    }
+                    
+                    try {
+                        int t = Integer.parseInt(jTextField2.getText().substring(1,jTextField2.getText().length()));
+                    } catch (NumberFormatException nfe) {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đúng định dạng mã loại đại lý",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    tenloaidaily = jTextField2.getText().substring(1,jTextField2.getText().length());
                     if (tenloaidaily.charAt(0) == '0')
                     	tenloaidaily = tenloaidaily.substring(1,tenloaidaily.length());
 
                     tenloaidaily = "Đại lý cấp " + tenloaidaily;
                     System.out.println(tenloaidaily);
+
                     String notoida = jTextFieldnotoida.getText();
                     String query = "Insert into loaidaily values (\'" + jTextField2.getText() + "\'," + "\'" + tenloaidaily + "\'," + notoida + ")"; 
-                    
+
+                    st.execute(query);
+
                     String[] value = new String[3];
                     value[0] = jTextField2.getText();;
                     value[1] = tenloaidaily;
@@ -725,15 +874,64 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                     
                     queries_loaidaily[index_loaidaily] = value;
                     index_loaidaily += 1;
-                    st.execute(query);
 	                jTable1.setModel(new javax.swing.table.DefaultTableModel(
 	                		queries_loaidaily,
 	                        new String [] {
 	                            "Mã loại đại lý", "Tên loại đại lý", "Số nợ tối đa"
 	                        }
-	                    ));
-
+	                    ));                    
                     
+                } 
+                else {
+                    System.out.println("Failed to make connection!");
+                }
+
+            } 
+			
+			catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                if (e.getSQLState().equals("23000")) 
+                    JOptionPane.showMessageDialog(null,
+                            "Lỗi khóa chính/ngoại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+            }    
+	        jButton9sldl.setText("Cập nhật");
+		}
+		
+	}
+	private void jButton8sldlActionPerformed(ActionEvent evt) {
+		// TODO Auto-generated method stub
+		int row_select = jTable1.getSelectedRow();
+		
+		if (row_select == -1 || row_select >= index_loaidaily) {
+            JOptionPane.showMessageDialog(null,
+                    "Vui lòng chọn loại đại lý cần xóa",
+                    "ERROR",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+		}
+		
+		if (evt.getSource() == jButton8sldl) {
+			try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    		{
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    
+                    String delete_query = "Delete from loaidaily where maloaidaily = " + "\'" + queries_loaidaily[row_select][0] + "\'";
+                    System.out.println(delete_query);
+                    
+                    st.execute(delete_query);
+                    
+                    queries_loaidaily = removeElement(queries_loaidaily,row_select,"ldl");
+	                
+                    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+	                		queries_loaidaily,
+	                        new String [] {
+	                            "Mã loại đại lý", "Tên loại đại lý", "Số nợ tối đa"
+	                        }
+	                    ));                    
                     
                 } else {
                     System.out.println("Failed to make connection!");
@@ -748,17 +946,130 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                             JOptionPane.ERROR_MESSAGE);
 
             }    
+	        jButton9sldl.setText("Cập nhật");
+
 		}
 		
+
 	}
-	private void jButton8sldlActionPerformed(ActionEvent evt) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+	private int current_row_sldl = -2;
 	private void jButton9sldlActionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub
-		
-	}
+    	if (evt.getSource() == jButton9sldl) {
+    		
+    		int row_select = jTable1.getSelectedRow();
+    		
+    		if (row_select >= index_loaidaily) {
+        		jTextField2.setText(null);
+        		jTextFieldnotoida.setText(null);        		
+        		JOptionPane.showMessageDialog(null,
+	        		    "Vui lòng chọn loại đại lý tồn tại",
+	                    "ERROR",
+	                    JOptionPane.ERROR_MESSAGE);
+        		
+        		current_row_sldl = row_select;
+    			
+                return;
+    		}
+    		
+    		if (current_row_sldl >= 0 ) {
+    			jTable1.getSelectionModel().setSelectionInterval(current_row_sldl, current_row_sldl);
+
+    			jButton9sldl.setText("Xác nhận");
+    		}
+    		
+    		if (row_select >= 0) {
+    			if (current_row_sldl != row_select) {
+    				jTextFieldnotoida.setText(queries_loaidaily[row_select][2]);
+	    			jTextField2.setText(queries_loaidaily[row_select][0]);
+    			}	
+    			current_row_sldl = row_select;
+    			    			    			    			    			
+    			jButton9sldl.setText("Cập nhật");
+    			
+    			String tenloaidaily = null;
+                try {
+                	if (jTextField2.getText().charAt(0) != 'L') {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đúng định dạng mã loại đại lý",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                	}
+                }
+                catch (java.lang.StringIndexOutOfBoundsException e) {
+                    JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng mã loại đại lý",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                	return;
+
+                }
+                
+                try {
+                    int t = Integer.parseInt(jTextField2.getText().substring(1,jTextField2.getText().length()));
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng mã loại đại lý",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                tenloaidaily = jTextField2.getText().substring(1,jTextField2.getText().length());
+                if (tenloaidaily.charAt(0) == '0')
+                	tenloaidaily = tenloaidaily.substring(1,tenloaidaily.length());
+
+                tenloaidaily = "Đại lý cấp " + tenloaidaily;
+                System.out.println(tenloaidaily);
+                
+                
+                try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    			{
+    	            if (conn != null) {
+    	                System.out.println("Connected to the database!");
+    	                Statement st =  conn.createStatement();
+    	                
+    	    			String update_query = "Update loaidaily set " + "maloaidaily = " + "\'" +  jTextField2.getText() + "\', tenloaidaily = N\'" + tenloaidaily + "\', sonotoida = " + jTextFieldnotoida.getText() + " where maloaidaily = \'" + queries_loaidaily[row_select][0] + "\'" ;
+    	    			
+    	    			System.out.println(update_query);
+    	    			
+    	                st.execute(update_query);
+    	            }
+    	            else {
+    	                System.out.println("Failed to make connection!");
+    	            }
+    	        } 
+    			catch (SQLException e) {
+    	            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                    if (e.getSQLState().equals("23000"))
+                    {    
+                    	JOptionPane.showMessageDialog(null,
+                                "Lỗi khóa chính/ngoại",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+                    }
+
+    	        } catch (Exception e) {
+    	            e.printStackTrace();
+    	        }		
+    			
+    			queries_loaidaily[row_select][0] = jTextField2.	getText(); // avoid conflict while update
+    			queries_loaidaily[row_select][1] = tenloaidaily;
+    			queries_loaidaily[row_select][2] = jTextFieldnotoida.getText();
+
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                		queries_loaidaily,
+                        new String [] {
+                            "Mã loại đại lý", "Tên loại đại lý", "Số nợ tối đa"
+                        }
+                    ));
+    			}
+    		}
+   }
+
 	
 	private void jButton7dltdActionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub
@@ -789,15 +1100,264 @@ public class QuyCheToChuc extends javax.swing.JFrame {
 	
 	private void jButton7qActionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub
+		if (evt.getSource() == jButton7q) {
+			try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    		{
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    ResultSet rs;
+                    if (jTextFieldmaquan.getText().isBlank() ) {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đúng định dạng mã quận",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+                    }
+                    
+                    try {
+                    	if (jTextFieldmaquan.getText().charAt(0) != 'Q') {
+                            JOptionPane.showMessageDialog(null,
+                                    "Vui lòng nhập đúng định dạng mã quận",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+                    	}
+                    }
+                    catch (java.lang.StringIndexOutOfBoundsException e) {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đúng định dạng mã quận",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+
+                    }
+                    
+                    try {
+                    	int maquan = Integer.parseInt(jTextFieldmaquan.getText().substring(1,jTextFieldmaquan.getText().length())) ;
+                    } catch (NumberFormatException nfe) {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đúng định dạng mã quận",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+
+                    	return;
+                    }
+                    
+                    String tenquan = null;
+                    tenquan = "Quận " + jTextFieldmaquan.getText().substring(1,jTextFieldmaquan.getText().length());
+                    System.out.println(tenquan);
+                    
+                    String query = "Insert into quan values (\'" + jTextFieldmaquan.getText() + "\'," + "N\'" + tenquan + "\')"; 
+                    System.out.println(query);
+                    st.execute(query);
+
+                    String[] value = new String[2];
+                    value[0] = jTextFieldmaquan.getText();;
+                    value[1] = tenquan;
+                    
+                    queries_quan[index_quan] = value;
+                    index_quan += 1;
+	                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+	                		queries_quan,
+	                        new String [] {
+	                            "Mã quận", "Tên quận"
+	                        }
+	                    ));                    
+                    
+                } 
+                else {
+                    System.out.println("Failed to make connection!");
+                }
+
+            } 
+			
+			catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                if (e.getSQLState().equals("23000")) 
+                    JOptionPane.showMessageDialog(null,
+                            "Lỗi khóa chính/ngoại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+            }    
+	        jButton9q.setText("Cập nhật");
+		}
+		
+
 		
 	}
 
 	private void jButton8qActionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub
+		int row_select = jTable1.getSelectedRow();
+		
+		if (row_select == -1 || row_select >= index_quan) {
+            JOptionPane.showMessageDialog(null,
+                    "Vui lòng chọn quận cần xóa",
+                    "ERROR",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+		}
+		
+		if (evt.getSource() == jButton8q) {
+			try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    		{
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    
+                    String delete_query = "Delete from quan where maquan = " + "\'" + queries_quan[row_select][0] + "\'";
+                    System.out.println(delete_query);
+                    
+                    st.execute(delete_query);
+                    
+                    queries_quan = removeElement(queries_quan,row_select,"q");
+	                
+                    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                    		queries_quan,
+	                        new String [] {
+	                            "Mã quận", "Tên quận"
+	                        }
+	                    ));                    
+                    
+                } else {
+                    System.out.println("Failed to make connection!");
+                }
+
+            } catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                if (e.getSQLState().equals("23000"))
+                    JOptionPane.showMessageDialog(null,
+                            "Lỗi khóa chính/ngoại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+
+            }    
+	        jButton9sldl.setText("Cập nhật");
+
+		}
 		
 	}
+	private int current_row_q = -2;
+	private void jButton9qActionPerformed(ActionEvent evt) {
+		// TODO Auto-generated method stub
+    	if (evt.getSource() == jButton9q) {
+    		
+    		int row_select = jTable1.getSelectedRow();
+    		
+    		if (row_select >= index_quan) {
+        		jTextFieldmaquan.setText(null);
+        		JOptionPane.showMessageDialog(null,
+	        		    "Vui lòng chọn quận tồn tại",
+	                    "ERROR",
+	                    JOptionPane.ERROR_MESSAGE);
+        		
+        		current_row_q = row_select;
+    			
+                return;
+    		}
+    		
+    		if (current_row_q >= 0 ) {
+    			jTable1.getSelectionModel().setSelectionInterval(current_row_q, current_row_q);
 
-	
+    			jButton9q.setText("Xác nhận");
+    		}
+    		
+    		if (row_select >= 0) {
+    			if (current_row_q != row_select) {
+    				jTextFieldmaquan.setText(queries_quan[row_select][0]);
+    			}	
+    			current_row_q = row_select;
+    			    			    			    			    			
+    			jButton9q.setText("Cập nhật");
+    			
+                if (jTextFieldmaquan.getText().isBlank() ) {
+                    JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng mã quận",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                	return;
+                }
+                
+                try {
+                	if (jTextFieldmaquan.getText().charAt(0) != 'Q') {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đúng định dạng mã quận",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                	}
+                }
+                catch (java.lang.StringIndexOutOfBoundsException e) {
+                    JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng mã quận",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                	return;
+
+                }
+                
+                try {
+                	int maquan = Integer.parseInt(jTextFieldmaquan.getText().substring(1,jTextFieldmaquan.getText().length())) ;
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng mã quận",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+
+                	return;
+                }
+                
+                String tenquan = null;
+                tenquan = "Quận " + jTextFieldmaquan.getText().substring(1,jTextFieldmaquan.getText().length());
+                System.out.println(tenquan);
+                
+                
+                try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    			{
+    	            if (conn != null) {
+    	                System.out.println("Connected to the database!");
+    	                Statement st =  conn.createStatement();
+    	                
+    	    			String update_query = "Update quan set " + "maquan = " + "\'" +  jTextFieldmaquan.getText() + "\', tenquan = N\'" + tenquan + "\'" + "where maquan = \'" + queries_quan[row_select][0] + "\'" ;
+    	    			
+    	    			System.out.println(update_query);
+    	    			
+    	                st.execute(update_query);
+    	            }
+    	            else {
+    	                System.out.println("Failed to make connection!");
+    	            }
+    	        } 
+    			catch (SQLException e) {
+    	            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                    if (e.getSQLState().equals("23000"))
+                    {    
+                    	JOptionPane.showMessageDialog(null,
+                                "Lỗi khóa chính/ngoại",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+                    }
+
+    	        } catch (Exception e) {
+    	            e.printStackTrace();
+    	        }		
+    			
+    			queries_quan[row_select][0] = jTextFieldmaquan.getText(); // avoid conflict while update
+    			queries_quan[row_select][1] = tenquan;
+
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                		queries_quan,
+                        new String [] {
+                            "Mã quận", "Tên quận"
+                        }
+                    ));
+    			}
+    		}
+
+	}
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -864,10 +1424,12 @@ public class QuyCheToChuc extends javax.swing.JFrame {
     private javax.swing.JButton jButton7dltd;
     private javax.swing.JButton jButton7q;
     private javax.swing.JButton jButton8q;
-    
+    private javax.swing.JButton jButton9q;
+
     javax.swing.JTextField jTextFielddailytoida;
     javax.swing.JTextField jTextFieldnotoida;
-    
+    javax.swing.JTextField jTextFieldmaquan;
+
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -884,7 +1446,9 @@ public class QuyCheToChuc extends javax.swing.JFrame {
     String[][] queries_loaidaily = new String[100][];
     int index_loaidaily = 0;
 
-    
+    String[][] queries_quan = new String[100][];
+    int index_quan = 0;
+
     String strcurrent = null;
     javax.swing.JPanel current = new javax.swing.JPanel();
     javax.swing.JPanel change = new javax.swing.JPanel();

@@ -911,6 +911,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                     
                     queries[index] = value;
                     index+=1;
+                    
                     jTable1.setModel(new javax.swing.table.DefaultTableModel(
                             queries,
                             new String [] {
