@@ -875,32 +875,44 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                         }
         			
                     }
+        			
+        			int count1 = 0;
+        			for (int i = 0;i<index;i++) {
+        				if (queries[i][3].equals(Quan(jTextField4.getText().toString())))
+            			{
+        					System.out.println("hh");
+        					count1 += 1;
+        				}
+        			}
+        			System.out.println(count1);
+        			if (count1 != 0) {
+    	    			CallableStatement cstmt;
+    	    			cstmt = conn.prepareCall("{call Insert_DAILY(?,?,?,?,?,?,?,?,?,?)}");
+                        st.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY/MM/DD'");
+    
+    	    			cstmt.setString(1, value[0]);
+    	    			cstmt.setString(2,value[1]);
+    	    			cstmt.setString(3,value[2]);
+    	    			cstmt.setString(4,value[4]);
+    	    			cstmt.setString(5,value[3]);
+    
+    	    			cstmt.setString(6, date);
+    	    			cstmt.setString(7,value[5]);
+    	    			cstmt.setString(8, value[6]);
+    	    			cstmt.setLong(9, Long.parseLong(value[8]));
+    	    			
+    	    			cstmt.registerOutParameter(10, Types.INTEGER);
+    	    			cstmt.executeUpdate();
+    	    			
+    	    			if (cstmt.getInt(10) == 0) {
+                        	JOptionPane.showMessageDialog(null,
+                                    "Số đại lý tối đa trong quận đã vượt quá quy định, không thể thêm đại lý",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                        	return;
+    	    			}
 
-	    			CallableStatement cstmt;
-	    			cstmt = conn.prepareCall("{call Insert_DAILY(?,?,?,?,?,?,?,?,?,?)}");
-                    st.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY/MM/DD'");
-
-	    			cstmt.setString(1, value[0]);
-	    			cstmt.setString(2,value[1]);
-	    			cstmt.setString(3,value[2]);
-	    			cstmt.setString(4,value[4]);
-	    			cstmt.setString(5,value[3]);
-
-	    			cstmt.setString(6, date);
-	    			cstmt.setString(7,value[5]);
-	    			cstmt.setString(8, value[6]);
-	    			cstmt.setLong(9, Long.parseLong(value[8]));
-	    			
-	    			cstmt.registerOutParameter(10, Types.INTEGER);
-	    			cstmt.executeUpdate();
-	    			
-	    			if (cstmt.getInt(10) == 0) {
-                    	JOptionPane.showMessageDialog(null,
-                                "Số đại lý tối đa trong quận đã vượt quá quy định, không thể thêm đại lý",
-                                "ERROR",
-                                JOptionPane.ERROR_MESSAGE);
-                    	return;
-	    			}
+        			}
 
                     
                     String insert_query = "Insert into daily values (\'" + value[0] + "\'" + ',' + "\'" + value[1] + "\'" +  "," +  "\'" + value[2] + "\'" +  "," + "\'" + value[4] + "\'" +  ","+ "\'" + value[3] + "\'" +  ","+ "\'" + date + "\'" +  ","+ "\'" + value[5] + "\'" +  ","+ "\'" + value[6] + "\'" +  ","+ "\'" + value[8] + "\')";

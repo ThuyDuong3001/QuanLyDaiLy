@@ -67,6 +67,8 @@ AS
     num_sodaily NUMBER:=0;
     count_daily NUMBER:=0;
 BEGIN
+    flag := 0;
+    
     SELECT SoDaiLyToiDa INTO num_sodaily
     FROM THAMSO;
     
@@ -74,6 +76,10 @@ BEGIN
     FROM DAILY DL, QUAN Q
     WHERE DL.MaQuan=Q.MaQuan AND Q.MaQuan=var_maquan
     GROUP BY Q.MaQuan;
+    
+    if (count_daily = 0) then
+        flag:= 0;
+    end if;
     
     IF(count_daily<num_sodaily) THEN
         flag := 1;
