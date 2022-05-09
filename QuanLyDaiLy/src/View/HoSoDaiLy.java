@@ -876,15 +876,15 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         			
                     }
         			
+        			// dem so quan dang ton tai
         			int count1 = 0;
         			for (int i = 0;i<index;i++) {
         				if (queries[i][3].equals(Quan(jTextField4.getText().toString())))
             			{
-        					System.out.println("hh");
         					count1 += 1;
         				}
         			}
-        			System.out.println(count1);
+
         			if (count1 != 0) {
     	    			CallableStatement cstmt;
     	    			cstmt = conn.prepareCall("{call Insert_DAILY(?,?,?,?,?,?,?,?,?,?)}");

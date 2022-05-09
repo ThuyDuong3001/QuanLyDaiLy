@@ -93,7 +93,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Số loại đại lý", "Số đại lý tối đa", "Số quận"}));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Số loại đại lý", "Số đại lý tối đa trong quận", "Số quận"}));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -136,30 +136,14 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(20, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabelnotoida))
+                                .addComponent(jLabel3))
                             .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldnotoida, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                )))
                     .addGap(20, 20, 20))
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(156, 156, 156)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            		.addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel1Layout.createSequentialGroup()
-    	                                .addComponent(jButton7)
-                                        .addGap(10, 10, 10)
-    	                                .addComponent(jButton8)
-    	                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
-                    .addComponent(jButton7)
-                    .addComponent(jButton8)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             jPanel1Layout.setVerticalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,19 +153,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(15, 15, 15)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelnotoida)
-                            .addComponent(jTextFieldnotoida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-
                     .addGap(15, 15, 15)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                    .addGap(18, 18, 18)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton7)
-                            .addComponent(jButton8))
                     .addContainerGap())
             );
 
@@ -461,7 +433,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                     
         }
         
-        else if (jComboBox1.getModel().getSelectedItem().equals("Số đại lý tối đa")) {
+        else if (jComboBox1.getModel().getSelectedItem().equals("Số đại lý tối đa trong quận")) {
 
             if (current != jPaneldltd) {
             	jPaneldltd = new javax.swing.JPanel();
@@ -480,7 +452,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
             	
                 jLabel1 = new javax.swing.JLabel();
             	jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-                jLabel1.setText("Số đại lý tối đa");
+                jLabel1.setText("Số đại lý tối đa trong quận");
                       
                 jTextFielddailytoida = new javax.swing.JTextField() ;
                 jTextFielddailytoida.setFont(new java.awt.Font("Tahoma", 0, 18));
@@ -528,7 +500,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextFielddailytoida, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextFielddailytoida, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(20, 20, 20))))
 
                             )
@@ -565,7 +537,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
 
                     layout.replace(current, jPaneldltd);
                 	current = jPaneldltd;           
-                	jComboBox1.getModel().setSelectedItem("Số đại lý tối đa");
+                	jComboBox1.getModel().setSelectedItem("Số đại lý tối đa trong quận");
                 	pack();
             }
 
@@ -780,14 +752,14 @@ public class QuyCheToChuc extends javax.swing.JFrame {
     	return arr_temp;
     }
     
-    private int countBlank(String[] arr) {
-    	int count = 0;
-    	for (int i =0;i<=8;i++) {
-    		if (arr[i].isBlank())
-    			count +=1;
-    	}
-    	return count;
-    }
+//    private int countBlank(String[] arr) {
+//    	int count = 0;
+//    	for (int i =0;i<=8;i++) {
+//    		if (arr[i].isBlank())
+//    			count +=1;
+//    	}
+//    	return count;
+//    }
 
     
 	private void jButton7sldlActionPerformed(ActionEvent evt) {
@@ -1233,7 +1205,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                             JOptionPane.ERROR_MESSAGE);
 
             }    
-	        jButton9sldl.setText("Cập nhật");
+	        jButton9q.setText("Cập nhật");
 
 		}
 		
