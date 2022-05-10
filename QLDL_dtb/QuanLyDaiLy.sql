@@ -233,7 +233,7 @@ END;
 --Test
 DECLARE
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('Ty le: '||Func_TyLeTheoThang('DL001',12,2020));
+    DBMS_OUTPUT.PUT_LINE('Ty le: '||Func_TyLeTheoThang('DL002',1,2022));--Ty le: 37
 END;
 /
 
@@ -261,6 +261,11 @@ BEGIN
    num_nocuoi:=num_nodau+num_phatsinh-tongtientra;
     
     RETURN num_nocuoi;
+END;
+/
+--Test
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('No cuoi: '||Func_NoCuoi('DL003',1,2022));--No cuoi: 1160000
 END;
 
 CREATE OR REPLACE PROCEDURE Pro_HasLoaiDaiLy(var_maloaidl IN daily.maloaidaily%TYPE,flag OUT NUMBER)
