@@ -124,9 +124,9 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
         });
 
 
-        jButton1.setBackground(new java.awt.Color(204, 153, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("Quy Định Tiền Nợ");
+//        jButton1.setBackground(new java.awt.Color(204, 153, 255));
+//        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+//        jButton1.setText("Quy Định Tiền Nợ");
 
         jButton2.setBackground(new java.awt.Color(204, 153, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -388,7 +388,6 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -401,10 +400,9 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(40, 40, 40)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(70, 70, 70)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -437,6 +435,7 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
     private void jButtonthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     	if(evt.getSource() == jButtonthem) {
+    		boolean hasdvt = false;
     		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
     		{
                 if (conn != null) {
@@ -463,6 +462,16 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
                        return;
                     }
                     
+        			Statement stdvt = conn.createStatement();
+        			ResultSet rsdvt = stdvt.executeQuery("select * from donvitinh");
+        			String madvt = jTextFieldmadvt.getText();
+        			while (rsdvt.next()){
+        				if (madvt.equals(rsdvt.getString("madonvitinh"))){
+        					hasdvt = true;
+        				}
+        			}
+        			
+                    
                     String insert_query = "Insert into mathang values (\'" + value[0] + "\'," + "\'" + value[1] + "\'," + "\'" + value[2] + "\'," + "\'" + value[3] + "\'," + "\'" + value[4] + "\'," + "\'" + value[5] + "\'," + "\'" + value[6] + "\')" ;
                     System.out.println(insert_query);
                     
@@ -485,32 +494,37 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
             } catch (SQLException e) {
                 System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
                 
-                try {
-                	if (!jTextFieldmadvt.getText().substring(0,2).equals("DV")) {
-                        JOptionPane.showMessageDialog(null,
-                                "Vui lòng nhập đúng định dạng mã đơn vị tính",
-                                "ERROR",
-                                JOptionPane.ERROR_MESSAGE);
-                        return;
-                	}
-                }
-                catch (java.lang.StringIndexOutOfBoundsException b) {
+                if (!hasdvt) {
                     JOptionPane.showMessageDialog(null,
-                            "Vui lòng nhập đúng định dạng mã đơn vị tính",
+                            "Mã đơn vị tính không tồn tại",
                             "ERROR",
                             JOptionPane.ERROR_MESSAGE);
-                	return;
-
+                    return;
                 }
-                
-                if (e.getSQLState().equals("23000"))
-                    JOptionPane.showMessageDialog(null,
-                            "Lỗi khóa chính/ngoại",
+
+	            if (e.getSQLState().equals("42000"))
+                	JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng",
                             "ERROR",
                             JOptionPane.ERROR_MESSAGE);
 
-            }    		
+	            else if (e.getSQLState().equals("23000"))
+                    JOptionPane.showMessageDialog(null,
+                            "Mã mặt hàng đã tồn tại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+
+            } 
+    		catch (Exception b) {
+    			JOptionPane.showMessageDialog(null,
+                        "Vui lòng nhập đúng định dạng",
+                        "ERROR",
+                        JOptionPane.ERROR_MESSAGE);
+
+    		}
     	}
+        jButtonsua.setText("Cập nhật");
+
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private String[][] removeElement(String[][] arr,int id) {
@@ -611,8 +625,7 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
             } catch (Exception e) {
                 e.printStackTrace();
             }		
-//	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
-//	        jButton6.setText("Cập nhật");
+	        jButtonsua.setText("Cập nhật");
 
     }
 
@@ -622,7 +635,7 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
     private void jButtonsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     	if (evt.getSource() == jButtonsua) {
-    		
+    		boolean hasdvt = false;
     		int row_select = jTable1.getSelectedRow();
     		
     		if (row_select >= index) {
@@ -645,7 +658,7 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
     		if (current_row >= 0 ) {
     			jTable1.getSelectionModel().setSelectionInterval(current_row, current_row);
 
-//    			jButton9q.setText("Xác nhận");
+    			jButtonsua.setText("Xác nhận");
     		}
     		
     		if (row_select >= 0) {
@@ -659,7 +672,7 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
     			}	
     			current_row = row_select;
     			    			    			    			    			
-//    			jButton9q.setText("Cập nhật");
+    			jButtonsua.setText("Cập nhật");
     			
                 if (jTextFieldmadvt.getText().isBlank() ) {
                     JOptionPane.showMessageDialog(null,
@@ -677,7 +690,16 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
     	                Statement st =  conn.createStatement();
     	                
     	    			String update_query = "Update mathang set " + "mamathang = " + "\'" +  jTextFieldmamathang.getText() + "\', tenmathang = N\'" + jTextFieldtenmathang.getText() + "\'," +  "dongianhap = \'" + jTextFielddongianhap.getText() + "\'," + "soluongton = " + "\'" + jTextFieldsoluongton.getText() + "\', dongiaxuat = \'" + Float.toString(Float.parseFloat(jTextFielddongianhap.getText()) * tyle).substring(0,findDot(Float.toString(Float.parseFloat(jTextFielddongianhap.getText()) * tyle))) + "\', madonvitinh = \'" + jTextFieldmadvt.getText() + "\', tennhacungcap = \'" + jTextFieldtennhacungcap.getText() + "\'"   + "where mamathang = \'" + queries[row_select][0] + "\'" ;
-    	    			
+            			
+    	    			Statement stdvt = conn.createStatement();
+            			ResultSet rsdvt = stdvt.executeQuery("select * from donvitinh");
+            			String madvt = jTextFieldmadvt.getText();
+            			while (rsdvt.next()){
+            				if (madvt.equals(rsdvt.getString("madonvitinh"))){
+            					hasdvt = true;
+            				}
+            			}
+
     	    			
     	    			System.out.println(update_query);
     	    			
@@ -690,28 +712,26 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
     			catch (SQLException e) {
     	            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
                     
-                    try {
-                    	if (!jTextFieldmadvt.getText().substring(0,2).equals("DV")) {
-                            JOptionPane.showMessageDialog(null,
-                                    "Vui lòng nhập đúng định dạng mã đơn vị tính",
-                                    "ERROR",
-                                    JOptionPane.ERROR_MESSAGE);
-                            return;
-                    	}
-                    }
-                    catch (java.lang.StringIndexOutOfBoundsException b) {
+    	            if (!hasdvt) {
                         JOptionPane.showMessageDialog(null,
-                                "Vui lòng nhập đúng định dạng mã đơn vị tính",
+                                "Mã đơn vị tính không tồn tại",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+
+    	            }
+    	                               
+    	            if (e.getSQLState().equals("42000"))
+                    	{JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đúng định dạng",
                                 "ERROR",
                                 JOptionPane.ERROR_MESSAGE);
                     	return;
-
-                    }
-
-    	            if (e.getSQLState().equals("23000"))
+                    	}
+    	            else if (e.getSQLState().equals("23000"))
                     {    
                     	JOptionPane.showMessageDialog(null,
-                                "Lỗi khóa chính/ngoại",
+                                "Mã mặt hàng đã tồn tại",
                                 "ERROR",
                                 JOptionPane.ERROR_MESSAGE);
                     	return;
@@ -719,6 +739,11 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
 
     	        } catch (Exception e) {
     	            e.printStackTrace();
+    	            JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+    	            return;
     	        }		
     			
                 queries[row_select][0] = jTextFieldmamathang.getText();
