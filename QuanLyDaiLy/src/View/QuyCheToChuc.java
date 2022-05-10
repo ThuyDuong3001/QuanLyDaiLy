@@ -1785,6 +1785,10 @@ public class QuyCheToChuc extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+    	if (evt.getSource() == jButton2) {
+    		this.setVisible(false);
+    		new QuyCheToChuc_MH().setVisible(true);
+    	}
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1798,6 +1802,10 @@ public class QuyCheToChuc extends javax.swing.JFrame {
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+    	if (evt.getSource() == jButton4) {
+    		this.setVisible(false);
+    		new Home().setVisible(true);
+    	}
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

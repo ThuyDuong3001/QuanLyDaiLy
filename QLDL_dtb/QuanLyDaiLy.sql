@@ -179,7 +179,7 @@ BEGIN
 END;
 /
 
-CREATE OR REPLACE PROCEDURE Pro_Insert_TongNo(var_loaidaily IN daily.madaily%TYPE, 
+CREATE OR REPLACE PROCEDURE Pro_Insert_TongNo(var_maloaidaily IN daily.madaily%TYPE, 
                                         num_tongno IN daily.tongno%TYPE,
                                         flag OUT number)
 AS
@@ -187,7 +187,7 @@ AS
 BEGIN
     SELECT SoNoToiDa INTO num_maxno
     FROM LOAIDAILY LDL
-    WHERE LDL.MaDaiLy=var_madl;
+    WHERE LDL.MaloaiDaiLy=var_maloaidaily;
     
     IF(num_tongno<=num_maxno) THEN
         flag := 1;
@@ -293,6 +293,18 @@ BEGIN
     ELSE
         flag := 0;
     END IF;
+END;
+
+DECLARE
+begin
+    Pro_HASLOAIDAILY('L02');
+end;
+
+CREATE OR REPLACE PROCEDURE Pro_Query_BaoCaoDoanhSo(var_madl IN daily.maloaidaily%TYPE,thang IN daily.ngaytiepnhan%TYPE)
+AS
+    count_maloaidaily NUMBER:=0;
+BEGIN
+    
 END;
 
 DECLARE

@@ -140,6 +140,11 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(204, 153, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton3.setText("Quy Chế Tổ Chức");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(204, 229, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -689,7 +694,7 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
     	                System.out.println("Connected to the database!");
     	                Statement st =  conn.createStatement();
     	                
-    	    			String update_query = "Update mathang set " + "mamathang = " + "\'" +  jTextFieldmamathang.getText() + "\', tenmathang = N\'" + jTextFieldtenmathang.getText() + "\'," +  "dongianhap = \'" + jTextFielddongianhap.getText() + "\'," + "soluongton = " + "\'" + jTextFieldsoluongton.getText() + "\', dongiaxuat = \'" + Float.toString(Float.parseFloat(jTextFielddongianhap.getText()) * tyle).substring(0,findDot(Float.toString(Float.parseFloat(jTextFielddongianhap.getText()) * tyle))) + "\', madonvitinh = \'" + jTextFieldmadvt.getText() + "\', tennhacungcap = \'" + jTextFieldtennhacungcap.getText() + "\'"   + "where mamathang = \'" + queries[row_select][0] + "\'" ;
+    	    			String update_query = "Update mathang set " + "mamathang = " + "\'" +  jTextFieldmamathang.getText() + "\', tenmathang = N\'" + jTextFieldtenmathang.getText() + "\'," +  "dongianhap = \'" + jTextFielddongianhap.getText() + "\'," + "soluongton = " + "\'" + jTextFieldsoluongton.getText() + "\', dongiaxuat = \'" + Float.toString(Float.parseFloat(jTextFielddongianhap.getText()) * tyle).substring(0,findDot(Float.toString(Float.parseFloat(jTextFielddongianhap.getText()) * tyle))) + "\', madonvitinh = \'" + jTextFieldmadvt.getText() + "\', tennhacungcap = N\'" + jTextFieldtennhacungcap.getText() + "\'"   + "where mamathang = \'" + queries[row_select][0] + "\'" ;
             			
     	    			Statement stdvt = conn.createStatement();
             			ResultSet rsdvt = stdvt.executeQuery("select * from donvitinh");
@@ -770,6 +775,14 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    	if (evt.getSource() == jButton3) {
+    		this.setVisible(false);
+    		new QuyCheToChuc().setVisible(true);
+    	}
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -789,6 +802,10 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+    	if (evt.getSource() == jButton4) {
+    		this.setVisible(false);
+    		new Home().setVisible(true);
+    	}
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
