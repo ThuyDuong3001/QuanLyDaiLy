@@ -685,7 +685,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         // TODO add your handling code here:
     	// thay doi
     	if (evt.getSource() == jButton6) {
-    		
+    		boolean hasq = false;
     		int row_select = jTable1.getSelectedRow();
     		
     		if (row_select >= index) {
@@ -769,6 +769,16 @@ public class HoSoDaiLy extends javax.swing.JFrame {
     	    			cstmt.registerOutParameter(3, Types.INTEGER);
     	    			cstmt.executeUpdate();
     	    			
+            			Statement stq = conn.createStatement();
+            			ResultSet rsq = stq.executeQuery("select * from quan");
+            			String quan = Quan(jTextField4.getText().toString());
+            			while (rsq.next()){
+            				if (quan.equals(rsq.getString("maquan"))){
+            					hasq = true;
+            				}
+            			}
+    	    			
+    	    			System.out.println(Long.parseLong(jTextField10.getText()));
     	    			if (cstmt.getInt(3) == 0) {
                         	JOptionPane.showMessageDialog(null,
                                     "Tiền nợ đã vượt quá quy định, không thể cập nhật",
@@ -788,10 +798,19 @@ public class HoSoDaiLy extends javax.swing.JFrame {
     	        } 
     			catch (SQLException e) {
     	            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-                    if (e.getSQLState().equals("23000"))
+                    
+    	            if (!hasq) {
+                        JOptionPane.showMessageDialog(null,
+                                "Quận không tồn tại",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+    	            
+    	            if (e.getSQLState().equals("23000"))
                     {    
                     	JOptionPane.showMessageDialog(null,
-                                "Lỗi khóa chính/ngoại",
+                                "Mã đại lý đã tồn tại",
                                 "ERROR",
                                 JOptionPane.ERROR_MESSAGE);
                     	return;
@@ -799,6 +818,13 @@ public class HoSoDaiLy extends javax.swing.JFrame {
 
     	        } catch (Exception e) {
     	            e.printStackTrace();
+                	JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                	return;
+
+                	
     	        }		
     			
     			queries[row_select][0] = jTextField1.getText(); // avoid conflict while update
@@ -825,6 +851,8 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         // TODO add your handling code here:
     	// them
     	if (evt.getSource() == jButton7) {
+    		boolean hasq = false;
+    		String loaidaily = null;
     		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
     		{
                 if (conn != null) {
@@ -836,7 +864,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         			String pro_date = null;
         			try {
         				String num_loaidaily = (String) jComboBox1.getModel().getSelectedItem();
-        				String loaidaily = null;
+        				loaidaily = null;
         				if (num_loaidaily.length() == 1)
         					loaidaily = "L0" + num_loaidaily;
         				else
@@ -885,6 +913,16 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         				}
         			}
 
+        			// ktra quan ton tai
+        			Statement stq = conn.createStatement();
+        			ResultSet rsq = stq.executeQuery("select * from quan");
+        			String quan = Quan(jTextField4.getText().toString());
+        			while (rsq.next()){
+        				if (quan.equals(rsq.getString("maquan"))){
+        					hasq = true;
+        				}
+        			}
+        			
         			if (count1 != 0) {
     	    			CallableStatement cstmt;
     	    			cstmt = conn.prepareCall("{call Insert_DAILY(?,?,?,?,?,?,?,?,?,?)}");
@@ -914,6 +952,22 @@ public class HoSoDaiLy extends javax.swing.JFrame {
 
         			}
 
+	    			CallableStatement cstmt;
+	    			cstmt = conn.prepareCall("{call Pro_Insert_TongNo(?,?,?)}");
+	    			cstmt.setString(1, loaidaily);
+	    			
+	    			cstmt.setLong(2, Long.parseLong(jTextField10.getText()));
+	    			cstmt.registerOutParameter(3, Types.INTEGER);
+	    			cstmt.executeUpdate();
+	    			
+	    			if (cstmt.getInt(3) == 0) {
+                    	JOptionPane.showMessageDialog(null,
+                                "Tiền nợ đã vượt quá quy định, không thể cập nhật",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+	    			}
+
                     
                     String insert_query = "Insert into daily values (\'" + value[0] + "\'" + ',' + "\'" + value[1] + "\'" +  "," +  "\'" + value[2] + "\'" +  "," + "\'" + value[4] + "\'" +  ","+ "\'" + value[3] + "\'" +  ","+ "\'" + date + "\'" +  ","+ "\'" + value[5] + "\'" +  ","+ "\'" + value[6] + "\'" +  ","+ "\'" + value[8] + "\')";
                     System.out.println(insert_query);
@@ -937,16 +991,33 @@ public class HoSoDaiLy extends javax.swing.JFrame {
 
             } catch (SQLException e) {
                 System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                
+                if (!hasq) {
+                    JOptionPane.showMessageDialog(null,
+                            "Quận không tồn tại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                
+                
                 if (e.getSQLState().equals("23000"))
                     JOptionPane.showMessageDialog(null,
-                            "Lỗi khóa chính/ngoại",
+                            "Mã đại lý đã tồn tại",
                             "ERROR",
                             JOptionPane.ERROR_MESSAGE);
 
-            }    		
+            }
+    		catch (Exception e) {
+	            e.printStackTrace();
+            	JOptionPane.showMessageDialog(null,
+                        "Vui lòng nhập đúng định dạng",
+                        "ERROR",
+                        JOptionPane.ERROR_MESSAGE);
+            	return;            	
+	        }		
 	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
 	        jButton6.setText("Cập nhật");
-
     		
     	}
 

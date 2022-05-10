@@ -166,8 +166,6 @@ BEGIN
     WHERE LDL.MaLoaiDaiLy=DL.MaLoaiDaiLy AND DL.MaDaiLy=var_madl;
     
     IF(num_tongno<=num_maxno) THEN
-        UPDATE DaiLy
-        SET TongNo=num_tongno WHERE MaDaiLy=var_madl;
         flag := 1;
     ELSE
         flag := 0;
@@ -180,6 +178,25 @@ BEGIN
     Pro_Update_TongNo('DL001',100000000);
 END;
 /
+
+CREATE OR REPLACE PROCEDURE Pro_Insert_TongNo(var_loaidaily IN daily.madaily%TYPE, 
+                                        num_tongno IN daily.tongno%TYPE,
+                                        flag OUT number)
+AS
+    num_maxno NUMBER :=0;
+BEGIN
+    SELECT SoNoToiDa INTO num_maxno
+    FROM LOAIDAILY LDL
+    WHERE LDL.MaDaiLy=var_madl;
+    
+    IF(num_tongno<=num_maxno) THEN
+        flag := 1;
+    ELSE
+        flag := 0;
+        DBMS_OUTPUT.PUT_LINE('Tien no da vuot quy dinh, khong the cap nhat');
+    END IF;
+END;
+
 --FUNCTION BAOCAODOANHSO
 --Theo thang
 CREATE OR REPLACE FUNCTION Func_TongDoanhSoTheoThang(thang IN NUMBER, nam IN NUMBER)

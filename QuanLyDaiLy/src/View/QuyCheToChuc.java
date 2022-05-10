@@ -93,7 +93,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Số loại đại lý", "Số đại lý tối đa trong quận", "Số quận"}));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Số loại đại lý", "Số đại lý tối đa trong quận", "Số quận","Số lượng đơn vị tính"}));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -204,8 +204,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -219,8 +218,6 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -796,8 +793,6 @@ public class QuyCheToChuc extends javax.swing.JFrame {
 
                     }
                     
-
-                    
                     String tenloaidaily = null;
                     try {
                     	if (jTextField2.getText().charAt(0) != 'L') {
@@ -864,10 +859,23 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                 System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
                 if (e.getSQLState().equals("23000")) 
                     JOptionPane.showMessageDialog(null,
-                            "Lỗi khóa chính/ngoại",
+                            "Mã loại đại lý đã tồn tại",
                             "ERROR",
                             JOptionPane.ERROR_MESSAGE);
-            }    
+                else if (e.getSQLState().equals("42000")) 
+                    JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng tiền nợ",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+
+            } 
+			catch (Exception b) {
+				JOptionPane.showMessageDialog(null,
+                        "Vui lòng nhập đúng định dạng",
+                        "ERROR",
+                        JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 	        jButton9sldl.setText("Cập nhật");
 		}
 		
@@ -913,7 +921,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                 System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
                 if (e.getSQLState().equals("23000"))
                     JOptionPane.showMessageDialog(null,
-                            "Lỗi khóa chính/ngoại",
+                            "Tồn tại hồ sơ chứa loại đại lý này",
                             "ERROR",
                             JOptionPane.ERROR_MESSAGE);
 
@@ -1018,7 +1026,15 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                     if (e.getSQLState().equals("23000"))
                     {    
                     	JOptionPane.showMessageDialog(null,
-                                "Lỗi khóa chính/ngoại",
+                                "Mã loại đại lý đã tồn tại hoặc tồn tại hồ sơ chứa loại đại lý này",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+                    }
+                    else if (e.getSQLState().equals("42000")) 
+                    {
+                    	JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đúng định dạng tiền nợ",
                                 "ERROR",
                                 JOptionPane.ERROR_MESSAGE);
                     	return;
@@ -1063,7 +1079,14 @@ public class QuyCheToChuc extends javax.swing.JFrame {
 	        } 
 			catch (SQLException e) {
 	            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-	        } 
+	            if (e.getSQLState().equals("42000"))
+                	JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+
+	            	
+			} 
 	        catch (Exception e) {
 	            e.printStackTrace();
 	        }	
@@ -1148,15 +1171,12 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                 System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
                 if (e.getSQLState().equals("23000")) 
                     JOptionPane.showMessageDialog(null,
-                            "Lỗi khóa chính/ngoại",
+                            "Mã quận đã tồn tại",
                             "ERROR",
                             JOptionPane.ERROR_MESSAGE);
             }    
 	        jButton9q.setText("Cập nhật");
-		}
-		
-
-		
+		}		
 	}
 
 	private void jButton8qActionPerformed(ActionEvent evt) {
@@ -1200,7 +1220,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                 System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
                 if (e.getSQLState().equals("23000"))
                     JOptionPane.showMessageDialog(null,
-                            "Lỗi khóa chính/ngoại",
+                            "Tồn tại hồ sơ chứa quận này",
                             "ERROR",
                             JOptionPane.ERROR_MESSAGE);
 
@@ -1306,7 +1326,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                     if (e.getSQLState().equals("23000"))
                     {    
                     	JOptionPane.showMessageDialog(null,
-                                "Lỗi khóa chính/ngoại",
+                                "Mã quận đã tồn tại hoặc tồn tại hồ sơ chứa quận này",
                                 "ERROR",
                                 JOptionPane.ERROR_MESSAGE);
                     	return;
