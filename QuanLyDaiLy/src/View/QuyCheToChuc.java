@@ -93,7 +93,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Số loại đại lý", "Số đại lý tối đa trong quận", "Số quận","Số lượng đơn vị tính"}));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Số loại đại lý", "Số đại lý tối đa trong quận", "Số quận","Số đơn vị tính"}));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -730,7 +730,209 @@ public class QuyCheToChuc extends javax.swing.JFrame {
                 pack();
         }      
       }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    else if (jComboBox1.getModel().getSelectedItem().equals("Số đơn vị tính")) {
+
+    	if (current != jPaneldvt) {
+    		
+    		
+	    	jPaneldvt= new javax.swing.JPanel();
+	    	jPaneldvt.setBackground(new java.awt.Color(204, 229, 255));
+	    	jPaneldvt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+	    	
+	    	
+	        jLabel1 = new javax.swing.JLabel();
+	    	jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+	        jLabel1.setText("Mã đơn vị tính");
+	              
+	        jTextFieldmadvt = new javax.swing.JTextField() ;
+	        jTextFieldmadvt.setFont(new java.awt.Font("Tahoma", 0, 18));
+	              
+	        jTextFieldmadvt = new javax.swing.JTextField() ;
+	        jTextFieldmadvt.setFont(new java.awt.Font("Tahoma", 0, 18));
+
+	        jLabeltendvt = new javax.swing.JLabel();
+	        jLabeltendvt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+	        jLabeltendvt.setText("Tên đơn vị tính");
+
+	        jTextFieldtendvt = new javax.swing.JTextField() ;
+	        jTextFieldtendvt.setFont(new java.awt.Font("Tahoma", 0, 18));
+
+	        jPaneldvt.setBackground(new java.awt.Color(204, 229, 255));
+	        jPaneldvt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+	
+	        jLabel3 = new javax.swing.JLabel();
+	        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+	        jLabel3.setText("Thay đổi quy định");
+	        
+	        jButton7dvt = new javax.swing.JButton();
+	        jButton7dvt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+	        jButton7dvt.setText("Thêm");
+	        jButton7dvt.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                jButton7dvtActionPerformed(evt);
+	            }
+	        });
+	        
+	        jButton8dvt = new javax.swing.JButton();
+	        jButton8dvt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+	        jButton8dvt.setText("Xóa");
+	        jButton8dvt.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                jButton8dvtActionPerformed(evt);
+	            }
+	        });           
+	        
+	        jButton9dvt = new javax.swing.JButton();
+	        jButton9dvt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+	        jButton9dvt.setText("Cập nhật");
+	        jButton9dvt.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                jButton9dvtActionPerformed(evt);
+	            }
+	        });            
+	
+	        
+	        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+	        
+	//        jScrollPane1 = new javax.swing.JScrollPane();
+	//        jTable1 = new javax.swing.JTable();
+	        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+	                new Object [][] {
+	                    {null, null, null},
+	                    {null, null, null},
+	                    {null, null, null},
+	                    {null, null, null},
+	                    {null, null, null}
+	                },
+	                new String [] {
+	                    "", "", ""
+	                }
+	            ));
+	            jScrollPane1.setViewportView(jTable1);
+	
+	        
+	    	javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPaneldvt);
+	    	jPaneldvt.setLayout(jPanel1Layout);
+	    	jPaneldvt.revalidate();
+	    	
+	    	
+	    	jPanel1Layout.setHorizontalGroup(
+	                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+	                    .addContainerGap(20, Short.MAX_VALUE)
+	                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                        .addGroup(jPanel1Layout.createSequentialGroup()
+	                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                                .addComponent(jLabel1)
+	                                .addComponent(jLabel3)
+	                                .addComponent(jLabeltendvt)
+	                                )
+	                            .addGap(18, 18, 18)
+	                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                                .addComponent(jTextFieldmadvt, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                                .addComponent(jTextFieldtendvt, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                            		)))
+	                    .addGap(20, 20, 20))
+	                .addGroup(jPanel1Layout.createSequentialGroup()
+	                    .addGroup(jPanel1Layout.createSequentialGroup()
+	                            .addGap(20, 20, 20)
+	                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+	                            		.addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel1Layout.createSequentialGroup()
+	    	                                .addComponent(jButton7dvt)
+	    	                                .addGap(110,110,110)
+	    	                                .addComponent(jButton8dvt)
+	    	                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+	                    .addComponent(jButton7dvt)
+	                    .addComponent(jButton8dvt)
+	                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	                .addGroup(jPanel1Layout.createSequentialGroup()
+	                    		.addGap(350,350,350)
+	                            .addComponent(jButton9dvt))
+	                		
+	            );
+	            jPanel1Layout.setVerticalGroup(
+	                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                .addGroup(jPanel1Layout.createSequentialGroup()
+	                    .addGap(15, 15, 15)
+	                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                        .addComponent(jLabel3)
+	                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                    .addGap(15, 15, 15)
+	                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                        .addComponent(jLabel1)
+	                        .addComponent(jTextFieldmadvt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                    .addGap(15, 15, 15)
+	                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+		                        .addComponent(jLabeltendvt)
+		                        .addComponent(jTextFieldtendvt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                    .addGap(15, 15, 15)
+	                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+	                    .addGap(18, 18, 18)
+	                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                            .addComponent(jButton7dvt)
+	                            .addComponent(jButton8dvt)
+	                            .addComponent(jButton9dvt))
+	                    .addContainerGap())
+	            );
+            
+			try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+			{
+	            if (conn != null) {
+	                System.out.println("Connected to the database!");
+	                Statement st =  conn.createStatement();
+	                ResultSet rs;
+	                String query = "Select * from donvitinh";
+	                System.out.println(query);
+
+	                rs = st.executeQuery(query);
+	                String[][] queries = new String[100][];
+	                int i = 0;
+	                while (rs.next()) {
+	                	String[] value = new String[100];
+	                	value[0] = rs.getString("madonvitinh");
+	                	value[1] = rs.getString("tendonvitinh");
+	                	queries[i] = value;
+	                	i += 1;
+	                }
+	                index_dvt = i;
+	                queries_dvt = queries.clone();
+	                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+	                		queries,
+	                        new String [] {
+	                            "Mã đơn vị tính", "Tên đơn vị tính"
+	                        }
+	                    ));
+
+	                }
+	             else {
+	                System.out.println("Failed to make connection!");
+	            }
+
+	        } 
+			catch (SQLException e) {
+	            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+	        } 
+	        catch (Exception e) {
+	            e.printStackTrace();
+	        }	
+
+            
+            
+            if (strcurrent == null){
+            	current = jPanel1;
+            	strcurrent = "check";
+            }
+
+            layout.replace(current, jPaneldvt);
+        	current = jPaneldvt;           
+        	jComboBox1.getModel().setSelectedItem("Số đơn vị tính");
+
+            pack();
+    }      
+  }
+}//GEN-LAST:event_jButton2ActionPerformed
 
     private String[][] removeElement(String[][] arr,int id,String type) {
     	if (id < 0 || arr == null || id >= arr.length)
@@ -741,6 +943,9 @@ public class QuyCheToChuc extends javax.swing.JFrame {
     		index_loaidaily -= 1;
     	else if (type == "q")
     		index_quan -= 1;
+    	else if (type == "dvt")
+    		index_dvt -= 1;
+
     	for (int i = 0,k=0;i<arr.length;i++) {
     		if (i == id) 
     			continue;
@@ -1350,6 +1555,234 @@ public class QuyCheToChuc extends javax.swing.JFrame {
 
 	}
 
+	private void jButton7dvtActionPerformed(ActionEvent evt) {
+		if (evt.getSource() == jButton7dvt) {
+			try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    		{
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    ResultSet rs;
+                    if (jTextFieldmadvt.getText().isBlank() ) {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đúng định dạng mã đơn vị tính",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+                    }
+                    
+                    try {
+                    	if (!jTextFieldmadvt.getText().substring(0,2).equals("DV")) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Vui lòng nhập đúng định dạng mã đơn vị tính",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+                    	}
+                    }
+                    catch (java.lang.StringIndexOutOfBoundsException e) {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đúng định dạng mã đơn vị tính",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+                    }
+                    
+                    String query = "Insert into donvitinh values (\'" + jTextFieldmadvt.getText() + "\'," + "N\'" + jTextFieldtendvt.getText() + "\')"; 
+                    System.out.println(query);
+                    st.execute(query);
+
+                    String[] value = new String[2];
+                    value[0] = jTextFieldmadvt.getText();;
+                    value[1] = jTextFieldtendvt.getText();
+                    
+                    queries_dvt[index_dvt] = value;
+                    index_dvt += 1;
+	                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+	                		queries_dvt,
+	                        new String [] {
+	                            "Mã đơn vị tính", "Tên đơn vị tính"
+	                        }
+	                    ));                    
+                    
+                } 
+                else {
+                    System.out.println("Failed to make connection!");
+                }
+
+            } 
+			
+			catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                if (e.getSQLState().equals("23000")) 
+                    JOptionPane.showMessageDialog(null,
+                            "Mã đơn vị tính đã tồn tại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+            }    
+	        jButton9dvt.setText("Cập nhật");
+		}		
+		
+	}
+	
+	private void jButton8dvtActionPerformed(ActionEvent evt) {
+		// TODO Auto-generated method stub
+		int row_select = jTable1.getSelectedRow();
+		
+		if (row_select == -1 || row_select >= index_dvt) {
+            JOptionPane.showMessageDialog(null,
+                    "Vui lòng chọn mã đơn vị tính cần xóa",
+                    "ERROR",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+		}
+		
+		if (evt.getSource() == jButton8dvt) {
+			try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    		{
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    
+                    String delete_query = "Delete from donvitinh where madonvitinh = " + "\'" + queries_dvt[row_select][0] + "\'";
+                    System.out.println(delete_query);
+                    
+                    st.execute(delete_query);
+                    
+                    queries_dvt = removeElement(queries_dvt,row_select,"dvt");
+	                
+                    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                    		queries_dvt,
+	                        new String [] {
+	                            "Mã đơn vị tính", "Tên đơn vị tính"
+	                        }
+	                    ));                    
+                    
+                } else {
+                    System.out.println("Failed to make connection!");
+                }
+
+            } catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                if (e.getSQLState().equals("23000"))
+                    JOptionPane.showMessageDialog(null,
+                            "Tồn tại mặt hàng chứa đơn vị tính này",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+
+            }    
+	        jButton9dvt.setText("Cập nhật");
+
+		}
+
+	}
+	
+	private int current_row_dvt = -2;
+	private void jButton9dvtActionPerformed(ActionEvent evt) {
+		// TODO Auto-generated method stub
+    	if (evt.getSource() == jButton9dvt) {
+    		
+    		int row_select = jTable1.getSelectedRow();
+    		
+    		if (row_select >= index_dvt) {
+        		jTextFieldmadvt.setText(null);
+        		jTextFieldtendvt.setText(null);
+        		JOptionPane.showMessageDialog(null,
+	        		    "Vui lòng chọn đơn vị tính tồn tại",
+	                    "ERROR",
+	                    JOptionPane.ERROR_MESSAGE);
+        		
+        		current_row_dvt = row_select;
+    			
+                return;
+    		}
+    		
+    		if (current_row_dvt >= 0 ) {
+    			jTable1.getSelectionModel().setSelectionInterval(current_row_dvt, current_row_dvt);
+
+    			jButton9dvt.setText("Xác nhận");
+    		}
+    		
+    		if (row_select >= 0) {
+    			if (current_row_dvt != row_select) {
+    				jTextFieldmadvt.setText(queries_dvt[row_select][0]);
+    				jTextFieldtendvt.setText(queries_dvt[row_select][1]);
+    			}	
+    			current_row_dvt = row_select;
+    			    			    			    			    			
+    			jButton9dvt.setText("Cập nhật");
+    			
+                if (jTextFieldmadvt.getText().isBlank() ) {
+                    JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng mã đơn vị tính",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                	return;
+                }
+                
+                try {
+                	if (!jTextFieldmadvt.getText().substring(0,2).equals("DV")) {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đúng định dạng mã đơn vị tính",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                	}
+                }
+                catch (java.lang.StringIndexOutOfBoundsException e) {
+                    JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng mã đơn vị tính",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                	return;
+
+                }
+                                
+                try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    			{
+    	            if (conn != null) {
+    	                System.out.println("Connected to the database!");
+    	                Statement st =  conn.createStatement();
+    	                
+    	    			String update_query = "Update donvitinh set " + "madonvitinh = " + "\'" +  jTextFieldmadvt.getText() + "\', tendonvitinh = N\'" + jTextFieldtendvt.getText() + "\'" + "where madonvitinh = \'" + queries_dvt[row_select][0] + "\'" ;
+    	    			
+    	    			System.out.println(update_query);
+    	    			
+    	                st.execute(update_query);
+    	            }
+    	            else {
+    	                System.out.println("Failed to make connection!");
+    	            }
+    	        } 
+    			catch (SQLException e) {
+    	            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                    if (e.getSQLState().equals("23000"))
+                    {    
+                    	JOptionPane.showMessageDialog(null,
+                                "Mã đơn vị tính đã tồn tại hoặc mặt hàng chứa mã này",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+                    }
+
+    	        } catch (Exception e) {
+    	            e.printStackTrace();
+    	        }		
+    			
+    			queries_dvt[row_select][0] = jTextFieldmadvt.getText(); // avoid conflict while update
+    			queries_dvt[row_select][1] = jTextFieldtendvt.getText();
+
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                		queries_dvt,
+                        new String [] {
+                            "Mã đơn vị tính", "Tên đơn vị tính"
+                        }
+                    ));
+    			}
+    		}
+
+	}
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1417,15 +1850,22 @@ public class QuyCheToChuc extends javax.swing.JFrame {
     private javax.swing.JButton jButton7q;
     private javax.swing.JButton jButton8q;
     private javax.swing.JButton jButton9q;
+    private javax.swing.JButton jButton7dvt;
+    private javax.swing.JButton jButton8dvt;
+    private javax.swing.JButton jButton9dvt;
 
     javax.swing.JTextField jTextFielddailytoida;
     javax.swing.JTextField jTextFieldnotoida;
     javax.swing.JTextField jTextFieldmaquan;
+    javax.swing.JTextField jTextFieldmadvt;
+    javax.swing.JTextField jTextFieldtendvt;
 
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabeltendvt;
+
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1440,6 +1880,10 @@ public class QuyCheToChuc extends javax.swing.JFrame {
 
     String[][] queries_quan = new String[100][];
     int index_quan = 0;
+    
+    String[][] queries_dvt= new String[100][];
+    int index_dvt = 0;
+
 
     String strcurrent = null;
     javax.swing.JPanel current = new javax.swing.JPanel();
@@ -1449,5 +1893,6 @@ public class QuyCheToChuc extends javax.swing.JFrame {
     javax.swing.JPanel jPaneldltd = new javax.swing.JPanel();
     javax.swing.JPanel jPanelq = new javax.swing.JPanel();
     javax.swing.JPanel jPanelslmh = new javax.swing.JPanel();
-    
+    javax.swing.JPanel jPaneldvt = new javax.swing.JPanel();
+
 }
