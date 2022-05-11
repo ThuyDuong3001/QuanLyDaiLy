@@ -10,7 +10,7 @@ CREATE TABLE MATHANG(
 )
 --Insert Mat Hang\
 
-select * from MATHANG
+select * from MATHANG;
 
 INSERT INTO MATHANG VALUES ('MH01',N'Đá',20000,20400,50,'DVM','Granit');									
 INSERT INTO MATHANG VALUES ('MH02',N'Xi măng',80000,81600,30,'DVB',N'Hà Tiên');								

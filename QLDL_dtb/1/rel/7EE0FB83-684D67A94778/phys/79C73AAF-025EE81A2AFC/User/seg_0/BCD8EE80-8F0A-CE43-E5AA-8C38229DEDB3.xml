@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<UserOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UserOraclev10g" name="SYSTEM" directorySegmentName="seg_0" id="BCD8EE80-8F0A-CE43-E5AA-8C38229DEDB3">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjName>SYSTEM</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:16 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<schemaObject>5EE736CF-B522-4F3B-134F-01D031AFEAA2</schemaObject>
+</UserOraclev10g>
