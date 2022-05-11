@@ -254,17 +254,12 @@ public class BaoCaoCongNo extends javax.swing.JFrame {
 
                 	}
                 	
-                    System.out.println("Connected to the database!");
-                    Statement st =  conn.createStatement();
-                    String query = "Select * from baocaocongno";
-                    
-                    ResultSet rs = st.executeQuery(query);
-                    
+                    System.out.println("Connected to the database!");                    
 	    			String query_daily = "select * from daily";
 	    			
 	    			int index_madaily = 0;
                     Statement stdl =  conn.createStatement();
-                    ResultSet rsdl = stdl.executeQuery(query);
+                    ResultSet rsdl = stdl.executeQuery(query_daily);
 	    			String[] madaily = new String[100];
 
                     while (rsdl.next()) {
