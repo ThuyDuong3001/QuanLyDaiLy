@@ -306,6 +306,7 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     	if (evt.getSource() == jButton5) {
     		new BaoCaoCongNo().setVisible(true);
+    		this.setVisible(false);
     	}
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -313,7 +314,7 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     	if (evt.getSource() == jButton6) {
     		new QuyCheToChuc().setVisible(true);
-    		this.setVisible(true);
+    		this.setVisible(false);
     	}
     }//GEN-LAST:event_jButton6ActionPerformed
 

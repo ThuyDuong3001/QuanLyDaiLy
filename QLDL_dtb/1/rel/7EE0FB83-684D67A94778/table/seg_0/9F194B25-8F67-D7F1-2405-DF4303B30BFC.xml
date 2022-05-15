@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9F194B25-8F67-D7F1-2405-DF4303B30BFC" schemaObject="5EE736CF-B522-4F3B-134F-01D031AFEAA2" name="LOAIDAILY">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>LOAIDAILY</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:16 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MALOAIDAILY" id="1AA1A62B-ECD1-A7EF-0D3C-1628854AF0D9">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>LOAIDAILY</sourceObjSchema>
+<sourceObjName>MALOAIDAILY</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TENLOAIDAILY" id="7E257EC0-F5D0-0DA9-4229-AC093C56BE4C">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>LOAIDAILY</sourceObjSchema>
+<sourceObjName>TENLOAIDAILY</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SONOTOIDA" id="A2EFCA0E-9F18-D4AD-AE91-74628C578509">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>LOAIDAILY</sourceObjSchema>
+<sourceObjName>SONOTOIDA</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="21A8EA3B-C97D-70AE-2AB9-E3E0A6CBD27C" schemaObject="5EE736CF-B522-4F3B-134F-01D031AFEAA2" name="LOAIDAILY_PK">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>SYS_C008059</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1AA1A62B-ECD1-A7EF-0D3C-1628854AF0D9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
