@@ -167,7 +167,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         jButton6.setBackground(new java.awt.Color(217, 198, 236));
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
-        jButton6.setText("Cập Nhật");
+        jButton6.setText("Sửa đổi");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -644,7 +644,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                 e.printStackTrace();
             }		
 	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
-	        jButton6.setText("Cập nhật");
+	        jButton6.setText("Sửa đổi");
 
     }
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -752,7 +752,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
     			String date = day + "/" + convertMonth(localDate1.getMonth().toString()) + "/" + localDate1.getYear();
     			    			    			
     	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
-    	        jButton6.setText("Cập nhật");
+    	        jButton6.setText("Sửa đổi");
     	        
     			try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
     			{
@@ -781,7 +781,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
     	    			System.out.println(Long.parseLong(jTextField10.getText()));
     	    			if (cstmt.getInt(3) == 0) {
                         	JOptionPane.showMessageDialog(null,
-                                    "Tiền nợ đã vượt quá quy định, không thể cập nhật",
+                                    "Tiền nợ đã vượt quá quy định, không thể Sửa đổi",
                                     "ERROR",
                                     JOptionPane.ERROR_MESSAGE);
                         	return;
@@ -962,7 +962,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
 	    			
 	    			if (cstmt.getInt(3) == 0) {
                     	JOptionPane.showMessageDialog(null,
-                                "Tiền nợ đã vượt quá quy định, không thể cập nhật",
+                                "Tiền nợ đã vượt quá quy định, không thể Sửa đổi",
                                 "ERROR",
                                 JOptionPane.ERROR_MESSAGE);
                     	return;
@@ -1017,7 +1017,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
             	return;            	
 	        }		
 	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
-	        jButton6.setText("Cập nhật");
+	        jButton6.setText("Sửa đổi");
     		
     	}
 

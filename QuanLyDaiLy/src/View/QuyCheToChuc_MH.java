@@ -189,7 +189,7 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
         });
 
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton6.setText("Cập Nhật");
+        jButton6.setText("Sửa đổi");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -528,7 +528,7 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
 
     		}
     	}
-        jButtonsua.setText("Cập nhật");
+        jButtonsua.setText("Sửa đổi");
 
     }//GEN-LAST:event_jButton2ActionPerformed
     
@@ -630,7 +630,7 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
             } catch (Exception e) {
                 e.printStackTrace();
             }		
-	        jButtonsua.setText("Cập nhật");
+	        jButtonsua.setText("Sửa đổi");
 
     }
 
@@ -677,7 +677,7 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
     			}	
     			current_row = row_select;
     			    			    			    			    			
-    			jButtonsua.setText("Cập nhật");
+    			jButtonsua.setText("Sửa đổi");
     			
                 if (jTextFieldmadvt.getText().isBlank() ) {
                     JOptionPane.showMessageDialog(null,

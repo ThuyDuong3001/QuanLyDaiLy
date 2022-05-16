@@ -239,27 +239,6 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu2.setText("  Quản Lý  ");
-        jMenu2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu3.setText("  Tìm Kiếm  ");
-        jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jMenuBar1.add(jMenu3);
-
-        jMenu6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu6.setText("  Xử Lý  ");
-        jMenu6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jMenuBar1.add(jMenu6);
-
-        jMenu7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu7.setText("  Báo Cáo  ");
-        jMenu7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jMenuBar1.add(jMenu7);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
