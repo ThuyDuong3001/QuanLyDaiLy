@@ -1,4 +1,17 @@
+
 package View;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -34,7 +47,6 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -43,11 +55,8 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,6 +77,11 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         );
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Icon_64px.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel5.setBackground(new java.awt.Color(217, 198, 236));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -78,7 +92,7 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Mã Hồ Sơ");
+        jLabel3.setText("Mã Đại Lý");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -86,7 +100,6 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Tổng Tiền Xuất");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -110,14 +123,9 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear_32px.png"))); // NOI18N
         jButton5.setText("Xoá");
-
-        jButton6.setBackground(new java.awt.Color(217, 198, 236));
-        jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
-        jButton6.setText("Cập Nhật");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
 
@@ -132,7 +140,7 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         });
 
         jPanel4.setBackground(new java.awt.Color(217, 198, 236));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18)), "TÌM KIẾM ĐẠI LÝ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18)), "TÌM KIẾM PHIẾU THU", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18)));
         jPanel4.setToolTipText("");
         jPanel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
@@ -144,6 +152,11 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/search.png"))); // NOI18N
         jButton3.setText("Tìm Kiếm");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -173,32 +186,56 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Mã Phiếu Thu", "Mã Hồ Sơ", "Mã Phiếu Xuất", "Ngày Thu Tiền", "Số Tiền Thu", "Ghi Chú"
+                "Mã Phiếu Thu", "Mã Đại Lý", "Ngày Thu Tiền", "Số Tiền Thu"
             }
         ));
         jTable1.setToolTipText("");
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTable1);
-
-        jDateChooser2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Ghi Chú");
-
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+        
+        try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){
+            if (conn != null) {
+                System.out.println("Connected to the database!");
+                Statement st =  conn.createStatement();
+                ResultSet rs;
+                String query1 ="select * from phieuthutien ";                  
+                System.out.println(query1);
+                rs = st.executeQuery(query1);
+                while (rs.next()) {
+                    String[] value = new String[100];
+                    value[0] = rs.getString("MAPHIEUTHUTIEN");
+                    value[1] = rs.getString("MADAILY");
+                    value[2] =  rs.getDate("NGAYTHUTIEN").toString();
+                   
+                    value[3] = rs.getString("SOTIENTHU");            
+                    queries[index] = value;
+                    index+=1;
+                }
+                
             }
-        });
+            
+            
+        }catch (SQLException ex) {
+            Logger.getLogger(ctnh.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                queries,
+                new String [] {
+                    "Mã phiếu thu", "Mã đại lý", "Ngày thu tiền", "Số tiền thu"
+                }
+            ));
+
+        
+        
+        jDateChooser2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jTextField7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
@@ -211,49 +248,12 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Số Tiền Thu");
 
-        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel3))
-                                .addGap(31, 31, 31)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(88, 88, 88)
-                                .addComponent(jButton7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton5)))
-                        .addGap(73, 73, 73)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton6)
-                            .addComponent(jLabel12)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField4)))
-                        .addGap(54, 54, 54))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(238, 238, 238)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -263,6 +263,28 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel7))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(jButton7)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(228, 228, 228))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,42 +294,35 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel3))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel6))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(20, 20, 20))
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel6))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
-                    .addComponent(jButton7)
-                    .addComponent(jButton6))
+                    .addComponent(jButton7))
                 .addGap(20, 20, 20)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
         );
+
+        jLabel3.getAccessibleContext().setAccessibleName("");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -367,26 +382,297 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
+    private String convertMonth(String month) {
+    	switch (month) {
+    	case "JANUARY":
+    		return "01";
+    	case "FEBRUARY":
+    		return "02";
+    	case "MARCH":
+    		return "03";
+    	case "APRIL":
+    		return "04";
+    	case "MAY":
+    		return "05";
+    	case "JUNE":
+    		return "06";
+    	case "JULY":
+    		return "07";
+    	case "AUGUST":
+    		return "08";
+    	case "SEPTEMBER":
+    		return "09";
+    	case "OCTOBER":
+    		return "10";
+    	case "NOVEMBER":
+    		return "11";
+    	case "DECEMBER":
+    		return "12";
+    	}
+		return " ";
+    }
+    private int countBlank(String[] arr) {
+    	int count = 0;
+    	for (int i =0;i<=3;i++) {
+    		if (arr[i].isBlank())
+    			count +=1;
+    	}
+    	return count;
+    }
+    private int countNull(String[] arr) {
+    	int count = 0;
+    	for (int i =0;i<=3;i++) {
+    		if (arr[i]== null)
+    			count +=1;
+    	}
+    	return count;
+    }
+    
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    	// them
+        if (evt.getSource() == jButton7){
+        	boolean hasmdl = false;
+            try(Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){
+                if (conn != null) {
+                    String[] value = new String[5];
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    ResultSet rs;
+                    String mpt = null;
+                    String mdl = null;
+                    String stt = null;
+                    int sotienthu = 0;
+                    String date = null;                   
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+                	try {
+	                    mpt = jTextField1.getText();
+	                    mdl = jTextField2.getText();
+	                    stt = jTextField7.getText();
+	                    sotienthu = Integer.parseInt(stt);
+	                    DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy");
+	                    LocalDate localDate1 = LocalDate.parse(jDateChooser2.getDate().toString(),fmt2);
+	                    date = localDate1.getYear() + "-" +  convertMonth(localDate1.getMonth().toString()) + "-" + localDate1.getDayOfMonth() ;                   
+	                    
+	                    value[0] = mpt;
+	                    value[1] = mdl;
+	                    value[2] = date;
+	                    value[3] = String.valueOf(sotienthu);
+	                    
+	                    if (countBlank(value) >0) {
+	                        JOptionPane.showMessageDialog(null,
+	                                "Vui lòng nhập đúng và đầy đủ thông tin về phiếu thu",
+	                                "ERROR",
+	                                JOptionPane.ERROR_MESSAGE);
+	                        return;
+	                    }
+
+                	}
+                	
+                	catch (Exception e) {
+                		if (countNull(value) >0) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Vui lòng nhập đúng và đầy đủ thông tin về phiếu thu",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                	}
+                	
+                	Statement stmdl = conn.createStatement();
+        			ResultSet rsmdl = stmdl.executeQuery("select * from daily");
+
+        			while (rsmdl.next()){
+        				if (mdl.equals(rsmdl.getString("madaily"))){
+        					hasmdl = true;
+        				}
+        			}
+                	
+                    if (!hasmdl) {
+                        JOptionPane.showMessageDialog(null,
+                                "Mã đại lý không tồn tại",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+        			
+                    Statement stno =  conn.createStatement();
+                    ResultSet rsno;
+                    String query_daily = "select * from daily where madaily = \'" + value[1] + "\'";
+                    rsno = stno.executeQuery(query_daily);
+                    int tongno = 0;
+                    while (rsno.next()) {
+                    	tongno = Integer.parseInt(rsno.getString("tongno"));
+                    }
+                    if (tongno < Integer.parseInt(value[3])) {
+                    	JOptionPane.showMessageDialog(null,
+                                "Số tiền thu không vượt quá số tiền nợ",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE); 
+                    	return;
+
+                    }
+                    
+                    String query = "insert into phieuthutien values (\'" + mpt +"\'"+ "," + "\'"+ mdl+ "\'"+ "," + "DATE " + "\'" + date + "\'"+ "," +  sotienthu + ")";
+                    st.executeQuery(query);
+                    System.out.println(query); 
+                    String query1 = "update daily set tongno = tongno - " + sotienthu + "where madaily = " + "\'"+ mdl+"\'";
+                    st.executeQuery(query1);
+                    
+                    queries[index] = value;
+                    index += 1;
+
+
+                }else{
+                    System.out.println("Failed to make connection!");      
+                }                            
+            }catch (SQLException ex) {
+                System.err.format("SQL State: %s\n%s",  ex.getSQLState(),ex.getMessage());
+                
+                
+                if (ex.getSQLState().equals("23000"))
+                {
+                	JOptionPane.showMessageDialog(null,
+                            "Mã Phiếu Thu Đã Tồn Tại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE); 
+                	return;
+                }
+            }
+            jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            		queries,
+                    new String [] {
+                            "Mã phiếu thu", "Mã đại lý", "Ngày thu tiền", "Số tiền thu"
+                    }
+                ));
+
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    	// tim kiem
+        if (evt.getSource() == jButton3){
+            try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    ResultSet rs;
+                    String mpt = jTextField5.getText();
+                    if (mpt.isBlank()) {
+                        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                                queries,
+                                new String [] {
+                                        "Mã phiếu thu", "Mã đại lý", "Ngày thu tiền", "Số tiền thu"
+                                }));
+                        return;
+                    }
+                    String query1 = "select * from phieuthutien where maphieuthutien = " + "\'"+ mpt +"\'";
+
+                    System.out.println(query1);
+                    rs = st.executeQuery(query1);
+                    String[][] find_queries = new String[100][];
+                    int i = 0;
+                    while (rs.next()) {
+                        String[] value = new String[100];
+                        value[0] = rs.getString("MAPHIEUTHUTIEN");
+                        value[1] = rs.getString("MADAILY");
+                        value[2] = rs.getString("NGAYTHUTIEN");
+                        value[3] = rs.getString("SOTIENTHU");     
+                        find_queries[i] = value;
+                        i+= 1;
+                    }
+                    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                    		find_queries,
+                            new String [] {
+                                    "Mã phiếu thu", "Mã đại lý", "Ngày thu tiền", "Số tiền thu"
+                            }
+                        ));
+                }
+            }catch (SQLException ex) {
+                Logger.getLogger(ctnh.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+    
+    private String[][] removeElement(String[][] arr,int id) {
+    	if (id < 0 || arr == null || id >= arr.length)
+    		return arr;
+    	
+    	String[][] arr_temp = new String[arr.length-1][];
+    	index -= 1;
+    	
+    	for (int i = 0,k=0;i<arr.length;i++) {
+    		if (i == id) 
+    			continue;
+    		arr_temp[k++] = arr[i];
+    	}
+    	return arr_temp;
+    }
+    
+
+    
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        //TODO add your handling code here:
+    	// xoa
+        try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){
+            if (conn != null) {
+        		int row_select = jTable1.getSelectedRow();
+        		System.out.println(row_select);
+        		if (row_select == -1) {
+                    JOptionPane.showMessageDialog(null,
+                            "Vui lòng chọn đại lí cần xóa",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+
+        		}
+
+                System.out.println("Connected to the database!");
+                Statement st =  conn.createStatement();
+                
+                String mapt = queries[row_select][0];
+                
+                String delete_query = "Delete from phieuthutien where MAPHIEUTHUTIEN = " + "\'" + mapt + "\'";
+                System.out.println(delete_query);
+                st.executeUpdate(delete_query);
+
+                String sotienthu = queries[row_select][3];
+                String query1 = "update daily set tongno = tongno +" + sotienthu;
+                st.executeQuery(query1);
+        		queries = removeElement(queries,row_select);
+
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                		queries,
+                        new String [] {
+                                "Mã phiếu thu", "Mã đại lý", "Ngày thu tiền", "Số tiền thu"
+                        }
+                    ));
+
+
+            } else{
+                System.out.println("Failed to make connection!");
+            }
+
+        }catch (SQLException e) {
+            
+        }
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == jButton1) {
+            this.setVisible(false);
+            new Home().setVisible(true);;
+	}
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -427,12 +713,10 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -447,9 +731,9 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField7;
+    private String[][] queries = new String[100][];
+    private int index = 0;
     // End of variables declaration//GEN-END:variables
 }
