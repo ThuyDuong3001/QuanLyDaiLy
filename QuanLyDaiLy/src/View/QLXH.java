@@ -121,7 +121,7 @@ public class QLXH extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(217, 198, 236));
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear_32px.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/detail_32px.png"))); // NOI18N
         jButton5.setText("Chi Tiết Xuất Hàng");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -575,16 +575,20 @@ public class QLXH extends javax.swing.JFrame {
                     Statement st =  conn.createStatement();
                     ResultSet rs;
                     String mapx = jTextField5.getText();
-                    String query1 ="";
-                    if(mapx.isBlank()){
-                        query1 = "select * from PHIEUXUATHANG ";                 
-                    }else if(mapx.length()==4){
-                        query1 = "select * from PHIEUXUATHANG where MAPHIEUXUAT = " + "\'"+ mapx +"\'";
-                    }else{
-                        query1 = "select * from PHIEUXUATHANG where madaily = " + "\'"+ mapx +"\'";
-                    }                  
+                    if (mapx.isBlank()) {
+                        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                                queries,
+                                new String [] {
+                                        "Mã Phiếu Xuất", "Mã Ðại Lý", "Ngày Lập Phiếu", "Tổng Tiền", "Số Tiền Trả", "Số Tiền Nợ", "CMND"
+                                }));
+                        return;
+                    }
+                    String query1 = "select * from phieuxuathang where maphieuxuat = \'" + mapx + "\'";
+
                     System.out.println(query1);
                     rs = st.executeQuery(query1);
+                    String[][] find_queries = new String[100][];
+                    int i = 0;
                     while (rs.next()) {
                         String[] value = new String[100];
                         value[0] = rs.getString("MAPHIEUXUAT");
@@ -594,11 +598,16 @@ public class QLXH extends javax.swing.JFrame {
                         value[4] = rs.getString("SOTIENTRA");
                         value[5] = rs.getString("SOTIENNO");
                         value[6] = rs.getString("CMND");            
-                        String tbData [] = {value[0], value[1], value[2], value[3], value[4], value[5], value[6]};
-                        DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
-                        tblModel.addRow(tbData);
+                        find_queries[i] = value;
+                        i+=1;
                     }
-                    
+                    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                    		find_queries,
+                            new String [] {
+                                    "Mã Phiếu Xuất", "Mã Ðại Lý", "Ngày Lập Phiếu", "Tổng Tiền", "Số Tiền Trả", "Số Tiền Nợ", "CMND"
+                            }));
+                    return;
+
                 }
             }catch (SQLException ex) {
                 Logger.getLogger(ctnh.class.getName()).log(Level.SEVERE, null, ex);

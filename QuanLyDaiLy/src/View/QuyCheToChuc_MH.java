@@ -371,6 +371,7 @@ public class QuyCheToChuc_MH extends javax.swing.JFrame {
                 .addGap(80, 80, 80)
                 .addComponent(jButton4)
                 .addGap(92, 92, 92)
+                .addGap(250,250,250)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

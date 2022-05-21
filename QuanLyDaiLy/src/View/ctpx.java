@@ -76,11 +76,8 @@ public class ctpx extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Số Lượng");
+        jLabel4.setText("Mã mặt hàng");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Mã Mặt Hàng");
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -96,19 +93,19 @@ public class ctpx extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(217, 198, 236));
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear_32px.png"))); // NOI18N
-        jButton5.setText("Xoá");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
+//        jButton5.setBackground(new java.awt.Color(217, 198, 236));
+//        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+//        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear_32px.png"))); // NOI18N
+//        jButton5.setText("Xoá");
+//        jButton5.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jButton5ActionPerformed(evt);
+//            }
+//        });
+//
         jButton6.setBackground(new java.awt.Color(217, 198, 236));
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/undo_32px.png"))); // NOI18N
         jButton6.setText("Quay Lại");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,8 +182,7 @@ public class ctpx extends javax.swing.JFrame {
         jTable1.setToolTipText("");
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTable1);
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
+
         try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){
             if (conn != null) {
                 System.out.println("Connected to the database!");
@@ -202,18 +198,24 @@ public class ctpx extends javax.swing.JFrame {
                     value[0] = rs.getString("MA_CTPx");
                     value[1] = rs.getString("MAPHIEUxuat");
                     value[2] = rs.getString("MAMATHANG");
-                    value[4] = rs.getString("SOLUONG");
-                    value[5] = rs.getString("DONGIAXUAT");
-                    value[6] = rs.getString("THANHTIEN");
-                    String tbData [] = {value[0], value[1], value[2], value[4], value[5], value[6]};
-                    DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
-                    tblModel.addRow(tbData);
+                    value[3] = rs.getString("SOLUONG");
+                    value[4] = rs.getString("DONGIAXUAT");
+                    value[5] = rs.getString("THANHTIEN");
+                    queries[index] = value;
+                    index += 1;
                 }
 
             }
         }catch (SQLException ex) {
             Logger.getLogger(ctnh.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                queries,
+                new String [] {
+                   "Mã CT Phiếu Xuất", "Mã Phiếu Xuất", "Mã Mặt Hàng", "Số Lượng", "Đơn Giá Xuất", "Thành Tiền"
+                }
+            ));
 
         jTextField7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
@@ -228,7 +230,7 @@ public class ctpx extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Đơn giá xuất");
+        jLabel8.setText("Số lượng");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -242,28 +244,18 @@ public class ctpx extends javax.swing.JFrame {
         });
 
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
 
         jTextField8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
 
-        jButton8.setBackground(new java.awt.Color(217, 198, 236));
-        jButton8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
-        jButton8.setText("Thanh Toán");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
+//        jButton8.setBackground(new java.awt.Color(217, 198, 236));
+//        jButton8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+//        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
+//        jButton8.setText("Thanh Toán");
+//        jButton8.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jButton8ActionPerformed(evt);
+//            }
+//        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -271,13 +263,12 @@ public class ctpx extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(99, 99, 99)
-                .addComponent(jButton7)
                 .addGap(121, 121, 121)
-                .addComponent(jButton5)
                 .addGap(112, 112, 112)
-                .addComponent(jButton8)
+//                .addComponent(jButton8)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
+            		
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
@@ -287,34 +278,30 @@ public class ctpx extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
                             .addComponent(jLabel3)
                             .addComponent(jLabel7))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(51, 51, 51)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(30,30,30)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(65,65,65)
                                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel5Layout.createSequentialGroup()
+                    		.addGap(180,180,180)
+                    		.addComponent(jButton7)
+                    		.addGap(180,180,180)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(214, 214, 214)))
+                        ))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -341,21 +328,14 @@ public class ctpx extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel8)
                                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(21, 21, 21)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(39, 132, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton7)
-                            .addComponent(jButton5)
-                            .addComponent(jButton8))
-                        .addGap(13, 13, 13)))
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21)))))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                          .addGroup(jPanel5Layout.createSequentialGroup()
+                                  .addGap(23, 23, 23)
+                                  .addComponent(jButton7))
+                              .addGroup(jPanel5Layout.createSequentialGroup()
+                                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                  .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
@@ -398,9 +378,33 @@ public class ctpx extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private int countBlank(String[] arr) {
+    	int count = 0;
+    	for (int i =0;i<=5;i++) {
+    		if (arr[i].isBlank())
+    			count +=1;
+    	}
+    	return count;
+    }
+    private int countNull(String[] arr) {
+    	int count = 0;
+    	for (int i =0;i<=5;i++) {
+    		if (arr[i]== null)
+    			count +=1;
+    	}
+    	return count;
+    }
+
+
+    
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+    	// them
         if (evt.getSource() == jButton7){
+        	boolean hasmh = false;
+        	boolean haspx = false;
+            String[] value = new String[6];
+
             try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){   
                 if (conn != null) {
                     System.out.println("Connected to the database!");
@@ -409,35 +413,113 @@ public class ctpx extends javax.swing.JFrame {
                     Statement st3 =  conn.createStatement();
                     Statement st4 =  conn.createStatement();
                     ResultSet rs;
-                    String mactpx = jTextField4.getText();
-                    String mapx = jTextField2.getText();
-                    String mathang = jTextField7.getText();
-                    String soluong = jTextField1.getText();
-                    String dongiaxuat = jTextField6.getText();
-                    String thanhtien = jTextField8.getText();
-                    int x = Integer.parseInt(soluong);
-                    int y = Integer.parseInt(dongiaxuat);
-                    int z = Integer.parseInt(thanhtien);
-                    
-                    
-                    String query0 = "select soluongton from mathang where mamathang = " + "\'" + mathang + "\'";
-                    rs = st3.executeQuery(query0);
-                    int sl = 0 ;
-                    while (rs.next()) {
-                        sl = rs.getInt("soluongton");
-                    } 
-                    if(sl < x){
-                        JOptionPane.showMessageDialog(null,
-                            "Số Lượng Tồn Không Đủ (Còn Lại: " + sl + ")",
-                            "ERROR",
-                            JOptionPane.ERROR_MESSAGE);
-                        return;
+                    String mactpx = null;
+                    String mapx = null;
+                    String mathang = null;
+                    String soluong = null;
+                    String dongiaxuat = null;
+                    String thanhtien = null;
+
+                    try {
+	                    mactpx = jTextField4.getText();
+	                    mapx = jTextField2.getText();
+	                    mathang = jTextField1.getText();
+	                    soluong = jTextField6.getText();
+
+                    	value[0] = mactpx;
+                    	value[1] = mapx;
+                    	value[2] = mathang;
+                    	value[3] = soluong;
+                    	
+                        Statement stmh =  conn.createStatement();
+                        ResultSet rsmh ;
+                        String query_mathang = "select * from mathang ";
+                        int soluongton = 0;
+                        rsmh = stmh.executeQuery(query_mathang);
+                        while (rsmh.next()) {
+                        	if (mathang.equals(rsmh.getString("mamathang"))){
+                        		hasmh = true;
+                            	dongiaxuat = rsmh.getString("dongiaxuat");
+                            	soluongton = rsmh.getInt("soluongton");
+            				}
+                        }
+
+                        if (!hasmh) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Mặt hàng không tồn tại",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                        
+
+	                    if(Integer.parseInt(soluong) > soluongton){
+	                        JOptionPane.showMessageDialog(null,
+	                            "Số Lượng Tồn Không Đủ (Còn Lại: " + soluongton + ")",
+	                            "ERROR",
+	                            JOptionPane.ERROR_MESSAGE);
+	                        return;
+	                    }
+	                    
+                        value[4] = dongiaxuat;
+                        int summ = Integer.parseInt(dongiaxuat) *  Integer.parseInt(soluong);
+                    	value[5] = String.valueOf(summ);
+
+	                    
+                        Statement stmpx =  conn.createStatement();
+                        ResultSet rsmpx ;
+                        String query_mpx = "select * from phieuxuathang";
+                        System.out.println(query_mpx);
+                        rsmpx = stmpx.executeQuery(query_mpx);
+                        while (rsmpx.next()) {
+                        	if (mapx.equals(rsmpx.getString("maphieuxuat"))){
+                        		haspx= true;
+            				}
+                        }
+                        
+                        if (!haspx) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Mã phiếu xuất không tồn tại",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+
+                    	if (Integer.parseInt(soluong) <= 0 ) {
+	                        JOptionPane.showMessageDialog(null,
+	                                "Vui lòng nhập số lượng dương",
+	                                "ERROR",
+	                                JOptionPane.ERROR_MESSAGE);
+	                        return;
+
+                    	}
+
+                    	if (countBlank(value) >0 || countNull(value) >0) {
+	                        JOptionPane.showMessageDialog(null,
+	                                "Vui lòng nhập đúng và đầy đủ thông tin về chi tiết phiếu xuất",
+	                                "ERROR",
+	                                JOptionPane.ERROR_MESSAGE);
+	                        return;
+	                    }
+
+	                   }
+                    catch (Exception e) {
+        	            e.printStackTrace();
+
+	                      JOptionPane.showMessageDialog(null,
+	                                "Vui lòng nhập đúng và đầy đủ thông tin về chi tiết phiếu xuất",
+	                                "ERROR",
+	                                JOptionPane.ERROR_MESSAGE);
+	                        return;
+
                     }
-                    String query1 = "insert into chitietphieuxuat values (" + "\'" + mactpx + "\'" + "," + "\'" + mapx + "\'" + "," + "\'" + mathang + "\'" + "," + x + "," + y +","+ z + ")";
+                    
+                    
+                    String query1 = "insert into chitietphieuxuat values (" + "\'" + mactpx + "\'" + "," + "\'" + mapx + "\'" + "," + "\'" + mathang + "\'" + "," + soluong + "," + dongiaxuat +","+ value[5] + ")";
                     st1.executeUpdate(query1);
-                    String query2 = "update mathang set soluongton = soluongton - " + x + "where mamathang = " + "\'" + mathang +"\'";
+                    String query2 = "update mathang set soluongton = soluongton - " + soluong + "where mamathang = " + "\'" + mathang +"\'";
                     st1.executeUpdate(query2);
-                    String query3 = "update phieuxuathang set tongtien = tongtien + " + z + "where MAPHIEUXUAT = " + "\'" + mapx +"\'";
+                    String query3 = "update phieuxuathang set tongtien = tongtien + " + value[5] + "where MAPHIEUXUAT = " + "\'" + mapx +"\'";
                     st2.executeUpdate(query3);
                     
                     String query4 = "select madaily from phieuxuathang where maphieuxuat = " + "\'"+ mapx +"\'";
@@ -447,10 +529,11 @@ public class ctpx extends javax.swing.JFrame {
                         madl = rs.getString("madaily");
                     } 
                     String query5 = "update daily "
-                                + "set tongno = tongno + " + z
+                                + "set tongno = tongno + " + value[5]
                                 + " WHERE MADAILY = " + "\'"+ madl +"\'";
                     st4.executeUpdate(query5);
                     System.out.println(query5);
+
                 }else{
                     System.out.println("Failed to make connection!");      
                 }
@@ -460,8 +543,18 @@ public class ctpx extends javax.swing.JFrame {
                             "Mã Chi Tiết Phiếu Xuất Đã Tồn Tại",
                             "ERROR",
                             JOptionPane.ERROR_MESSAGE);
+                return;
                  
             }  
+            queries[index] = value;
+            index += 1;
+            jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                    queries,
+                    new String [] {
+                            "Mã CT Phiếu Xuất", "Mã Phiếu Xuất", "Mã Mặt Hàng", "Số Lượng", "Đơn Giá Xuất", "Thành Tiền"
+                    }
+                ));
+
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -473,32 +566,32 @@ public class ctpx extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-        Connection conn;
-        try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1");
-            Statement st =  conn.createStatement();
-            ResultSet rs;
-            String mathang = jTextField7.getText();
-            String query1 = "select dongiaxuat from mathang where mamathang = " + "\'"+ mathang + "\'";
-            rs = st.executeQuery(query1);
-            int dongiaxuat = 0 ;
-            while (rs.next()) {
-                dongiaxuat = rs.getInt("dongiaxuat");
-            }
-            jTextField6.setText(Integer.toString(dongiaxuat));
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-    }//GEN-LAST:event_jTextField6ActionPerformed
+//    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+//        // TODO add your handling code here:
+//        Connection conn;
+//        try {
+//            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1");
+//            Statement st =  conn.createStatement();
+//            ResultSet rs;
+//            String mathang = jTextField7.getText();
+//            String query1 = "select dongiaxuat from mathang where mamathang = " + "\'"+ mathang + "\'";
+//            rs = st.executeQuery(query1);
+//            int dongiaxuat = 0 ;
+//            while (rs.next()) {
+//                dongiaxuat = rs.getInt("dongiaxuat");
+//            }
+//            jTextField6.setText(Integer.toString(dongiaxuat));
+//        } catch (SQLException ex) {
+//            System.out.println(ex);
+//        }
+//    }//GEN-LAST:event_jTextField6ActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
-        int sl = Integer.parseInt(jTextField1.getText());
-        int dongiaxuat = Integer.parseInt(jTextField6.getText());
-        jTextField8.setText(Integer.toString(sl * dongiaxuat));
-    }//GEN-LAST:event_jTextField8ActionPerformed
+//    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+//        // TODO add your handling code here:
+//        int sl = Integer.parseInt(jTextField1.getText());
+//        int dongiaxuat = Integer.parseInt(jTextField6.getText());
+//        jTextField8.setText(Integer.toString(sl * dongiaxuat));
+//    }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -542,87 +635,87 @@ public class ctpx extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        if(evt.getSource() == jButton5){
-            try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){
-                if (conn != null) {
-                    System.out.println("Connected to the database!");
-                    Statement st =  conn.createStatement();
-                    Statement st1 =  conn.createStatement();
-                    Statement st2 =  conn.createStatement();
-                    Statement st3 =  conn.createStatement();
-                    Statement st4 =  conn.createStatement();
-                    ResultSet rs;
-                    int row = jTable1.getSelectedRow();
-                    String ma_ctpx = String.valueOf(jTable1.getValueAt(row, 0));
-                                                                     
-                    String sl = String.valueOf(jTable1.getValueAt(row, 3));
-                    String mathang = String.valueOf(jTable1.getValueAt(row, 2));
-                    String thanhtien = String.valueOf(jTable1.getValueAt(row, 5));
-                    String mapx = String.valueOf(jTable1.getValueAt(row, 1));
-                    int x = Integer.parseInt(thanhtien);
-                    
-                    String query0 = "select sotienno from phieuxuathang where maphieuxuat = " + "\'" + mapx + "\'";
-                    rs = st.executeQuery(query0);
-                    int sotienno = 0;
-                    while (rs.next()) {
-                        sotienno = rs.getInt("sotienno");
-                    }
-                    // xu ly table daily
-                    String query1 = "select madaily from phieuxuathang where maphieuxuat = " + "\'"+ mapx +"\'";
-                    rs = st1.executeQuery(query1);
-                    String madl = "" ;
-                    while (rs.next()) {
-                        madl = rs.getString("madaily");
-                    } 
-                    String query6 ="select tongno from daily where madaily = "+ "\'" +madl+ "\'" ;
-                    rs = st1.executeQuery(query6);
-                    int tongno = 0;
-                    while (rs.next()) {
-                        tongno = rs.getInt("tongno");
-                    }
-                    
-                    String query4 = "update phieuxuathang set sotienno = sotienno - "+  thanhtien +" where MAPHIEUXUAT = " + "\'" + mapx +"\'";
-                    String query5 = "update daily "
-                                + "set tongno = tongno - " + x 
-                                + " WHERE MADAILY = " + "\'"+ madl +"\'";
- 
-                    // xu ly rang buoc
-                    if(sotienno >= x ){
-                        st3.executeUpdate(query4);
-                        st4.executeUpdate(query5);
-                    }else if(sotienno < x && tongno >=x){
-                        st4.executeUpdate(query5);
-                    }else{
-                        JOptionPane.showMessageDialog(null,
-                            "Tổng Nợ Không Đủ (Còn Lại: " + tongno + ")",
-                            "ERROR",
-                            JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-                    
-                    String delete_query = "Delete from chitietphieuxuat where ma_ctpx = " + "\'" + ma_ctpx + "\'";
-                    System.out.println(delete_query);
-                    st.executeUpdate(delete_query);
-                    String query2 = "update mathang set soluongton = soluongton + "  + sl + " where mamathang = " + "\'" + mathang +"\'";
-                    st.executeUpdate(query2);
-                    String query3 = "update phieuxuathang set tongtien = tongtien - " + thanhtien + " where MAPHIEUXUAT = " + "\'" + mapx +"\'";
-                    st2.executeUpdate(query3);
-                    
-                    
-                    
-                    
-
-                } else{
-                    System.out.println("Failed to make connection!");
-                }
-
-            }catch (SQLException e) {
-                
-            }
-        }
-    }//GEN-LAST:event_jButton5ActionPerformed
+//    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+//        // TODO add your handling code here:
+//        if(evt.getSource() == jButton5){
+//            try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){
+//                if (conn != null) {
+//                    System.out.println("Connected to the database!");
+//                    Statement st =  conn.createStatement();
+//                    Statement st1 =  conn.createStatement();
+//                    Statement st2 =  conn.createStatement();
+//                    Statement st3 =  conn.createStatement();
+//                    Statement st4 =  conn.createStatement();
+//                    ResultSet rs;
+//                    int row = jTable1.getSelectedRow();
+//                    String ma_ctpx = String.valueOf(jTable1.getValueAt(row, 0));
+//                                                                     
+//                    String sl = String.valueOf(jTable1.getValueAt(row, 3));
+//                    String mathang = String.valueOf(jTable1.getValueAt(row, 2));
+//                    String thanhtien = String.valueOf(jTable1.getValueAt(row, 5));
+//                    String mapx = String.valueOf(jTable1.getValueAt(row, 1));
+//                    int x = Integer.parseInt(thanhtien);
+//                    
+//                    String query0 = "select sotienno from phieuxuathang where maphieuxuat = " + "\'" + mapx + "\'";
+//                    rs = st.executeQuery(query0);
+//                    int sotienno = 0;
+//                    while (rs.next()) {
+//                        sotienno = rs.getInt("sotienno");
+//                    }
+//                    // xu ly table daily
+//                    String query1 = "select madaily from phieuxuathang where maphieuxuat = " + "\'"+ mapx +"\'";
+//                    rs = st1.executeQuery(query1);
+//                    String madl = "" ;
+//                    while (rs.next()) {
+//                        madl = rs.getString("madaily");
+//                    } 
+//                    String query6 ="select tongno from daily where madaily = "+ "\'" +madl+ "\'" ;
+//                    rs = st1.executeQuery(query6);
+//                    int tongno = 0;
+//                    while (rs.next()) {
+//                        tongno = rs.getInt("tongno");
+//                    }
+//                    
+//                    String query4 = "update phieuxuathang set sotienno = sotienno - "+  thanhtien +" where MAPHIEUXUAT = " + "\'" + mapx +"\'";
+//                    String query5 = "update daily "
+//                                + "set tongno = tongno - " + x 
+//                                + " WHERE MADAILY = " + "\'"+ madl +"\'";
+// 
+//                    // xu ly rang buoc
+//                    if(sotienno >= x ){
+//                        st3.executeUpdate(query4);
+//                        st4.executeUpdate(query5);
+//                    }else if(sotienno < x && tongno >=x){
+//                        st4.executeUpdate(query5);
+//                    }else{
+//                        JOptionPane.showMessageDialog(null,
+//                            "Tổng Nợ Không Đủ (Còn Lại: " + tongno + ")",
+//                            "ERROR",
+//                            JOptionPane.ERROR_MESSAGE);
+//                        return;
+//                    }
+//                    
+//                    String delete_query = "Delete from chitietphieuxuat where ma_ctpx = " + "\'" + ma_ctpx + "\'";
+//                    System.out.println(delete_query);
+//                    st.executeUpdate(delete_query);
+//                    String query2 = "update mathang set soluongton = soluongton + "  + sl + " where mamathang = " + "\'" + mathang +"\'";
+//                    st.executeUpdate(query2);
+//                    String query3 = "update phieuxuathang set tongtien = tongtien - " + thanhtien + " where MAPHIEUXUAT = " + "\'" + mapx +"\'";
+//                    st2.executeUpdate(query3);
+//                    
+//                    
+//                    
+//                    
+//
+//                } else{
+//                    System.out.println("Failed to make connection!");
+//                }
+//
+//            }catch (SQLException e) {
+//                
+//            }
+//        }
+//    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
@@ -693,6 +786,9 @@ public class ctpx extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    String[][] queries = new String[1000][];
+    int index = 0;
+
     // End of variables declaration//GEN-END:variables
 }
 /*

@@ -105,7 +105,7 @@ public class QuanLyNhapHang extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(217, 198, 236));
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear_32px.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/detail_32px.png"))); // NOI18N
         jButton5.setText("Chi Tiết");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

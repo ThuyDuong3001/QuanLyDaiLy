@@ -81,9 +81,6 @@ public class ctnh extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Mã CT Phiếu Nhập");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Mặt Hàng");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -102,19 +99,19 @@ public class ctnh extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(217, 198, 236));
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear_32px.png"))); // NOI18N
-        jButton5.setText("Xoá");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
+//        jButton5.setBackground(new java.awt.Color(217, 198, 236));
+//        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+//        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear_32px.png"))); // NOI18N
+//        jButton5.setText("Xoá");
+//        jButton5.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jButton5ActionPerformed(evt);
+//            }
+//        });
 
         jButton6.setBackground(new java.awt.Color(217, 198, 236));
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/undo_32px.png"))); // NOI18N
         jButton6.setText("Quay Lại");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,7 +184,7 @@ public class ctnh extends javax.swing.JFrame {
             	
             },
             new String [] {
-                "Mã CT Phiếu Nhập", "Mã Phiếu Nhập", "Mã Mặt Hàng", "Nhà Cung Cấp", "Số Lượng", "Đơn Giá Nhập", "Thành Tiền"
+                "Mã CT Phiếu Nhập", "Mã Phiếu Nhập", "Mã Mặt Hàng", "Số Lượng", "Đơn Giá Nhập", "Thành Tiền"
             }
         ));
         jTable1.setToolTipText("");
@@ -200,7 +197,7 @@ public class ctnh extends javax.swing.JFrame {
                 System.out.println("Connected to the database!");
                 Statement st =  conn.createStatement();
                 ResultSet rs;
-                String query1 = "select * from chitietphieunhap order by ma_ctpn";
+                String query1 = "select * from chitietphieunhap";
                 System.out.println(query1);
                 rs = st.executeQuery(query1);
                 while (rs.next()) {
@@ -208,14 +205,18 @@ public class ctnh extends javax.swing.JFrame {
                     value[0] = rs.getString("MA_CTPN");
                     value[1] = rs.getString("MAPHIEUNHAP");
                     value[2] = rs.getString("MAMATHANG");
-                    value[3] = rs.getString("TENNHACUNGCAP");
-                    value[4] = rs.getString("SOLUONG");
-                    value[5] = rs.getString("DONGIANHAP");
-                    value[6] = rs.getString("THANHTIEN");
-                    String tbData [] = {value[0], value[1], value[2], value[3], value[4], value[5], value[6]};
-                    DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
-                    tblModel.addRow(tbData);
+                    value[3] = rs.getString("SOLUONG");
+                    value[4] = rs.getString("DONGIANHAP");
+                    value[5] = rs.getString("THANHTIEN");
+                    queries[index] = value;
+                    index += 1;
                 }
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                        queries,
+                        new String [] {
+                                "Mã CT Phiếu Nhập", "Mã Phiếu Nhập", "Mã Mặt Hàng", "Số Lượng", "Đơn Giá Nhập", "Thành Tiền"
+                        }
+                    ));
 
             }
         }catch (SQLException ex) {
@@ -235,11 +236,11 @@ public class ctnh extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Đơn Giá Nhập");
+        jLabel8.setText("Số lượng");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Số Lượng");
+        jLabel9.setText("Mã mặt hàng");
 
         jTextField8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
@@ -262,9 +263,9 @@ public class ctnh extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Nhà Cung Cấp");
+//        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+//        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+//        jLabel10.setText("Nhà Cung Cấp");
 
         jTextField11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
@@ -273,15 +274,15 @@ public class ctnh extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(217, 198, 236));
-        jButton8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
-        jButton8.setText("Cập Nhật");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
+//        jButton8.setBackground(new java.awt.Color(217, 198, 236));
+//        jButton8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+//        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
+//        jButton8.setText("Cập Nhật");
+//        jButton8.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jButton8ActionPerformed(evt);
+//            }
+//        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -295,24 +296,18 @@ public class ctnh extends javax.swing.JFrame {
                                 .addGap(25, 25, 25)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
                                     .addComponent(jLabel3)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel6)))
+                                    
+                                    .addComponent(jLabel6))
                                 .addGap(31, 31, 31)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(6, 6, 6))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(88, 88, 88)
                                 .addComponent(jButton7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton5)
                                 .addGap(16, 16, 16)))
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -327,23 +322,14 @@ public class ctnh extends javax.swing.JFrame {
                                             .addGroup(jPanel5Layout.createSequentialGroup()
                                                 .addComponent(jLabel8)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(89, 89, 89)
-                                .addComponent(jButton8)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)
@@ -370,34 +356,22 @@ public class ctnh extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(15, 15, 15)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
                                 .addComponent(jLabel6))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel10))))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8))
+                            )))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                	.addComponent(jButton7)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                )
         );
 
         jPanel4.getAccessibleContext().setAccessibleName("");
@@ -415,7 +389,7 @@ public class ctnh extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 561, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -442,30 +416,141 @@ public class ctnh extends javax.swing.JFrame {
 	}
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private int countBlank(String[] arr) {
+    	int count = 0;
+    	for (int i =0;i<=5;i++) {
+    		if (arr[i].isBlank())
+    			count +=1;
+    	}
+    	return count;
+    }
+    private int countNull(String[] arr) {
+    	int count = 0;
+    	for (int i =0;i<=5;i++) {
+    		if (arr[i]== null)
+    			count +=1;
+    	}
+    	return count;
+    }
+
+    
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+    	// them
         if (evt.getSource() == jButton7){
+        	boolean hasmh = false;
+        	boolean hasphieunhap = false;
+            String[] value = new String[6];
+
             try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){   
                 if (conn != null) {
                     System.out.println("Connected to the database!");
                     Statement st1 =  conn.createStatement();
                     ResultSet rs;
-                    String mactpn = jTextField1.getText();
-                    String mapn = jTextField2.getText();
-                    String mathang = jTextField11.getText();
-                    String ncc = jTextField7.getText();
-                    String soluong = jTextField8.getText();
-                    String dongianhap = jTextField10.getText();
-                    String thanhtien = jTextField9.getText();
-                    int x = Integer.parseInt(soluong);
-                    int y = Integer.parseInt(dongianhap);
-                    int z = Integer.parseInt(thanhtien);
-                    String query1 = "insert into chitietphieunhap values (" + "\'" + mactpn + "\'" + "," + "\'" + mathang + "\'" + "," + "\'" + mapn + "\'" + "," + x + "," + y +","+ z + "," + "\'" +ncc+ "\'" + ")";
-                    st1.executeUpdate(query1);
-                    String query2 = "update mathang set soluongton = soluongton + " + x + "where mamathang = " + "\'" + mathang +"\'";
-                    st1.executeUpdate(query2);
-                    String query3 = "update PHIEUNHAPHANG set tongtien = tongtien + " + z + "where maphieunhap = " + "\'" + mapn +"\'";
-                    st1.executeUpdate(query3);
+                    String mactpn = null;
+                    String mapn = null;
+                    String mathang = null;
+                    String soluong = null;
+                    String dongianhap = null;
+                    try {
+                    	mactpn = jTextField1.getText();
+                    	mapn = jTextField2.getText();
+                    	mathang = jTextField8.getText();
+                    	soluong = jTextField10.getText();
+                    	
+                    	
+                    	value[0] = mactpn;
+                    	value[1] = mapn;
+                    	value[2] = mathang;
+                    	value[3] = soluong;
+                    	
+                        Statement stmh =  conn.createStatement();
+                        ResultSet rsmh ;
+                        String query_mathang = "select * from mathang ";
+                        System.out.println(query_mathang);
+                        System.out.println(query_mathang);
+                        rsmh = stmh.executeQuery(query_mathang);
+                        while (rsmh.next()) {
+                        	if (mathang.equals(rsmh.getString("mamathang"))){
+                        		hasmh = true;
+                            	dongianhap = rsmh.getString("dongianhap");
+
+            				}
+                        }
+                        value[4] = dongianhap;
+                        int summ = Integer.parseInt(dongianhap) *  Integer.parseInt(soluong);
+                    	value[5] = String.valueOf(summ);
+
+                        
+                        if (!hasmh) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Mặt hàng không tồn tại",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+
+                        
+                        Statement stmpn =  conn.createStatement();
+                        ResultSet rsmpn ;
+                        String query_mpn = "select * from PHIEUnhaphang";
+                        System.out.println(query_mpn);
+                        rsmpn = stmpn.executeQuery(query_mpn);
+                        while (rsmpn.next()) {
+                        	if (mapn.equals(rsmpn.getString("maphieunhap"))){
+                        		hasphieunhap = true;
+            				}
+                        }
+                        
+                        if (!hasphieunhap) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Mã phiếu nhập không tồn tại",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                              
+
+                        
+                    	if (Integer.parseInt(soluong) <= 0 ) {
+	                        JOptionPane.showMessageDialog(null,
+	                                "Vui lòng nhập số lượng dương",
+	                                "ERROR",
+	                                JOptionPane.ERROR_MESSAGE);
+	                        return;
+
+                    	}
+
+                    	if (countBlank(value) >0 || countNull(value) >0) {
+	                        JOptionPane.showMessageDialog(null,
+	                                "Vui lòng nhập đúng và đầy đủ thông tin về chi tiết phiếu nhập",
+	                                "ERROR",
+	                                JOptionPane.ERROR_MESSAGE);
+	                        return;
+	                    }
+
+                    }
+                    catch (Exception e) {
+        	            e.printStackTrace();
+
+	                      JOptionPane.showMessageDialog(null,
+	                                "Vui lòng nhập đúng và đầy đủ thông tin về chi tiết phiếu nhập",
+	                                "ERROR",
+	                                JOptionPane.ERROR_MESSAGE);
+	                        return;
+
+                    }
+                                        
+                   
+                    String query1 = "insert into chitietphieunhap values (" + "\'" + mactpn + "\'" + "," + "\'" + mathang + "\'" + "," + "\'" + mapn + "\'" + "," + soluong + "," + dongianhap +","+ value[5]  + ")";
+                    st1.execute(query1);
+                    System.out.println(query1);
+                    String query2 = "update mathang set soluongton = soluongton + " +  soluong + "where mamathang = " + "\'" + mathang +"\'";
+                    st1.execute(query2);
+                    String query3 = "update PHIEUNHAPHANG set tongtien = tongtien + " + value[5]  + "where maphieunhap = " + "\'" + mapn +"\'";
+                    st1.execute(query3);
+
+
                 }else{
                     System.out.println("Failed to make connection!");      
                 }
@@ -475,7 +560,17 @@ public class ctnh extends javax.swing.JFrame {
                             "Mã Chi Tiết Phiếu Nhập Đã Tồn Tại",
                             "ERROR",
                             JOptionPane.ERROR_MESSAGE);
+                return;
             }  
+            queries[index] = value;
+            index += 1;
+            jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                    queries,
+                    new String [] {
+                            "Mã CT Phiếu Nhập", "Mã Phiếu Nhập", "Mã Mặt Hàng", "Số Lượng", "Đơn Giá Nhập", "Thành Tiền"
+                    }
+                ));
+
         }
 
 
@@ -499,22 +594,22 @@ public class ctnh extends javax.swing.JFrame {
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
         // TODO add your handling code here:
         
-        Connection conn;
-        try {
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1");
-            Statement st =  conn.createStatement();
-            ResultSet rs;
-            String mathang = jTextField11.getText();
-            String query1 = "select dongianhap from mathang where mamathang = " + "\'"+ mathang + "\'";
-            rs = st.executeQuery(query1);
-            int dongianhap = 0 ;
-            while (rs.next()) {
-                dongianhap = rs.getInt("DONGIANHAP");
-            }
-            jTextField10.setText(Integer.toString(dongianhap));
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
+//        Connection conn;
+//        try {
+//            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1");
+//            Statement st =  conn.createStatement();
+//            ResultSet rs;
+//            String mathang = jTextField11.getText();
+//            String query1 = "select dongianhap from mathang where mamathang = " + "\'"+ mathang + "\'";
+//            rs = st.executeQuery(query1);
+//            int dongianhap = 0 ;
+//            while (rs.next()) {
+//                dongianhap = rs.getInt("DONGIANHAP");
+//            }
+//            jTextField10.setText(Integer.toString(dongianhap));
+//        } catch (SQLException ex) {
+//            System.out.println(ex);
+//        }
                 
             
             
@@ -533,39 +628,47 @@ public class ctnh extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+    	// tim kiem
         if (evt.getSource() == jButton3){
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.setRowCount(0);
             try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){
                 if (conn != null) {
                     System.out.println("Connected to the database!");
                     Statement st =  conn.createStatement();
                     ResultSet rs;
                     String mapn = jTextField5.getText();
-                    String query1 = "";
-                    if(mapn.isBlank()){
-                        query1 = "select * from chitietphieunhap order by ma_ctpn ";                 
-                    }else if (mapn.length() == 5){
-                        query1 = "select * from chitietphieunhap where MaPhieuNhap = " + "\'"+ mapn +"\'" + " order by ma_ctpn";
-                    }else{
-                        query1 = "select * from chitietphieunhap where MA_CTPN = " + "\'"+ mapn +"\'" + " order by ma_ctpn";
+                    if (mapn.isBlank()) {
+                        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                                queries,
+                                new String [] {
+                                        "Mã CT Phiếu Nhập", "Mã Phiếu Nhập", "Mã Mặt Hàng", "Số Lượng", "Đơn Giá Nhập", "Thành Tiền"
+                                }));
+                        return;
                     }
+                    String query1 = "select * from chitietphieunhap where maphieunhap = \'" + mapn + "\'";
+
+                    
                     System.out.println(query1);
                     rs = st.executeQuery(query1);
+                    String[][] find_queries = new String[100][];
+                    int i = 0;
+
                     while (rs.next()) {
                         String[] value = new String[100];
                         value[0] = rs.getString("MA_CTPN");
                         value[1] = rs.getString("MAPHIEUNHAP");
                         value[2] = rs.getString("MAMATHANG");
-                        value[3] = rs.getString("TENNHACUNGCAP");
-                        value[4] = rs.getString("SOLUONG");
-                        value[5] = rs.getString("DONGIANHAP");
-                        value[6] = rs.getString("THANHTIEN");             
-                        String tbData [] = {value[0], value[1], value[2], value[3], value[4], value[5], value[6]};
-                        DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
-                        tblModel.addRow(tbData);
+                        value[3] = rs.getString("SOLUONG");
+                        value[4] = rs.getString("DONGIANHAP");
+                        value[5] = rs.getString("THANHTIEN");             
+                        find_queries[i] = value;
+                        i+=1;
                     }
-                    
+                    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                    		find_queries,
+                            new String [] {
+                                    "Mã CT Phiếu Nhập", "Mã Phiếu Nhập", "Mã Mặt Hàng", "Số Lượng", "Đơn Giá Nhập", "Thành Tiền"
+                            }));
+
                 }
             }catch (SQLException ex) {
                 Logger.getLogger(ctnh.class.getName()).log(Level.SEVERE, null, ex);
@@ -573,43 +676,45 @@ public class ctnh extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        if (evt.getSource() == jButton5){
-            try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){
-                if (conn != null) {
-                    System.out.println("Connected to the database!");
-                    Statement st =  conn.createStatement();
-                    Statement st1 =  conn.createStatement();
-                    int row = jTable1.getSelectedRow();
-                    String ma_ctpn = String.valueOf(jTable1.getValueAt(row, 0));
-
-                    String delete_query = "Delete from chitietphieunhap where ma_ctpn = " + "\'" + ma_ctpn + "\'";
-                    System.out.println(delete_query);
-                    st.executeUpdate(delete_query);
-
-                    String sl = String.valueOf(jTable1.getValueAt(row, 4));
-                    String mathang = String.valueOf(jTable1.getValueAt(row, 2));
-                    String mapn = String.valueOf(jTable1.getValueAt(row, 1));
-                    String thanhtien = String.valueOf(jTable1.getValueAt(row, 6));
-                    String query2 = "update mathang set soluongton = soluongton - "  + sl + " where mamathang = " + "\'" + mathang +"\'";
-                    st.executeUpdate(query2);
-                    System.out.println(query2);
-                    String query3 = "update PHIEUNHAPHANG set tongtien = tongtien - " + thanhtien + "where maphieunhap = " + "\'" + mapn +"\'";
-                    st1.executeUpdate(query3);
-                } else{
-                    System.out.println("Failed to make connection!");
-                }
-
-            }catch (SQLException e) {
-
-            }
-        }
-            
-    }//GEN-LAST:event_jButton5ActionPerformed
+//    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+//        // TODO add your handling code here:
+//    	// xoa
+//        if (evt.getSource() == jButton5){
+//            try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){
+//                if (conn != null) {
+//                    System.out.println("Connected to the database!");
+//                    Statement st =  conn.createStatement();
+//                    Statement st1 =  conn.createStatement();
+//                    int row = jTable1.getSelectedRow();
+//                    String ma_ctpn = String.valueOf(jTable1.getValueAt(row, 0));
+//
+//                    String delete_query = "Delete from chitietphieunhap where ma_ctpn = " + "\'" + ma_ctpn + "\'";
+//                    System.out.println(delete_query);
+//                    st.executeUpdate(delete_query);
+//
+//                    String sl = String.valueOf(jTable1.getValueAt(row, 4));
+//                    String mathang = String.valueOf(jTable1.getValueAt(row, 2));
+//                    String mapn = String.valueOf(jTable1.getValueAt(row, 1));
+//                    String thanhtien = String.valueOf(jTable1.getValueAt(row, 6));
+//                    String query2 = "update mathang set soluongton = soluongton - "  + sl + " where mamathang = " + "\'" + mathang +"\'";
+//                    st.executeUpdate(query2);
+//                    System.out.println(query2);
+//                    String query3 = "update PHIEUNHAPHANG set tongtien = tongtien - " + thanhtien + "where maphieunhap = " + "\'" + mapn +"\'";
+//                    st1.executeUpdate(query3);
+//                } else{
+//                    System.out.println("Failed to make connection!");
+//                }
+//
+//            }catch (SQLException e) {
+//
+//            }
+//        }
+//            
+//    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+    	// sua doi
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
@@ -676,5 +781,7 @@ public class ctnh extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    String[][] queries = new String[1000][];
+    int index = 0;
     // End of variables declaration//GEN-END:variables
 }

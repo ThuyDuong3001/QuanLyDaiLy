@@ -92,7 +92,7 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Mã Đại Lý");
+        jLabel3.setText("Mã Phiếu Xuất");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -119,15 +119,15 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(217, 198, 236));
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear_32px.png"))); // NOI18N
-        jButton5.setText("Xoá");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
+//        jButton5.setBackground(new java.awt.Color(217, 198, 236));
+//        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+//        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear_32px.png"))); // NOI18N
+//        jButton5.setText("Xoá");
+//        jButton5.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jButton5ActionPerformed(evt);
+//            }
+//        });
 
         jButton7.setBackground(new java.awt.Color(217, 198, 236));
         jButton7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -161,8 +161,9 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
             .addGroup(jPanel4Layout.createSequentialGroup()
+            		
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -174,11 +175,11 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+//                .addGap(10, 10, 10)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+//                .addGap(10, 10, 10)
                 .addComponent(jLabel11))
         );
 
@@ -192,7 +193,7 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Mã Phiếu Thu", "Mã Đại Lý", "Ngày Thu Tiền", "Số Tiền Thu"
+                "Mã Phiếu Thu", "Mã Phiếu Xuất", "Ngày Thu Tiền", "Số Tiền Thu"
             }
         ));
         jTable1.setToolTipText("");
@@ -210,7 +211,7 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
                 while (rs.next()) {
                     String[] value = new String[100];
                     value[0] = rs.getString("MAPHIEUTHUTIEN");
-                    value[1] = rs.getString("MADAILY");
+                    value[1] = rs.getString("MaPhieuxuat");
                     value[2] =  rs.getDate("NGAYTHUTIEN").toString();
                    
                     value[3] = rs.getString("SOTIENTHU");            
@@ -229,7 +230,7 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 queries,
                 new String [] {
-                    "Mã phiếu thu", "Mã đại lý", "Ngày thu tiền", "Số tiền thu"
+                    "Mã phiếu thu", "Mã phiếu xuất", "Ngày thu tiền", "Số tiền thu"
                 }
             ));
 
@@ -251,76 +252,86 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel7))
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(jButton7)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(228, 228, 228))
-        );
+                jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                    .addGap(25, 25, 25)
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel3))
+                                    .addGap(31, 31, 31)
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(6, 6, 6))
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addGap(88, 88, 88)
+                                    .addComponent(jButton7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(16, 16, 16)))
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addGap(30, 30, 30)
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel5Layout.createSequentialGroup()
+                                            .addComponent(jLabel7)
+                                            .addGap(38,38,38)
+                                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel5Layout.createSequentialGroup()
+                                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                                    .addComponent(jLabel6)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGap(30,30,30))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane1))
+                        )
+                    
+                    .addContainerGap())
+            );
+
         jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel2)
-                .addGap(10, 10, 10)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel6))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton7))
-                .addGap(20, 20, 20)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
-        );
+                jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                    .addGap(8, 8, 8)
+                    .addGap(17, 17, 17)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                           .addComponent(jLabel4)
+
+                           .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)
+                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addGap(23, 23, 23)
+                                    .addComponent(jLabel6))
+                                )))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    	.addComponent(jButton7)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(20, 20, 20)
+                    .addGap(18, 18, 18)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    )
+            );
 
         jLabel3.getAccessibleContext().setAccessibleName("");
 
@@ -432,7 +443,7 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         // TODO add your handling code here:
     	// them
         if (evt.getSource() == jButton7){
-        	boolean hasmdl = false;
+        	boolean hasmpx = false;
             try(Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){
                 if (conn != null) {
                     String[] value = new String[5];
@@ -440,22 +451,24 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
                     Statement st =  conn.createStatement();
                     ResultSet rs;
                     String mpt = null;
-                    String mdl = null;
+                    String mpx = null;
                     String stt = null;
                     int sotienthu = 0;
                     String date = null;                   
-
+                    String madl = null;
                 	try {
 	                    mpt = jTextField1.getText();
-	                    mdl = jTextField2.getText();
+	                    mpx = jTextField2.getText();
 	                    stt = jTextField7.getText();
 	                    sotienthu = Integer.parseInt(stt);
+	                    System.out.println(mpt + " " + mpx + " " + stt);
+	                    
 	                    DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy");
 	                    LocalDate localDate1 = LocalDate.parse(jDateChooser2.getDate().toString(),fmt2);
 	                    date = localDate1.getYear() + "-" +  convertMonth(localDate1.getMonth().toString()) + "-" + localDate1.getDayOfMonth() ;                   
 	                    
 	                    value[0] = mpt;
-	                    value[1] = mdl;
+	                    value[1] = mpx;
 	                    value[2] = date;
 	                    value[3] = String.valueOf(sotienthu);
 	                    
@@ -480,17 +493,19 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
                 	}
                 	
                 	Statement stmdl = conn.createStatement();
-        			ResultSet rsmdl = stmdl.executeQuery("select * from daily");
-
+                	String querympx = "select * from phieuxuathang where maphieuxuat = \'" + mpx + "\'" ;
+        			ResultSet rsmdl = stmdl.executeQuery(querympx);
+        			System.out.println(querympx);
         			while (rsmdl.next()){
-        				if (mdl.equals(rsmdl.getString("madaily"))){
-        					hasmdl = true;
+        				if (mpx.equals(rsmdl.getString("maphieuxuat"))){
+        					hasmpx = true;
+        					madl = rsmdl.getString("madaily");
         				}
         			}
                 	
-                    if (!hasmdl) {
+                    if (!hasmpx) {
                         JOptionPane.showMessageDialog(null,
-                                "Mã đại lý không tồn tại",
+                                "Mã phiếu xuất không tồn tại",
                                 "ERROR",
                                 JOptionPane.ERROR_MESSAGE);
                         return;
@@ -499,7 +514,7 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
         			
                     Statement stno =  conn.createStatement();
                     ResultSet rsno;
-                    String query_daily = "select * from daily where madaily = \'" + value[1] + "\'";
+                    String query_daily = "select * from daily where madaily = \'" + madl + "\'";
                     rsno = stno.executeQuery(query_daily);
                     int tongno = 0;
                     while (rsno.next()) {
@@ -507,19 +522,45 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
                     }
                     if (tongno < Integer.parseInt(value[3])) {
                     	JOptionPane.showMessageDialog(null,
-                                "Số tiền thu không vượt quá số tiền nợ",
+                                "Số tiền thu không được vượt quá số tiền đại lý nợ",
                                 "ERROR",
                                 JOptionPane.ERROR_MESSAGE); 
                     	return;
 
                     }
                     
-                    String query = "insert into phieuthutien values (\'" + mpt +"\'"+ "," + "\'"+ mdl+ "\'"+ "," + "DATE " + "\'" + date + "\'"+ "," +  sotienthu + ")";
+                    // update quanlyxuathang
+
+                    Statement stxh =  conn.createStatement();
+                    ResultSet rsxh;
+                    String query_mpx = "select * from phieuxuathang where maphieuxuat = \'" + mpx + "\'";
+                    rsxh = stxh.executeQuery(query_mpx);
+                    int tientra = 0;
+                    int tongtien = 0;
+                    while (rsxh.next()) {
+                    	tongtien = rsxh.getInt("tongtien");
+                    	tientra = rsxh.getInt("sotientra");
+                    }
+                    tientra += Integer.parseInt(value[3]);
+                    if (tientra > tongtien) {
+                    	JOptionPane.showMessageDialog(null,
+                                "Số tiền trả vượt quá tổng tiền của phiếu xuất",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE); 
+                    	return;
+
+                    }
+                    String update_sotientra_no = "update phieuxuathang set sotientra =  " +  tientra + ", sotienno = tongtien - " + tientra + " where maphieuxuat = \'" + mpx + "\'" ;
+                    st.executeQuery(update_sotientra_no);
+                    System.out.print(update_sotientra_no);
+                    
+                    String query = "insert into phieuthutien values (\'" + mpt +"\'"+ "," + "\'"+ mpx + "\'"+ "," + "DATE " + "\'" + date + "\'"+ "," +  value[3] + ")";
                     st.executeQuery(query);
                     System.out.println(query); 
-                    String query1 = "update daily set tongno = tongno - " + sotienthu + "where madaily = " + "\'"+ mdl+"\'";
-                    st.executeQuery(query1);
                     
+                    String query1 = "update daily set tongno = tongno - " + value[3] + "where madaily = " + "\'"+ madl+"\'";
+                    st.executeQuery(query1);
+//                    
                     queries[index] = value;
                     index += 1;
 
@@ -543,7 +584,7 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
             jTable1.setModel(new javax.swing.table.DefaultTableModel(
             		queries,
                     new String [] {
-                            "Mã phiếu thu", "Mã đại lý", "Ngày thu tiền", "Số tiền thu"
+                            "Mã phiếu thu", "Mã phiếu xuất", "Ngày thu tiền", "Số tiền thu"
                     }
                 ));
 
@@ -568,7 +609,7 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
                         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                                 queries,
                                 new String [] {
-                                        "Mã phiếu thu", "Mã đại lý", "Ngày thu tiền", "Số tiền thu"
+                                        "Mã phiếu thu", "Mã phiếu xuất", "Ngày thu tiền", "Số tiền thu"
                                 }));
                         return;
                     }
@@ -590,7 +631,7 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
                     jTable1.setModel(new javax.swing.table.DefaultTableModel(
                     		find_queries,
                             new String [] {
-                                    "Mã phiếu thu", "Mã đại lý", "Ngày thu tiền", "Số tiền thu"
+                                    "Mã phiếu thu", "Mã phiếu xuất", "Ngày thu tiền", "Số tiền thu"
                             }
                         ));
                 }
@@ -618,53 +659,53 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
     
 
     
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        //TODO add your handling code here:
-    	// xoa
-        try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){
-            if (conn != null) {
-        		int row_select = jTable1.getSelectedRow();
-        		System.out.println(row_select);
-        		if (row_select == -1) {
-                    JOptionPane.showMessageDialog(null,
-                            "Vui lòng chọn đại lí cần xóa",
-                            "ERROR",
-                            JOptionPane.ERROR_MESSAGE);
-                    return;
-
-        		}
-
-                System.out.println("Connected to the database!");
-                Statement st =  conn.createStatement();
-                
-                String mapt = queries[row_select][0];
-                
-                String delete_query = "Delete from phieuthutien where MAPHIEUTHUTIEN = " + "\'" + mapt + "\'";
-                System.out.println(delete_query);
-                st.executeUpdate(delete_query);
-
-                String sotienthu = queries[row_select][3];
-                String query1 = "update daily set tongno = tongno +" + sotienthu;
-                st.executeQuery(query1);
-        		queries = removeElement(queries,row_select);
-
-                jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                		queries,
-                        new String [] {
-                                "Mã phiếu thu", "Mã đại lý", "Ngày thu tiền", "Số tiền thu"
-                        }
-                    ));
-
-
-            } else{
-                System.out.println("Failed to make connection!");
-            }
-
-        }catch (SQLException e) {
-            
-        }
-        
-    }//GEN-LAST:event_jButton5ActionPerformed
+//    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+//        //TODO add your handling code here:
+//    	// xoa
+//        try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")){
+//            if (conn != null) {
+//        		int row_select = jTable1.getSelectedRow();
+//        		System.out.println(row_select);
+//        		if (row_select == -1) {
+//                    JOptionPane.showMessageDialog(null,
+//                            "Vui lòng chọn đại lí cần xóa",
+//                            "ERROR",
+//                            JOptionPane.ERROR_MESSAGE);
+//                    return;
+//
+//        		}
+//
+//                System.out.println("Connected to the database!");
+//                Statement st =  conn.createStatement();
+//                
+//                String mapt = queries[row_select][0];
+//                
+//                String delete_query = "Delete from phieuthutien where MAPHIEUTHUTIEN = " + "\'" + mapt + "\'";
+//                System.out.println(delete_query);
+//                st.executeUpdate(delete_query);
+//
+//                String sotienthu = queries[row_select][3];
+//                String query1 = "update daily set tongno = tongno +" + sotienthu;
+//                st.executeQuery(query1);
+//        		queries = removeElement(queries,row_select);
+//
+//                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+//                		queries,
+//                        new String [] {
+//                                "Mã phiếu thu", "Mã đại lý", "Ngày thu tiền", "Số tiền thu"
+//                        }
+//                    ));
+//
+//
+//            } else{
+//                System.out.println("Failed to make connection!");
+//            }
+//
+//        }catch (SQLException e) {
+//            
+//        }
+//        
+//    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:

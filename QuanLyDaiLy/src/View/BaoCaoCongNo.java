@@ -245,6 +245,53 @@ public class BaoCaoCongNo extends javax.swing.JFrame {
     		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
     		{
                 if (conn != null) {
+                	if (jTextFieldthang.getText().isBlank() & !jTextFieldnam.getText().isBlank())
+                	{
+                        System.out.println("Connected to the database!");                    
+    	    			String query_daily = "select * from daily";
+    	    			
+    	    			int index_madaily = 0;
+                        Statement stdl =  conn.createStatement();
+                        ResultSet rsdl = stdl.executeQuery(query_daily);
+    	    			String[] madaily = new String[100];
+
+                        while (rsdl.next()) {
+                        	madaily[index_madaily] = rsdl.getString("madaily");
+                        	index_madaily += 1;
+                        }
+                        
+                        int index_queries = 0;
+
+    	    			for (int i = 0; i< index_madaily;i++) {
+    		    			CallableStatement cstmt;
+    		    			cstmt = conn.prepareCall("{call Pro_BaoCaoCongNoNam(?,?,?,?,?)}");
+
+    		    			cstmt.setString(1, madaily[i]);
+    		    			cstmt.setInt(2, Integer.parseInt(jTextFieldnam.getText()));
+    		    			cstmt.registerOutParameter(3, Types.INTEGER);
+    		    			cstmt.registerOutParameter(4, Types.INTEGER);
+    		    			cstmt.registerOutParameter(5, Types.INTEGER);
+    		    			cstmt.executeUpdate();
+    		    			
+                            String[] value = new String[100];
+                            value[0] = madaily[i];
+                        	value[1] = Integer.toString(cstmt.getInt(3));
+                        	value[2] = Integer.toString(cstmt.getInt(4));
+                        	value[3] = Integer.toString(cstmt.getInt(5));
+                        	queries[index_queries] = value;
+                        	index_queries += 1;
+
+    	    			}
+                        
+                        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                        		queries,
+                                new String [] {
+                                       "Mã đại lý", "Nợ đầu", "Phát sinh", "Nợ cuối"
+                                }
+                            ));
+                        return;
+
+                	}
                 	
                 	try {
                 	if (Integer.parseInt(jTextFieldthang.getText()) > 12 || Integer.parseInt(jTextFieldthang.getText()) < 1) {

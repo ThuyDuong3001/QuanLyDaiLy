@@ -394,6 +394,42 @@ BEGIN
     RETURN num_nodau;
 END;
 
+CREATE OR REPLACE FUNCTION Func_Nodau(var_madl IN daily.madaily%TYPE,thang IN NUMBER,nam IN NUMBER)
+        RETURN NUMBER
+AS
+    num_nodau NUMBER:=0;
+BEGIN
+    begin
+        select sotienno into num_nodau from phieuxuathang 
+        where EXTRACT(month FROM ngaylap) = thang and EXTRACT(year FROM ngaylap) = nam
+        and madaily = var_madl 
+        and ((EXTRACT(day FROM ngaylap)) = (select min(EXTRACT(day FROM ngaylap)) from phieuxuathang));
+        EXCEPTION
+    wHEN NO_DATA_FOUND THEN
+        num_nodau := 0;
+    
+    end;
+    
+    RETURN num_nodau;
+END;
+CREATE OR REPLACE FUNCTION Func_NodauNam(var_madl IN daily.madaily%TYPE,nam IN NUMBER)
+        RETURN NUMBER
+AS
+    num_nodau NUMBER:=0;
+BEGIN
+    begin
+        select sotienno into num_nodau from phieuxuathang 
+        where EXTRACT(year FROM ngaylap) = nam and madaily = var_madl 
+        and ((EXTRACT(month FROM ngaylap)) = (select min(EXTRACT(month FROM ngaylap)) from phieuxuathang));
+        EXCEPTION
+    wHEN NO_DATA_FOUND THEN
+        num_nodau := 0;
+    
+    end;
+    
+    RETURN num_nodau;
+END;
+
 CREATE OR REPLACE FUNCTION Func_PhatSinh(var_madl IN daily.madaily%TYPE,thang IN NUMBER,nam IN NUMBER)
         RETURN NUMBER
 AS
@@ -420,6 +456,29 @@ END;
 BEGIN
     DBMS_OUTPUT.PUT_LINE('No phat sinh: '||Func_PhatSinh('DL003',1,2022));
 END;
+CREATE OR REPLACE FUNCTION Func_PhatSinhNam(var_madl IN daily.madaily%TYPE,nam IN NUMBER)
+        RETURN NUMBER
+AS
+    num_phatsinh NUMBER:=0;
+BEGIN
+    begin
+        select sum(sotienno) into num_phatsinh from phieuxuathang 
+        where EXTRACT(year FROM ngaylap) = nam
+        and madaily = var_madl 
+        and ((EXTRACT(month FROM ngaylap)) != (select min(EXTRACT(month FROM ngaylap)) from phieuxuathang));
+        EXCEPTION
+    wHEN NO_DATA_FOUND THEN
+        num_phatsinh := 0;
+    
+    end;
+    
+    if num_phatsinh is null then
+        num_phatsinh := 0;
+    end if;
+
+    RETURN num_phatsinh;
+END;
+
 
 CREATE OR REPLACE FUNCTION Func_TienThu(var_madl IN daily.madaily%TYPE,thang IN NUMBER,nam IN NUMBER)
         RETURN NUMBER
@@ -446,6 +505,30 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('So tien thu: '||Func_TienThu('DL003',1,2022));
 END;
 
+CREATE OR REPLACE FUNCTION Func_TienThuNam(var_madl IN daily.madaily%TYPE,nam IN NUMBER)
+        RETURN NUMBER
+AS
+    num_sotienthu NUMBER:=0;
+BEGIN
+    begin
+        select sum(sotienthu) into num_sotienthu from phieuthutien 
+        where EXTRACT(year FROM ngaythutien) = nam 
+        and madaily = var_madl ;
+    EXCEPTION
+        wHEN NO_DATA_FOUND THEN
+            num_sotienthu := 0;
+    end;
+    
+    if num_sotienthu is null then
+        num_sotienthu := 0;
+    end if;
+
+    RETURN num_sotienthu;
+END;
+
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('So tien thu: '||Func_TienThu('DL003',1,2022));
+END;
 
 CREATE OR REPLACE PROCEDURE Pro_BaoCaoCongNo(madl in daily.madaily%TYPE ,nam in Number,thang IN Number,
                                             nodau out number,phatsinh out number, nocuoi out number)
@@ -455,6 +538,16 @@ BEGIN
     nodau := Func_Nodau(madl,thang,nam);
     phatsinh := Func_phatsinh(madl,thang,nam);
     nocuoi := nodau + phatsinh - Func_tienthu(madl,thang,nam);
+END;
+
+CREATE OR REPLACE PROCEDURE Pro_BaoCaoCongNoNam(madl in daily.madaily%TYPE ,nam in Number,
+                                            nodau out number,phatsinh out number, nocuoi out number)
+AS
+    tienthu number := 0;
+BEGIN
+    nodau := Func_NodauNam(madl,nam);
+    phatsinh := Func_phatsinhNam(madl,nam);
+    nocuoi := nodau + phatsinh - Func_tienthuNam(madl,nam);
 END;
 
 BEGIN
@@ -485,6 +578,27 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('So phieu xuat: '||Func_SoPhieuXuat('DL004',1,2022));
 END;
 
+CREATE OR REPLACE FUNCTION Func_SoPhieuXuatNam(var_madl IN daily.madaily%TYPE,nam IN NUMBER)
+        RETURN NUMBER
+AS
+    num_SoPhieuXuat NUMBER:=0;
+BEGIN
+    begin
+        select count(*) into num_SoPhieuXuat from phieuxuathang 
+        where EXTRACT(year FROM ngaylap) = nam
+        and madaily = var_madl ;
+    EXCEPTION
+        wHEN NO_DATA_FOUND THEN
+            num_SoPhieuXuat := 0;
+    end;
+    
+    if num_SoPhieuXuat is null then
+        num_SoPhieuXuat := 0;
+    end if;
+
+    RETURN num_SoPhieuXuat;
+END;
+
 CREATE OR REPLACE FUNCTION Func_TongTriGia(var_madl IN daily.madaily%TYPE,thang IN NUMBER,nam IN NUMBER)
         RETURN NUMBER
 AS
@@ -508,6 +622,28 @@ END;
 BEGIN
     DBMS_OUTPUT.PUT_LINE('Tong tri gia: '||Func_TongTriGia('DL003',1,2022));
 END;
+
+CREATE OR REPLACE FUNCTION Func_TongTriGiaNam(var_madl IN daily.madaily%TYPE,nam IN NUMBER)
+        RETURN NUMBER
+AS
+    num_tongtrigia NUMBER:=0;
+BEGIN
+    begin
+        select sum(tongtien) into num_tongtrigia from phieuxuathang 
+        where EXTRACT(year FROM ngaylap) = nam
+        and madaily = var_madl ;
+    EXCEPTION
+        wHEN NO_DATA_FOUND THEN
+            num_tongtrigia := 0;
+    end;
+    
+    if num_tongtrigia is null then
+        num_tongtrigia := 0;
+    end if;
+
+    RETURN num_tongtrigia;
+END;
+
 
 CREATE OR REPLACE FUNCTION Func_Tyle(var_madl IN daily.madaily%TYPE,thang IN NUMBER,nam IN NUMBER)
         RETURN NUMBER
@@ -533,6 +669,28 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Tyle: '||FUNC_TYLE('DL003',1,2022));
 END;
 
+CREATE OR REPLACE FUNCTION Func_Tylenam(var_madl IN daily.madaily%TYPE,nam IN NUMBER)
+        RETURN NUMBER
+AS
+    num_tongtrigia NUMBER:= Func_TongTriGianam(var_madl,nam);
+    num_tongall number := 0;
+BEGIN
+    begin
+        select sum(tongtien) into num_tongall from phieuxuathang 
+        where EXTRACT(year FROM ngaylap) = nam;
+    EXCEPTION
+        wHEN NO_DATA_FOUND THEN
+            num_tongall := 1;
+    end;
+    
+    if num_tongall is null then
+        num_tongall := 1;
+    end if;
+
+    RETURN Round(num_tongtrigia/num_tongall,2);
+END;
+
+
 CREATE OR REPLACE PROCEDURE Pro_BaoCaoDoanhSo(madl in daily.madaily%TYPE ,nam in Number,thang IN Number,
                                             sophieuxuat out number,tongtrigia out number, tyle out number)
 AS
@@ -542,6 +700,17 @@ BEGIN
     tongtrigia := Func_tongtrigia(madl,thang,nam);
     tyle := Func_tyle(madl,thang,nam);
 END;
+
+CREATE OR REPLACE PROCEDURE Pro_BaoCaoDoanhSoNam(madl in daily.madaily%TYPE ,nam in Number,
+                                            sophieuxuat out number,tongtrigia out number, tyle out number)
+AS
+
+BEGIN
+    sophieuxuat := Func_sophieuxuatnam(madl,nam);
+    tongtrigia := Func_tongtrigianam(madl,nam);
+    tyle := Func_tylenam(madl,nam);
+END;
+
 
 
 
