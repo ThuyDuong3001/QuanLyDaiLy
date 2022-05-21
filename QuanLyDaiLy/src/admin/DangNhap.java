@@ -129,6 +129,30 @@ public class DangNhap extends javax.swing.JFrame {
         gp.add(jRadioButton1);
         gp.add(jRadioButton2);
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jRadioButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addGap(50, 50, 50)
+                .addComponent(jRadioButton2)
+                .addGap(25, 25, 25))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jRadioButton1)
+                        .addComponent(jRadioButton2))
+                    .addComponent(jLabel4))
+                .addGap(25, 25, 25))
+        );
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/login_32px.png"))); // NOI18N
@@ -162,6 +186,7 @@ public class DangNhap extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -181,6 +206,7 @@ public class DangNhap extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
@@ -247,27 +273,43 @@ public class DangNhap extends javax.swing.JFrame {
 	                	return;
 	            	}
 	            	
-        			truycap.tentaikhoan = taikhoan.getText();
-        			truycap.quyentruycap = quyen;
-        			
-	            	if (String.valueOf(jPasswordField2.getPassword()).equals(password)) {
-	            		if (quyen.equals("NND01")) {
-	            			new Home().setVisible(true);
-	            			this.setVisible(false);
-	            		}
-	            		else if (quyen.equals("NND02")) {
-	            			new Home_NhanVien().setVisible(true);
-	            			this.setVisible(false);
-	            		}
-	            	}
-	            	else
-	            	{
+	            	try {
+		            	if (String.valueOf(jPasswordField2.getPassword()).equals(password)) {
+		            		if (quyen.equals(String.valueOf(gp.getSelection().getActionCommand()))) {
+		            			if (quyen.equals("NND01")) {
+		            				System.out.println("1");
+		            			}
+		            			else if (quyen.equals("NND02")) {
+		            				System.out.println("2");
+		            			}
+		
+		            		}
+		            		else
+		            		{
+			            		JOptionPane.showMessageDialog(null,
+				                           "Quyền truy cập không đúng",
+				                            "ERROR",
+				                            JOptionPane.ERROR_MESSAGE);
+				                	return;
+
+		            		}
+		            	}
+		            	else {
+		            		JOptionPane.showMessageDialog(null,
+		                           "Mật khẩu không đúng",
+		                            "ERROR",
+		                            JOptionPane.ERROR_MESSAGE);
+		                	return;
+	
+		            		}
+	            	}  
+	            	catch(NullPointerException n) {
 	            		JOptionPane.showMessageDialog(null,
-	                            "Mật khẩu sai",
+	                            "Vui lòng chọn quyền truy cập",
 	                            "ERROR",
 	                            JOptionPane.ERROR_MESSAGE);
 	                	return;
-
+	
 	            	}
 	            } 
 	            else {

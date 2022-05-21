@@ -26,9 +26,6 @@ public class thaydoimatkhau extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-    	System.out.println(truycap.tentaikhoan);
-    	System.out.println(truycap.quyentruycap);
-
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -251,11 +248,6 @@ public class thaydoimatkhau extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-    	if (evt.getSource() == jButton5) {
-    		this.setVisible(false);
-    		new Home().setVisible(true);
-    		}
-
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

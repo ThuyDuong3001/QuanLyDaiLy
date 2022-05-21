@@ -1,4 +1,4 @@
-package View;
+package admin;
 
 import javax.swing.JFrame;
 
@@ -70,7 +70,7 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Icon_64px.png"))); // NOI18N
-        jLabel1.setText("HỆ THỐNG QUẢN LÝ ĐẠI LÝ");
+        jLabel1.setText("Há»† THá»�NG QUáº¢N LÃ� Ä�áº I LÃ�");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -94,7 +94,7 @@ public class Home extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(217, 198, 236));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hoso_64px.png"))); // NOI18N
-        jButton1.setText("Hồ Sơ Đại Lý");
+        jButton1.setText("Há»“ SÆ¡ Ä�áº¡i LÃ½");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -104,7 +104,7 @@ public class Home extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(217, 198, 236));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/nhaphang_64px.png"))); // NOI18N
-        jButton2.setText("Quản Lý Nhập Hàng");
+        jButton2.setText("Quáº£n LÃ½ Nháº­p HÃ ng");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -114,7 +114,7 @@ public class Home extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(217, 198, 236));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/xuathang_64px.png"))); // NOI18N
-        jButton3.setText("Quản Lý Xuất Hàng");
+        jButton3.setText("Quáº£n LÃ½ Xuáº¥t HÃ ng");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -124,7 +124,7 @@ public class Home extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(217, 198, 236));
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/phieuthu_64px.png"))); // NOI18N
-        jButton4.setText("Quản Lý Phiếu Thu");
+        jButton4.setText("Quáº£n LÃ½ Phiáº¿u Thu");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -134,7 +134,7 @@ public class Home extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(217, 198, 236));
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/BaoCao_64px.png"))); // NOI18N
-        jButton5.setText("Báo Cáo Thống Kê");
+        jButton5.setText("BÃ¡o CÃ¡o Thá»‘ng KÃª");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -144,7 +144,7 @@ public class Home extends javax.swing.JFrame {
         jButton6.setBackground(new java.awt.Color(217, 198, 236));
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/quydinh_64px.png"))); // NOI18N
-        jButton6.setText("Thay Đổi Quy Định");
+        jButton6.setText("Thay Ä�á»•i Quy Ä�á»‹nh");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -154,7 +154,7 @@ public class Home extends javax.swing.JFrame {
         jButton7.setBackground(new java.awt.Color(217, 198, 236));
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/taikhoan_64px.png"))); // NOI18N
-        jButton7.setText("Quản Lý Nhân Viên");
+        jButton7.setText("Quáº£n LÃ½ NhÃ¢n ViÃªn");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -164,7 +164,7 @@ public class Home extends javax.swing.JFrame {
         jButton8.setBackground(new java.awt.Color(217, 198, 236));
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/DoiMKhau_64px.png"))); // NOI18N
-        jButton8.setText("Thay Đổi Mật Khẩu");
+        jButton8.setText("Thay Ä�á»•i Máº­t Kháº©u");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -174,7 +174,7 @@ public class Home extends javax.swing.JFrame {
         jButton9.setBackground(new java.awt.Color(217, 198, 236));
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Thongtin_64px.png"))); // NOI18N
-        jButton9.setText("Thông Tin Sản Phẩm");
+        jButton9.setText("ThÃ´ng Tin Sáº£n Pháº©m");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -254,22 +254,22 @@ public class Home extends javax.swing.JFrame {
         );
 
         jMenu1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenu1.setText("  Hệ Thống  ");
+        jMenu1.setText("  Há»‡ Thá»‘ng  ");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/login_32px.png"))); // NOI18N
-        jMenuItem1.setText("Đăng Nhập");
+        jMenuItem1.setText("Ä�Äƒng Nháº­p");
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logout_32px.png"))); // NOI18N
-        jMenuItem2.setText("Đăng Xuất");
+        jMenuItem2.setText("Ä�Äƒng Xuáº¥t");
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/DoiMKhau_32px.png"))); // NOI18N
-        jMenuItem3.setText("Thay Đổi Mật Khẩu");
+        jMenuItem3.setText("Thay Ä�á»•i Máº­t Kháº©u");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -279,12 +279,12 @@ public class Home extends javax.swing.JFrame {
         jMenu1.add(jSeparator1);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/quydinh_32px.png"))); // NOI18N
-        jMenu4.setText("Thay Đổi Quy Định");
+        jMenu4.setText("Thay Ä�á»•i Quy Ä�á»‹nh");
         jMenu4.setFocusable(false);
         jMenu4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jMenuItem12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jMenuItem12.setText("Quy Định Mặt Hàng");
+        jMenuItem12.setText("Quy Ä�á»‹nh Máº·t HÃ ng");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem12ActionPerformed(evt);
@@ -293,7 +293,7 @@ public class Home extends javax.swing.JFrame {
         jMenu4.add(jMenuItem12);
 
         jMenuItem13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jMenuItem13.setText("Quy Chế Tổ Chức");
+        jMenuItem13.setText("Quy Cháº¿ Tá»• Chá»©c");
         jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem13ActionPerformed(evt);
@@ -306,44 +306,44 @@ public class Home extends javax.swing.JFrame {
 
         jMenuItem4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/exit_32px.png"))); // NOI18N
-        jMenuItem4.setText("Thoát");
+        jMenuItem4.setText("ThoÃ¡t");
         jMenu1.add(jMenuItem4);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu2.setText("  Quản Lý  ");
+        jMenu2.setText("  Quáº£n LÃ½  ");
         jMenu2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jMenuItem5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hoso_32px.png"))); // NOI18N
-        jMenuItem5.setText("Hồ Sơ Đại Lý");
+        jMenuItem5.setText("Há»“ SÆ¡ Ä�áº¡i LÃ½");
         jMenu2.add(jMenuItem5);
 
         jMenuItem6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/nhaphang_32px.png"))); // NOI18N
-        jMenuItem6.setText("Quản Lý Nhập Hàng");
+        jMenuItem6.setText("Quáº£n LÃ½ Nháº­p HÃ ng");
         jMenu2.add(jMenuItem6);
 
         jMenuItem7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/xuathang_32px.png"))); // NOI18N
-        jMenuItem7.setText("Quản Lý Xuất Hàng");
+        jMenuItem7.setText("Quáº£n LÃ½ Xuáº¥t HÃ ng");
         jMenu2.add(jMenuItem7);
 
         jMenuItem8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/phieuthu_32px.png"))); // NOI18N
-        jMenuItem8.setText("Quản Lý Phiếu Thu");
+        jMenuItem8.setText("Quáº£n LÃ½ Phiáº¿u Thu");
         jMenu2.add(jMenuItem8);
 
         jMenuBar1.add(jMenu2);
 
         jMenu7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu7.setText("  Báo Cáo  ");
+        jMenu7.setText("  BÃ¡o CÃ¡o  ");
         jMenu7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jMenuItem10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/congno_32px.png"))); // NOI18N
-        jMenuItem10.setText("Báo Cáo Công Nợ");
+        jMenuItem10.setText("BÃ¡o CÃ¡o CÃ´ng Ná»£");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem10ActionPerformed(evt);
@@ -353,7 +353,7 @@ public class Home extends javax.swing.JFrame {
 
         jMenuItem9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/doanhso_32px.png"))); // NOI18N
-        jMenuItem9.setText("Báo Cáo Doanh Số");
+        jMenuItem9.setText("BÃ¡o CÃ¡o Doanh Sá»‘");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem9ActionPerformed(evt);
@@ -364,12 +364,12 @@ public class Home extends javax.swing.JFrame {
         jMenuBar1.add(jMenu7);
 
         jMenu8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu8.setText("Trợ Giúp");
+        jMenu8.setText("Trá»£ GiÃºp");
         jMenu8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jMenuItem11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Thongtin_32.png"))); // NOI18N
-        jMenuItem11.setText("Thông Tin Sản Phẩm");
+        jMenuItem11.setText("ThÃ´ng Tin Sáº£n Pháº©m");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem11ActionPerformed(evt);
