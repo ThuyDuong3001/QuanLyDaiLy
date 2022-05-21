@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5296F29C-3CE8-7346-8F54-696A7C6F3A59" schemaObject="5EE736CF-B522-4F3B-134F-01D031AFEAA2" name="QUAN">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>QUAN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:16 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MAQUAN" id="A8A18B4C-9E07-016E-E425-6FC812C51FA7">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>QUAN</sourceObjSchema>
+<sourceObjName>MAQUAN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TENQUAN" id="14B72CB4-1676-57D8-7633-09B3610055D8">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>QUAN</sourceObjSchema>
+<sourceObjName>TENQUAN</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5042FE23-9266-C230-771B-A47869B608CC" schemaObject="5EE736CF-B522-4F3B-134F-01D031AFEAA2" name="QUAN_PK">
+<sourceConnName>QuanLyDaiLy</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>SYS_C008018</sourceObjName>
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A8A18B4C-9E07-016E-E425-6FC812C51FA7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

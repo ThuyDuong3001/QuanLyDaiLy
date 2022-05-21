@@ -1,5 +1,17 @@
 package View;
 
+import java.awt.event.WindowEvent;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Types;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author NDAT_UIT
@@ -106,20 +118,16 @@ public class DangNhap extends javax.swing.JFrame {
         jRadioButton1.setBackground(new java.awt.Color(204, 255, 255));
         jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jRadioButton1.setText("Administrator");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-
+        jRadioButton1.setActionCommand("NND01");
+        
         jRadioButton2.setBackground(new java.awt.Color(204, 255, 255));
         jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jRadioButton2.setText("Guest");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
+        jRadioButton2.setActionCommand("NND02");
+
+        gp = new ButtonGroup();
+        gp.add(jRadioButton1);
+        gp.add(jRadioButton2);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -243,10 +251,86 @@ public class DangNhap extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+    	if (evt.getSource() == jButton2) {
+			try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+			{
+	            if (conn != null) {
+	            	String query = "Select * from nguoidung where tendangnhap = \'" + taikhoan.getText() + "\'";
+	            	Statement st = conn.createStatement();
+	            	ResultSet rs = st.executeQuery(query);
+	            	String password = null;
+	            	String quyen = null;
+	            	while(rs.next()) {
+	            		password = (rs.getString("matkhau"));
+	            		quyen = (rs.getString("manhom"));
+	            	}
+	            	
+	            	if (password == null) {
+	            		JOptionPane.showMessageDialog(null,
+	                            "Không tồn tại tên tài khoản",
+	                            "ERROR",
+	                            JOptionPane.ERROR_MESSAGE);
+	                	return;
+	            	}
+	            	
+	            	try {
+		            	if (String.valueOf(jPasswordField2.getPassword()).equals(password)) {
+		            		if (quyen.equals(String.valueOf(gp.getSelection().getActionCommand()))) {
+		            			if (quyen.equals("NND01")) {
+		            				System.out.println("1");
+		            			}
+		            			else if (quyen.equals("NND02")) {
+		            				System.out.println("2");
+		            			}
+		
+		            		}
+		            		else
+		            		{
+			            		JOptionPane.showMessageDialog(null,
+				                           "Quyền truy cập không đúng",
+				                            "ERROR",
+				                            JOptionPane.ERROR_MESSAGE);
+				                	return;
+
+		            		}
+		            	}
+		            	else {
+		            		JOptionPane.showMessageDialog(null,
+		                           "Mật khẩu không đúng",
+		                            "ERROR",
+		                            JOptionPane.ERROR_MESSAGE);
+		                	return;
+	
+		            		}
+	            	}  
+	            	catch(NullPointerException n) {
+	            		JOptionPane.showMessageDialog(null,
+	                            "Vui lòng chọn quyền truy cập",
+	                            "ERROR",
+	                            JOptionPane.ERROR_MESSAGE);
+	                	return;
+	
+	            	}
+	            } 
+	            else {
+	                System.out.println("Failed to make connection!");
+	            }
+	
+	        } catch (SQLException e) {
+	            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+	             
+	        } catch (Exception e) {
+	            e.printStackTrace();
+        }		
+
     }//GEN-LAST:event_jButton2ActionPerformed
+    }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+    	if (evt.getSource() == jButton3) {
+    		this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+    	}
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -300,5 +384,6 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JLabel logo;
     private javax.swing.JLabel matkhau;
     private javax.swing.JTextField taikhoan;
+    ButtonGroup gp;
     // End of variables declaration//GEN-END:variables
 }

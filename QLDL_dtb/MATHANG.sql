@@ -1,0 +1,19 @@
+--Bang Mat Hang
+CREATE TABLE MATHANG(
+    MaMatHang VARCHAR2(50)PRIMARY KEY,
+    TenMatHang VARCHAR2(255) NOT NULL,
+    DonGiaNhap NUMBER NOT NULL,
+    DonGiaXuat NUMBER NOT NULL,
+    SoLuongTon NUMBER,
+    MaDonViTinh VARCHAR2(50) NOT NULL,
+    TenNhaCungCap VARCHAR2(255) NOT NULL
+)
+--Insert Mat Hang\
+
+select * from MATHANG;
+
+INSERT INTO MATHANG VALUES ('MH01',N'Đá',20000,20400,50,'DVM','Granit');									
+INSERT INTO MATHANG VALUES ('MH02',N'Xi măng',80000,81600,30,'DVB',N'Hà Tiên');								
+INSERT INTO MATHANG VALUES ('MH03',N'Cát',75000,76500,5,'DVK',N'Cát Thành Vinh');									
+INSERT INTO MATHANG VALUES ('MH04',N'Gạch men',15000,15300,5,'DVV',N'Tasa');									
+
