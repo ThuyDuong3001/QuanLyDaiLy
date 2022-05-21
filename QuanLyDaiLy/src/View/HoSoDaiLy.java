@@ -1,5 +1,17 @@
 package View;
+import java.awt.event.ActionEvent;
+import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import java.util.ArrayList;
 /**
  *
  * @author NDAT_UIT
@@ -21,6 +33,8 @@ public class HoSoDaiLy extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+    	
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -51,11 +65,9 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -65,6 +77,13 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hoso_64px.png"))); // NOI18N
         jLabel1.setText("HỒ SƠ ĐẠI LÝ");
+        
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -86,7 +105,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Icon_64px.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton1ActionPerformed1(evt);
             }
         });
 
@@ -114,25 +133,10 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         jLabel6.setText("Địa Chỉ");
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
 
         jTextField4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -154,11 +158,16 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear_32px.png"))); // NOI18N
         jButton5.setText("Xoá");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(217, 198, 236));
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
-        jButton6.setText("Cập Nhật");
+        jButton6.setText("Sửa đổi");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -174,27 +183,20 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
+        
+        jButton3.setBackground(new java.awt.Color(217, 198, 236));
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/search.png"))); // NOI18N
+        jButton3.setText("Tìm Kiếm");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	jButton3ActionPerformed(evt);
+            }
+        });
 
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
-
         jTextField9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
-
         jTextField10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
-            }
-        });
 
         jPanel4.setBackground(new java.awt.Color(217, 198, 236));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18)), "TÌM KIẾM ĐẠI LÝ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
@@ -204,11 +206,6 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jTextField5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        jButton3.setBackground(new java.awt.Color(217, 198, 236));
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/search.png"))); // NOI18N
-        jButton3.setText("Tìm Kiếm");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -233,32 +230,71 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel11))
         );
+        
+        // table
+		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+		{
+            if (conn != null) {
+                System.out.println("Connected to the database!");
+                Statement st =  conn.createStatement();
+                ResultSet rs;
+                rs = st.executeQuery("select * from daily");
+                
+                while (rs.next()) {
+                    String[] value = new String[100];
+                    
+                	value[0] = rs.getString("MADAILY");
+                	value[1] = rs.getString("tendaily");
+                	value[2] = rs.getString("maloaidaily");
+                	value[3] = rs.getString("maquan");
+                	value[4] = rs.getString("diachi");
+                	value[5] = rs.getString("dienthoai");
+                	value[6] = rs.getString("email");
+                	value[7] = rs.getDate("ngaytiepnhan").toString();
+                	value[8] = rs.getString("tongno");
+                	
+                	queries[index] = value;
+                	index +=1 ;
+                
+                }
+            	// loai dai ly
+                ArrayList<String> aloaidaily = new ArrayList();
+                int id1 = 0;
+                Statement st1 =  conn.createStatement();
+                ResultSet rs1;
 
+                rs1 = st1.executeQuery("select * from loaidaily");                
+                while (rs1.next()) {
+                	String maloaidl = rs1.getString("maloaidaily");
+                	aloaidaily.add(maloaidl.substring(1,maloaidl.length()));
+                }
+                String[] loaidaily = new String[aloaidaily.size()];
+                loaidaily = aloaidaily.toArray(loaidaily);
+                jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(loaidaily));
+
+            } else {
+                System.out.println("Failed to make connection!");
+            }
+
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }		
+        
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
+            queries,
             new String [] {
-                "Mã Hồ Sơ", "Tên Đại Lý", "Loại Đại Lý", "Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Tiền Nợ", "Ngày Tiếp Nhận"
+                "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
             }
         ));
+        
         jTable1.setToolTipText("");
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTable1);
-
-        jRadioButton1.setBackground(new java.awt.Color(217, 198, 236));
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jRadioButton1.setText("Loại 1");
-
-        jRadioButton2.setBackground(new java.awt.Color(217, 198, 236));
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jRadioButton2.setText("Loại 2");
-
+        
         jDateChooser2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -287,9 +323,9 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(jRadioButton1)
+                                                .addComponent(jComboBox1)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jRadioButton2)))
+                                                ))
                                         .addGap(149, 149, 149))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                                         .addGap(154, 154, 154)
@@ -336,8 +372,8 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel9)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2))
+                            .addComponent(jComboBox1)
+                            )
                         .addGap(20, 20, 20)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -415,41 +451,578 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+	private void jComboBox1ActionPerformed(ActionEvent evt) {
+		// TODO Auto-generated method stub
+		if (evt.getSource() == jButton1) {
+			this.setVisible(false);
+			new Home().setVisible(true);;
+		}
+	}
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+	private void jButton1ActionPerformed1(ActionEvent evt) {
+		// TODO Auto-generated method stub
+		if (evt.getSource() == jButton1) {
+			this.setVisible(false);
+			new Home().setVisible(true);;
+		}
+	}
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+	private void jButton1ActionPerformed(ActionEvent evt) {
+		// TODO Auto-generated method stub
+		if (evt.getSource() == jButton1) {
+			this.setVisible(false);
+			new Home().setVisible(true);;
+		}
+	}
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+    	// tim kiem
+    	if (evt.getSource() == jButton3) {
+    		
+    		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    		{
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    ResultSet rs;
+                    String query_text = jTextField5.getText();
+                    if (query_text.isBlank()) {
+                        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                                queries,
+                                new String [] {
+                                    "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
+                                }));
+                        return;
+                    }
+                    String query = "select * from daily where MADAILY = \'" + query_text +"\'";
+                    System.out.println(query);
+                    rs = st.executeQuery(query);
+                    int i = 0;
+                    String find_queries[][] = new String[100][100];
+                    while (rs.next()) {
+                        String[] value = new String[100];
+                    	value[0] = rs.getString("MADAILY");
+                    	value[1] = rs.getString("tendaily");
+                    	value[2] = rs.getString("maloaidaily");
+                    	value[3] = rs.getString("maquan");
+                    	value[4] = rs.getString("diachi");
+                    	value[5] = rs.getString("dienthoai");
+                    	value[6] = rs.getString("email");
+                    	value[7] = rs.getString("ngaytiepnhan");
+                    	value[8] = rs.getString("tongno");
+                    	find_queries[i] = value;
+                    	i +=1 ;
+                    }
+                    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                    		find_queries,
+                            new String [] {
+                                "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
+                            }));
+                 
+                } else {
+                    System.out.println("Failed to make connection!");
+                }
+
+            } catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }	
+    		
+    	}
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private String[][] removeElement(String[][] arr,int id) {
+    	if (id < 0 || arr == null || id >= arr.length)
+    		return arr;
+    	
+    	String[][] arr_temp = new String[arr.length-1][];
+    	index -= 1;
+    	
+    	for (int i = 0,k=0;i<arr.length;i++) {
+    		if (i == id) 
+    			continue;
+    		arr_temp[k++] = arr[i];
+    	}
+    	return arr_temp;
+    }
+    
+    private int countBlank(String[] arr) {
+    	int count = 0;
+    	for (int i =0;i<=8;i++) {
+    		if (arr[i].isBlank())
+    			count +=1;
+    	}
+    	return count;
+    }
+    private int countNull(String[] arr) {
+    	int count = 0;
+    	for (int i =0;i<=8;i++) {
+    		if (arr[i]== null)
+    			count +=1;
+    	}
+    	return count;
+    }
+    
+    private ArrayList<Integer> findComma(String address) {
+    	ArrayList<Integer> position = new ArrayList();
+    	for (int i=0;i<address.length();i++) {
+    		if (address.charAt(i) == ',')
+    			position.add(i);
+    	}
+    	return position;
+    }
+    
+    private int findSpace(String quan) {
+    	for (int i=0;i<quan.length();i++) {
+			if (quan.charAt(i) == ' ')
+    			return i;
+    	}
+    	return 0;
+    }
+    
+    private String Quan(String address) {
+		ArrayList<Integer> position = findComma(address);
+		String quan = address.substring(position.get(0)+2, position.get(1));
+		String abb_quan = address.charAt(position.get(0)+2) + quan.substring(findSpace(quan)+1,quan.length());
+		return abb_quan;
+    }
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    	// xoa
+    	if (evt.getSource() == jButton5) {
+    		int row_select = jTable1.getSelectedRow();
+    		if (row_select == -1) {
+                JOptionPane.showMessageDialog(null,
+                        "Vui lòng chọn đại lí cần xóa",
+                        "ERROR",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+
+    		}
+    		if (row_select >=0 ) {
+        		if (countNull(queries[row_select]) == 9) {
+                    JOptionPane.showMessageDialog(null,
+                            "Vui lòng chọn đại lí tồn tại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+        		}
+    		}
+
+    		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    		{
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    String delete_query = "Delete from daily where madaily = " + "\'" + queries[row_select][0] + "\'";
+                    System.out.println(delete_query);
+                    st.execute(delete_query);
+            		queries = removeElement(queries,row_select);
+
+                    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                    		queries,
+                            new String [] {
+                                "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
+                            }
+                        ));
+
+                } else {
+                    System.out.println("Failed to make connection!");
+                }
+
+            } catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                if (e.getSQLState().equals("23000"))
+                    JOptionPane.showMessageDialog(null,
+                            "Lỗi khóa chính/ngoại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+ 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }		
+	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
+	        jButton6.setText("Sửa đổi");
+
+    }
+    }//GEN-LAST:event_jButton6ActionPerformed
+    
+    private String convertMonth(String month) {
+    	switch (month) {
+    	case "JANUARY":
+    		return "01";
+    	case "FEBRUARY":
+    		return "02";
+    	case "MARCH":
+    		return "03";
+    	case "APRIL":
+    		return "04";
+    	case "MAY":
+    		return "05";
+    	case "JUNE":
+    		return "06";
+    	case "JULY":
+    		return "07";
+    	case "AUGUST":
+    		return "08";
+    	case "SEPTEMBER":
+    		return "09";
+    	case "OCTOBER":
+    		return "10";
+    	case "NOVEMBER":
+    		return "11";
+    	case "DECEMBER":
+    		return "12";
+    	}
+		return " ";
+    }
+    
+    
+	private int current_row = -2;
+	private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    	// thay doi
+    	if (evt.getSource() == jButton6) {
+    		boolean hasq = false;
+    		int row_select = jTable1.getSelectedRow();
+    		
+    		if (row_select >= index) {
+        		jTextField1.setText(null);
+        		jTextField2.setText(null);
+        		jTextField4.setText(null);
+        		jTextField9.setText(null);
+        		jTextField6.setText(null);
+    			jDateChooser2.setDate(null);
+        		jTextField10.setText(null);
+        		
+        		JOptionPane.showMessageDialog(null,
+	        		    "Vui lòng chọn đại lý tồn tại",
+	                    "ERROR",
+	                    JOptionPane.ERROR_MESSAGE);
+        		
+    			current_row = row_select;
+    			
+                return;
+    		}
+    		
+    		if (current_row >= 0 ) {
+    			jTable1.getSelectionModel().setSelectionInterval(current_row, current_row);
+
+    			jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/tick_32px.png"))); // NOI18N
+    	        jButton6.setText("Xác nhận");
+    		}
+    		
+    		if (row_select >= 0) {
+    			if (current_row != row_select) {
+	    			jTextField1.setText(queries[row_select][0]);
+	    			jTextField2.setText(queries[row_select][1]);
+	    			
+	    			jComboBox1.getModel().setSelectedItem(queries[row_select][2].toString().substring(1,queries[row_select][2].length()));
+	    			
+	    			jTextField4.setText(queries[row_select][4]);
+	    			jTextField9.setText(queries[row_select][5]);
+	    			jTextField6.setText(queries[row_select][6]);
+	    			try {
+						jDateChooser2.setDate(new SimpleDateFormat("yyyy-MM-dd").parse(queries[row_select][7]));
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	    			jTextField10.setText(queries[row_select][8]);
+    			}
+    			
+    			current_row = row_select;
+    			
+				String num_loaidaily = (String) jComboBox1.getModel().getSelectedItem();
+				String loaidaily = null;
+				if (num_loaidaily.length() == 1)
+					loaidaily = "L0" + num_loaidaily;
+				else
+					loaidaily = "L" + num_loaidaily;
+    			
+    			DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy");
+    			LocalDate localDate1 = LocalDate.parse(jDateChooser2.getDate().toString(),fmt2);
+    			String day = "";
+    			if (String.valueOf(localDate1.getDayOfMonth()).length() == 1)
+    				day = "0" + localDate1.getDayOfMonth();
+    			else
+    				day = String.valueOf(localDate1.getDayOfMonth());
+    			String date = day + "/" + convertMonth(localDate1.getMonth().toString()) + "/" + localDate1.getYear();
+    			    			    			
+    	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
+    	        jButton6.setText("Sửa đổi");
+    	        
+    			try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    			{
+    	            if (conn != null) {
+    	                System.out.println("Connected to the database!");
+    	                Statement st =  conn.createStatement();
+    	                
+    	    			String update_query = "Update daily set " + "madaily = " + "\'" +  jTextField1.getText() + "\'"+ ", tendaily = N" + "\'" +  jTextField2.getText() + "\'" + ", maloaidaily = " + "\'" +  loaidaily + "\'"+ ", diachi = N" + "\'" +  jTextField4.getText() + "\'"+ ", maquan = " + "\'" +  Quan(jTextField4.getText()) + "\'" + ", ngaytiepnhan = " + "\'" + date + "\'"+ ", dienthoai = " + "\'" +  jTextField9.getText() + "\'"+ ", email = " + "\'" +  jTextField6.getText() + "\'"+ ", tongno = " + "\'" +  jTextField10.getText() + "\'" + " where madaily = " + "\'" + queries[row_select][0] + "\'";
+    	    			CallableStatement cstmt;
+    	    			cstmt = conn.prepareCall("{call Pro_Update_TongNo(?,?,?)}");
+    	    			cstmt.setString(1, jTextField1.getText());
+    	    			
+    	    			cstmt.setLong(2, Long.parseLong(jTextField10.getText()));
+    	    			cstmt.registerOutParameter(3, Types.INTEGER);
+    	    			cstmt.executeUpdate();
+    	    			
+            			Statement stq = conn.createStatement();
+            			ResultSet rsq = stq.executeQuery("select * from quan");
+            			String quan = Quan(jTextField4.getText().toString());
+            			while (rsq.next()){
+            				if (quan.equals(rsq.getString("maquan"))){
+            					hasq = true;
+            				}
+            			}
+    	    			
+    	    			System.out.println(Long.parseLong(jTextField10.getText()));
+    	    			if (cstmt.getInt(3) == 0) {
+                        	JOptionPane.showMessageDialog(null,
+                                    "Tiền nợ đã vượt quá quy định, không thể Sửa đổi",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                        	return;
+    	    			}
+    	    			
+    	    			System.out.println(update_query);
+    	    			
+    	    			st.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY'");
+    	                st.execute(update_query);
+    	            }
+    	            else {
+    	                System.out.println("Failed to make connection!");
+    	            }
+    	        } 
+    			catch (SQLException e) {
+    	            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                    
+    	            if (!hasq) {
+                        JOptionPane.showMessageDialog(null,
+                                "Quận không tồn tại",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+    	            
+    	            if (e.getSQLState().equals("23000"))
+                    {    
+                    	JOptionPane.showMessageDialog(null,
+                                "Mã đại lý đã tồn tại",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+                    }
+
+    	        } catch (Exception e) {
+    	            e.printStackTrace();
+                	JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                	return;
+
+                	
+    	        }		
+    			
+    			queries[row_select][0] = jTextField1.getText(); // avoid conflict while update
+    			queries[row_select][1] = jTextField2.getText();
+    			queries[row_select][2] = loaidaily;
+    			queries[row_select][3] = Quan(jTextField4.getText());
+    			queries[row_select][4] = jTextField4.getText();
+    			queries[row_select][5] = jTextField9.getText();
+    			queries[row_select][6] = jTextField6.getText();
+    			queries[row_select][7] = localDate1.getYear() + "-" + convertMonth(localDate1.getMonth().toString()) + "-" + day;
+    			queries[row_select][8] = jTextField10.getText();
+
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                        queries,
+                        new String [] {
+                            "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
+                        }
+                    ));
+    		}
+    		}
+    	}
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+    	// them
+    	if (evt.getSource() == jButton7) {
+    		boolean hasq = false;
+    		String loaidaily = null;
+    		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    		{
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    ResultSet rs;
+                    String[] value = new String[100];
+                    String date = null;
+        			String pro_date = null;
+        			try {
+        				String num_loaidaily = (String) jComboBox1.getModel().getSelectedItem();
+        				loaidaily = null;
+        				if (num_loaidaily.length() == 1)
+        					loaidaily = "L0" + num_loaidaily;
+        				else
+        					loaidaily = "L" + num_loaidaily;
+
+                        value[0] = jTextField1.getText();
+                        value[1] = jTextField2.getText();
+                        value[2] = loaidaily ;
+            			value[3] = Quan(jTextField4.getText());
+                        value[4] = jTextField4.getText();
+                        value[5] = jTextField9.getText();
+                        value[6] = jTextField6.getText();
+                        value[8] = jTextField10.getText();
+            			
+            			DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy");
+            			LocalDate localDate1 = LocalDate.parse(jDateChooser2.getDate().toString(),fmt2);
+            			date = localDate1.getYear() + "-" +  convertMonth(localDate1.getMonth().toString()) + "-" + localDate1.getDayOfMonth() ;
+            			value[7] = date;
+
+                        if (countBlank(value) >0) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Vui lòng nhập đúng và đầy đủ thông tin về đại lý",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                    } 
+        			catch(Exception e) {
+            			
+                        if (countNull(value) >0) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Vui lòng nhập đúng và đầy đủ thông tin về đại lý",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+        			
+                    }
+        			
+        			// dem so quan dang ton tai
+        			int count1 = 0;
+        			for (int i = 0;i<index;i++) {
+        				if (queries[i][3].equals(Quan(jTextField4.getText().toString())))
+            			{
+        					count1 += 1;
+        				}
+        			}
+
+        			// ktra quan ton tai
+        			Statement stq = conn.createStatement();
+        			ResultSet rsq = stq.executeQuery("select * from quan");
+        			String quan = Quan(jTextField4.getText().toString());
+        			while (rsq.next()){
+        				if (quan.equals(rsq.getString("maquan"))){
+        					hasq = true;
+        				}
+        			}
+        			
+        			if (count1 != 0) {
+    	    			CallableStatement cstmt;
+    	    			cstmt = conn.prepareCall("{call Insert_DAILY(?,?,?,?,?,?,?,?,?,?)}");
+                        st.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY/MM/DD'");
+    
+    	    			cstmt.setString(1, value[0]);
+    	    			cstmt.setString(2,value[1]);
+    	    			cstmt.setString(3,value[2]);
+    	    			cstmt.setString(4,value[4]);
+    	    			cstmt.setString(5,value[3]);
+    
+    	    			cstmt.setString(6, date);
+    	    			cstmt.setString(7,value[5]);
+    	    			cstmt.setString(8, value[6]);
+    	    			cstmt.setLong(9, Long.parseLong(value[8]));
+    	    			
+    	    			cstmt.registerOutParameter(10, Types.INTEGER);
+    	    			cstmt.executeUpdate();
+    	    			
+    	    			if (cstmt.getInt(10) == 0) {
+                        	JOptionPane.showMessageDialog(null,
+                                    "Số đại lý tối đa trong quận đã vượt quá quy định, không thể thêm đại lý",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                        	return;
+    	    			}
+
+        			}
+
+	    			CallableStatement cstmt;
+	    			cstmt = conn.prepareCall("{call Pro_Insert_TongNo(?,?,?)}");
+	    			cstmt.setString(1, loaidaily);
+	    			
+	    			cstmt.setLong(2, Long.parseLong(jTextField10.getText()));
+	    			cstmt.registerOutParameter(3, Types.INTEGER);
+	    			cstmt.executeUpdate();
+	    			
+	    			if (cstmt.getInt(3) == 0) {
+                    	JOptionPane.showMessageDialog(null,
+                                "Tiền nợ đã vượt quá quy định, không thể Sửa đổi",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+	    			}
+
+                    
+                    String insert_query = "Insert into daily values (\'" + value[0] + "\'" + ',' + "\'" + value[1] + "\'" +  "," +  "\'" + value[2] + "\'" +  "," + "\'" + value[4] + "\'" +  ","+ "\'" + value[3] + "\'" +  ","+ "\'" + date + "\'" +  ","+ "\'" + value[5] + "\'" +  ","+ "\'" + value[6] + "\'" +  ","+ "\'" + value[8] + "\')";
+                    System.out.println(insert_query);
+                    
+                    st.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY/MM/DD'");
+                    st.execute(insert_query);
+                    
+                    queries[index] = value;
+                    index+=1;
+                    
+                    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                            queries,
+                            new String [] {
+                                "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
+                            }
+                        ));
+                 
+                } else {
+                    System.out.println("Failed to make connection!");
+                }
+
+            } catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                
+                if (!hasq) {
+                    JOptionPane.showMessageDialog(null,
+                            "Quận không tồn tại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                
+                
+                if (e.getSQLState().equals("23000"))
+                    JOptionPane.showMessageDialog(null,
+                            "Mã đại lý đã tồn tại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+
+            }
+    		catch (Exception e) {
+	            e.printStackTrace();
+            	JOptionPane.showMessageDialog(null,
+                        "Vui lòng nhập đúng định dạng",
+                        "ERROR",
+                        JOptionPane.ERROR_MESSAGE);
+            	return;            	
+	        }		
+	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
+	        jButton6.setText("Sửa đổi");
+    		
+    	}
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
-
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -508,8 +1081,6 @@ public class HoSoDaiLy extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
@@ -519,5 +1090,9 @@ public class HoSoDaiLy extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private String[][] queries = new String[100][100];
+    private int index = 0;
+
     // End of variables declaration//GEN-END:variables
 }
