@@ -254,7 +254,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
 	                System.out.println("Connected to the database!");
 	                Statement st =  conn.createStatement();
 	                ResultSet rs;
-	                String query = "Select * from loaidaily";
+	                String query = "Select * from loaidaily order by maloaidaily";
 	                System.out.println(query);
 
 	                rs = st.executeQuery(query);
@@ -502,7 +502,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
         	                System.out.println("Connected to the database!");
         	                Statement st =  conn.createStatement();
         	                ResultSet rs;
-        	                String query = "Select * from loaidaily";
+        	                String query = "Select * from loaidaily order by maloaidaily";
         	                System.out.println(query);
 
         	                rs = st.executeQuery(query);
@@ -808,7 +808,7 @@ public class QuyCheToChuc extends javax.swing.JFrame {
     	                System.out.println("Connected to the database!");
     	                Statement st =  conn.createStatement();
     	                ResultSet rs;
-    	                String query = "Select * from quan";
+    	                String query = "Select * from quan order by maquan";
     	                System.out.println(query);
 
     	                rs = st.executeQuery(query);

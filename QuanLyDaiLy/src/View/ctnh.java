@@ -197,7 +197,7 @@ public class ctnh extends javax.swing.JFrame {
                 System.out.println("Connected to the database!");
                 Statement st =  conn.createStatement();
                 ResultSet rs;
-                String query1 = "select * from chitietphieunhap";
+                String query1 = "select * from chitietphieunhap order by MA_CTPN";
                 System.out.println(query1);
                 rs = st.executeQuery(query1);
                 while (rs.next()) {

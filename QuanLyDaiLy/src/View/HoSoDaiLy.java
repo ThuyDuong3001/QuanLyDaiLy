@@ -238,7 +238,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                 System.out.println("Connected to the database!");
                 Statement st =  conn.createStatement();
                 ResultSet rs;
-                rs = st.executeQuery("select * from daily");
+                rs = st.executeQuery("select * from daily order by MADAILY");
                 
                 while (rs.next()) {
                     String[] value = new String[100];

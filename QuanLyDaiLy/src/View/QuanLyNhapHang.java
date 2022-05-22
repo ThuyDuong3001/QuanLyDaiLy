@@ -189,7 +189,7 @@ public class QuanLyNhapHang extends javax.swing.JFrame {
                 System.out.println("Connected to the database!");
                 Statement st =  conn.createStatement();
                 ResultSet rs;
-                String query1 ="select * from PHIEUNHAPHANG";
+                String query1 ="select * from PHIEUNHAPHANG order by MAPHIEUNHAP";
                 System.out.println(query1);
                 rs = st.executeQuery(query1);
                 while (rs.next()) {

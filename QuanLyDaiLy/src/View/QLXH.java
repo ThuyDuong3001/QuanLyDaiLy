@@ -203,7 +203,7 @@ public class QLXH extends javax.swing.JFrame {
                 Statement st =  conn.createStatement();
                 ResultSet rs;
                 String mapx = jTextField5.getText();  
-                String query1 = "select * from PHIEUXUATHANG ";  
+                String query1 = "select * from PHIEUXUATHANG order by MAPHIEUXUAT";  
                 System.out.println(query1);
                 rs = st.executeQuery(query1);
                 while (rs.next()) {
