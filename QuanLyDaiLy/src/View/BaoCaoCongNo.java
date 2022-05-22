@@ -247,6 +247,7 @@ public class BaoCaoCongNo extends javax.swing.JFrame {
                 if (conn != null) {
                 	if (jTextFieldthang.getText().isBlank() & !jTextFieldnam.getText().isBlank())
                 	{
+                		try {
                         System.out.println("Connected to the database!");                    
     	    			String query_daily = "select * from daily";
     	    			
@@ -290,7 +291,15 @@ public class BaoCaoCongNo extends javax.swing.JFrame {
                                 }
                             ));
                         return;
+                		}
+                    	catch(NumberFormatException n) {
+                    		JOptionPane.showMessageDialog(null,
+                                    "Vui lòng nhập số",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                        	return;
 
+                    	}
                 	}
                 	
                 	try {
