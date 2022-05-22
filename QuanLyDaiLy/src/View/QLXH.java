@@ -377,8 +377,14 @@ public class QLXH extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if (evt.getSource() == jButton1) {
-            this.setVisible(false);
-            new Home().setVisible(true);;
+    		if (truycap.quyentruycap.equals("NND01")) {
+    			new Home().setVisible(true);
+    			this.setVisible(false);
+    		}
+    		else if (truycap.quyentruycap.equals("NND02")) {
+    			new Home_NhanVien().setVisible(true);
+    			this.setVisible(false);
+    		}
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

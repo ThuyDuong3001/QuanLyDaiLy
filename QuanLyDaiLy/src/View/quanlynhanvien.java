@@ -4,6 +4,21 @@
  */
 package View;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Types;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author NDAT_UIT
@@ -120,11 +135,17 @@ public class quanlynhanvien extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear_32px.png"))); // NOI18N
         jButton5.setText("Xoá");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
+        
         jButton6.setBackground(new java.awt.Color(217, 198, 236));
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
-        jButton6.setText("Sửa");
+        jButton6.setText("Sửa Đổi");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -155,6 +176,11 @@ public class quanlynhanvien extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/search.png"))); // NOI18N
         jButton3.setText("Tìm Kiếm");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -205,6 +231,46 @@ public class quanlynhanvien extends javax.swing.JFrame {
 
         jDateChooser2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
+		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+		{
+            if (conn != null) {
+                System.out.println("Connected to the database!");
+                Statement st =  conn.createStatement();
+                ResultSet rs;
+                rs = st.executeQuery("select * from nhanvien");
+                
+                while (rs.next()) {
+                    String[] value = new String[100];
+                    
+                	value[0] = rs.getString("CMND");
+                	value[1] = rs.getString("tennv");
+                	value[2] = rs.getDate("ngaysinh").toString();
+                	value[3] = rs.getString("sdt");
+                	value[4] = rs.getString("tendangnhap");                	
+                	
+                	queries[index] = value;
+                	index +=1 ;
+                
+                }
+
+            } else {
+                System.out.println("Failed to make connection!");
+            }
+
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }		
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                queries,
+                new String [] {
+                    "Số CMND/CCCD", "Tên Nhân Viên", "Ngày Sinh", "Số Điện Thoại", "Tên Đăng Nhập"
+                }
+            ));
+
+		
+        
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -329,23 +395,454 @@ public class quanlynhanvien extends javax.swing.JFrame {
         );
 
         pack();
+        
+
+        
     }// </editor-fold>//GEN-END:initComponents
+    
+    private String convertMonth(String month) {
+    	switch (month) {
+    	case "JANUARY":
+    		return "01";
+    	case "FEBRUARY":
+    		return "02";
+    	case "MARCH":
+    		return "03";
+    	case "APRIL":
+    		return "04";
+    	case "MAY":
+    		return "05";
+    	case "JUNE":
+    		return "06";
+    	case "JULY":
+    		return "07";
+    	case "AUGUST":
+    		return "08";
+    	case "SEPTEMBER":
+    		return "09";
+    	case "OCTOBER":
+    		return "10";
+    	case "NOVEMBER":
+    		return "11";
+    	case "DECEMBER":
+    		return "12";
+    	}
+		return " ";
+    }
+
+    private int countBlank(String[] arr) {
+    	int count = 0;
+    	for (int i =0;i<=4;i++) {
+    		if (arr[i].isBlank())
+    			count +=1;
+    	}
+    	return count;
+    }
+    private int countNull(String[] arr) {
+    	int count = 0;
+    	for (int i =0;i<=4;i++) {
+    		if (arr[i]== null)
+    			count +=1;
+    	}
+    	return count;
+    }
+    private String[][] removeElement(String[][] arr,int id) {
+    	if (id < 0 || arr == null || id >= arr.length)
+    		return arr;
+    	
+    	String[][] arr_temp = new String[arr.length-1][];
+    	index -= 1;
+    	
+    	for (int i = 0,k=0;i<arr.length;i++) {
+    		if (i == id) 
+    			continue;
+    		arr_temp[k++] = arr[i];
+    	}
+    	return arr_temp;
+    }
+
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     	if (evt.getSource() == jButton1) {
-    		this.setVisible(false);
-    		new Home().setVisible(true);
+    		if (truycap.quyentruycap.equals("NND01")) {
+    			new Home().setVisible(true);
+    			this.setVisible(false);
+    		}
+    		else if (truycap.quyentruycap.equals("NND02")) {
+    			new Home_NhanVien().setVisible(true);
+    			this.setVisible(false);
+    		}
+    	}
+    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    	// xoa
+    	if (evt.getSource() == jButton5) {
+    		int row_select = jTable1.getSelectedRow();
+    		if (row_select == -1) {
+                JOptionPane.showMessageDialog(null,
+                        "Vui lòng chọn nhân viên cần xóa",
+                        "ERROR",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+
+    		}
+    		if (row_select >=0 ) {
+        		if (countNull(queries[row_select]) == 9) {
+                    JOptionPane.showMessageDialog(null,
+                            "Vui lòng chọn nhân viên tồn tại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+        		}
+    		}
+
+    		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    		{
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    String delete_query = "Delete from nhanvien where cmnd = " + "\'" + queries[row_select][0] + "\'";
+                    System.out.println(delete_query);
+                    st.execute(delete_query);
+            		queries = removeElement(queries,row_select);
+
+                    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                    		queries,
+                            new String [] {
+                                    "Số CMND/CCCD", "Tên Nhân Viên", "Ngày Sinh", "Số Điện Thoại", "Tên Đăng Nhập"
+                            }
+                        ));
+
+                } else {
+                    System.out.println("Failed to make connection!");
+                }
+
+            } catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                if (e.getSQLState().equals("23000"))
+                    JOptionPane.showMessageDialog(null,
+                            "Lỗi khóa chính/ngoại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+ 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }		
+	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
+	        jButton6.setText("Sửa đổi");
+
     	}
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+	private int current_row = -2;
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    	// sua 
+    	if (evt.getSource() == jButton6) {
+    		boolean hasdn = false;
+    		int row_select = jTable1.getSelectedRow();
+    		
+    		if (row_select >= index) {
+        		jTextField1.setText(null);
+        		jTextField2.setText(null);
+        		jTextField4.setText(null);
+        		jTextField7.setText(null);
+    			jDateChooser2.setDate(null);
 
+        		JOptionPane.showMessageDialog(null,
+	        		    "Vui lòng chọn nhân viên tồn tại",
+	                    "ERROR",
+	                    JOptionPane.ERROR_MESSAGE);
+        		
+    			current_row = row_select;
+    			
+                return;
+    		}
+    		
+    		if (current_row >= 0 ) {
+    			jTable1.getSelectionModel().setSelectionInterval(current_row, current_row);
+
+    			jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/tick_32px.png"))); // NOI18N
+    	        jButton6.setText("Xác nhận");
+    		}
+    		
+    		if (row_select >= 0) {
+    			if (current_row != row_select) {
+	    			jTextField1.setText(queries[row_select][0]);
+	    			jTextField2.setText(queries[row_select][1]);
+	    			try {
+						jDateChooser2.setDate(new SimpleDateFormat("yyyy-MM-dd").parse(queries[row_select][2]));
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+		
+	    			jTextField4.setText(queries[row_select][3]);
+	    			jTextField7.setText(queries[row_select][4]);
+    			}
+    			
+    			current_row = row_select;
+    			    			
+    			DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy");
+    			LocalDate localDate1 = LocalDate.parse(jDateChooser2.getDate().toString(),fmt2);
+    			String day = "";
+    			if (String.valueOf(localDate1.getDayOfMonth()).length() == 1)
+    				day = "0" + localDate1.getDayOfMonth();
+    			else
+    				day = String.valueOf(localDate1.getDayOfMonth());
+    			String date = day + "/" + convertMonth(localDate1.getMonth().toString()) + "/" + localDate1.getYear();
+    			    			    			
+    	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
+    	        jButton6.setText("Sửa đổi");
+    	        
+    			try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    			{
+    	            if (conn != null) {
+    	                System.out.println("Connected to the database!");
+    	                Statement st =  conn.createStatement();
+    	                
+    	    			String update_query = "Update nhanvien set " + "cmnd = " + "\'" +  jTextField1.getText() + "\'"+ ", tennv = N" + "\'" +  jTextField2.getText() + "\'" + ", ngaysinh = " + "\'" +  date + "\'"+ ", sdt = N" + "\'" +  jTextField4.getText() + "\'"+ ", tendangnhap = " + "\'" + jTextField7.getText()  + "\' where cmnd = " + "\'" + queries[row_select][0] + "\'";
+    	    			System.out.println(update_query);
+    	    			
+                        Statement st1 =  conn.createStatement();
+                        ResultSet rs1;
+                        String query_tendn = "select * from nguoidung";
+                        rs1 = st1.executeQuery(query_tendn);
+                        while (rs1.next()) {
+                        	if (jTextField7.getText().equals(rs1.getString("tendangnhap"))) {
+                        		hasdn = true;
+                        	}
+                        }
+
+    	    			st.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY'");
+    	                st.execute(update_query);
+    	            }
+    	            else {
+    	                System.out.println("Failed to make connection!");
+    	            }
+    	        } 
+    			catch (SQLException e) {
+    	            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+                    
+    	            if (!hasdn) {
+                        JOptionPane.showMessageDialog(null,
+                                "Tên đăng nhập không tồn tại",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+    	            
+    	            if (e.getSQLState().equals("23000"))
+                    {    
+                    	JOptionPane.showMessageDialog(null,
+                                "CMND đã tồn tại",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    	return;
+                    }
+
+    	        } catch (Exception e) {
+    	            e.printStackTrace();
+                	JOptionPane.showMessageDialog(null,
+                            "Vui lòng nhập đúng định dạng",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                	return;
+
+                	
+    	        }		
+    			
+    			queries[row_select][0] = jTextField1.getText(); // avoid conflict while update
+    			queries[row_select][1] = jTextField2.getText();
+    			queries[row_select][2] = localDate1.getYear() + "-" + convertMonth(localDate1.getMonth().toString()) + "-" + day;    			queries[row_select][3] = jTextField4.getText();
+    			queries[row_select][4] = jTextField7.getText();
+
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                        queries,
+                        new String [] {
+                                "Số CMND/CCCD", "Tên Nhân Viên", "Ngày Sinh", "Số Điện Thoại", "Tên Đăng Nhập"
+                        }
+                    ));
+    		}
+    		}
+
+    	}
+    //GEN-LAST:event_jButton1ActionPerformed
+
+    
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
+    	// them
+    	if (evt.getSource() == jButton7) {
+    		boolean hasdn = false;
+    		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    		{
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    ResultSet rs;
+                    String[] value = new String[100];
+                    String date = null;
+        			
+        			try {
+        				value[0] = jTextField1.getText();
+        				value[1] = jTextField2.getText();
+        				
+            			DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy");
+            			LocalDate localDate1 = LocalDate.parse(jDateChooser2.getDate().toString(),fmt2);
+            			String day = "";
+            			if (String.valueOf(localDate1.getDayOfMonth()).length() == 1)
+            				day = "0" + localDate1.getDayOfMonth();
+            			else
+            				day = String.valueOf(localDate1.getDayOfMonth());
+
+            			date = localDate1.getYear() + "-" +  convertMonth(localDate1.getMonth().toString()) + "-" + day ;
+            			value[2] = date;
+        				value[3] = jTextField4.getText();
+        				value[4] = jTextField7.getText();
+        				
+                        if (countBlank(value) >0) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Vui lòng nhập đúng và đầy đủ thông tin về nhân viên",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                    } 
+        			catch(Exception e) {
+                        if (countNull(value) >0) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Vui lòng nhập đúng và đầy đủ thông tin về nhân viên",
+                                    "ERROR",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                    }
+        			
+                    Statement st1 =  conn.createStatement();
+                    ResultSet rs1;
+                    String query_tendn = "select * from nguoidung";
+                    rs1 = st1.executeQuery(query_tendn);
+                    while (rs1.next()) {
+                    	if (value[4].equals(rs1.getString("tendangnhap"))) {
+                    		hasdn = true;
+                    	}
+                    }
+                    
+            		
+            		String insert_query = "insert into nhanvien values(\'" + value[0] + "\',\'" + value[1] + "\',\'" + value[2] + "\',\'" + value[3] + "\',\'" + value[4] + "\')";
+            		System.out.println(insert_query);
+                    st.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY/MM/DD'");
+            		st.execute(insert_query);
+
+            		queries[index] = value;
+            		index += 1;
+
+            		jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                            queries,
+                            new String [] {
+                                "Số CMND/CCCD", "Tên Nhân Viên", "Ngày Sinh", "Số Điện Thoại", "Tên Đăng Nhập"
+                            }
+                        ));
+  
+                } else {
+                    System.out.println("Failed to make connection!");
+                }
+                
+        		
+
+            } catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+	            
+                if (!hasdn) {
+                	JOptionPane.showMessageDialog(null,
+                            "Tên đăng nhập không tồn tại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                	return;
+
+                }
+                
+                if (e.getSQLState().equals("23000"))
+                {    
+                	JOptionPane.showMessageDialog(null,
+                            "CMND đã tồn tại",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+                	return;
+                }
+
+            }
+    		catch (Exception e) {
+	            e.printStackTrace();
+            	JOptionPane.showMessageDialog(null,
+                        "Vui lòng nhập đúng định dạng",
+                        "ERROR",
+                        JOptionPane.ERROR_MESSAGE);
+            	return;            	
+    		}
+	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
+	        jButton6.setText("Sửa đổi");
+
+    	} 
+
+    	
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+    	// tim kiem
+    	if (evt.getSource() == jButton3) {
+    		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+    		{
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    ResultSet rs;
+                    String query_text = jTextField5.getText();
+                    if (query_text.isBlank()) {
+                        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                                queries,
+                                new String [] {
+                                        "Số CMND/CCCD", "Tên Nhân Viên", "Ngày Sinh", "Số Điện Thoại", "Tên Đăng Nhập"
+                                }));
+                        return;
+                    }
+                    String query = "select * from nhanvien where cmnd = \'" + query_text +"\'";
+                    System.out.println(query);
+                    rs = st.executeQuery(query);
+                    int i = 0;
+                    String find_queries[][] = new String[100][100];
+                    while (rs.next()) {
+                        String[] value = new String[100];
+                    	value[0] = rs.getString("cmnd");
+                    	value[1] = rs.getString("tennv");
+                    	value[2] = rs.getDate("ngaysinh").toString();
+                    	value[3] = rs.getString("sdt");
+                    	value[4] = rs.getString("tendangnhap");
+                    	find_queries[i] = value;
+                    	i +=1 ;
+                    }
+                    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                    		find_queries,
+                            new String [] {
+                                    "Số CMND/CCCD", "Tên Nhân Viên", "Ngày Sinh", "Số Điện Thoại", "Tên Đăng Nhập"
+                            }));
+                 
+                } else {
+                    System.out.println("Failed to make connection!");
+                }
+
+            } catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }	
+    		
+    	}
+
+    	
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -405,5 +902,7 @@ public class quanlynhanvien extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField7;
+    String[][] queries = new String[1000][];
+    int index = 0;
     // End of variables declaration//GEN-END:variables
 }

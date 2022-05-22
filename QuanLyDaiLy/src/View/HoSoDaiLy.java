@@ -105,7 +105,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Icon_64px.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed1(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -336,16 +336,15 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel10)
                                             .addComponent(jLabel7)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel10))
+                                            .addComponent(jLabel8))
                                         .addGap(65, 65, 65)
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            ))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addGap(107, 107, 107)
                                         .addComponent(jButton6))))
@@ -371,14 +370,14 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
                             .addComponent(jComboBox1)
                             )
                         .addGap(20, 20, 20)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            ))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -390,12 +389,12 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                                     .addComponent(jLabel7)
                                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(20, 20, 20)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addComponent(jLabel4)))
                         .addGap(18, 18, 18)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -459,19 +458,18 @@ public class HoSoDaiLy extends javax.swing.JFrame {
 		}
 	}
 
-	private void jButton1ActionPerformed1(ActionEvent evt) {
-		// TODO Auto-generated method stub
-		if (evt.getSource() == jButton1) {
-			this.setVisible(false);
-			new Home().setVisible(true);;
-		}
-	}
 
 	private void jButton1ActionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub
 		if (evt.getSource() == jButton1) {
-			this.setVisible(false);
-			new Home().setVisible(true);;
+    		if (truycap.quyentruycap.equals("NND01")) {
+    			new Home().setVisible(true);
+    			this.setVisible(false);
+    		}
+    		else if (truycap.quyentruycap.equals("NND02")) {
+    			new Home_NhanVien().setVisible(true);
+    			this.setVisible(false);
+    		}
 		}
 	}
 
@@ -510,7 +508,6 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                     	value[5] = rs.getString("dienthoai");
                     	value[6] = rs.getString("email");
                     	value[7] = rs.getString("ngaytiepnhan");
-                    	value[8] = rs.getString("tongno");
                     	find_queries[i] = value;
                     	i +=1 ;
                     }
@@ -877,11 +874,17 @@ public class HoSoDaiLy extends javax.swing.JFrame {
                         value[4] = jTextField4.getText();
                         value[5] = jTextField9.getText();
                         value[6] = jTextField6.getText();
-                        value[8] = jTextField10.getText();
+                        value[8] = "0";
             			
             			DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy");
             			LocalDate localDate1 = LocalDate.parse(jDateChooser2.getDate().toString(),fmt2);
-            			date = localDate1.getYear() + "-" +  convertMonth(localDate1.getMonth().toString()) + "-" + localDate1.getDayOfMonth() ;
+            			String day = "";
+            			if (String.valueOf(localDate1.getDayOfMonth()).length() == 1)
+            				day = "0" + localDate1.getDayOfMonth();
+            			else
+            				day = String.valueOf(localDate1.getDayOfMonth());
+
+            			date = localDate1.getYear() + "-" +  convertMonth(localDate1.getMonth().toString()) + "-" + day ;
             			value[7] = date;
 
                         if (countBlank(value) >0) {
@@ -956,7 +959,7 @@ public class HoSoDaiLy extends javax.swing.JFrame {
 	    			cstmt = conn.prepareCall("{call Pro_Insert_TongNo(?,?,?)}");
 	    			cstmt.setString(1, loaidaily);
 	    			
-	    			cstmt.setLong(2, Long.parseLong(jTextField10.getText()));
+	    			cstmt.setLong(2, Long.parseLong(value[8]));
 	    			cstmt.registerOutParameter(3, Types.INTEGER);
 	    			cstmt.executeUpdate();
 	    			

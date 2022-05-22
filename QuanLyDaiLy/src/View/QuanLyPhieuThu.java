@@ -605,6 +605,7 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
                     Statement st =  conn.createStatement();
                     ResultSet rs;
                     String mpt = jTextField5.getText();
+                    System.out.println(mpt);
                     if (mpt.isBlank()) {
                         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                                 queries,
@@ -622,8 +623,8 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
                     while (rs.next()) {
                         String[] value = new String[100];
                         value[0] = rs.getString("MAPHIEUTHUTIEN");
-                        value[1] = rs.getString("MADAILY");
-                        value[2] = rs.getString("NGAYTHUTIEN");
+                        value[1] = rs.getString("MAPHIEUXUAT");
+                        value[2] = rs.getDate("NGAYTHUTIEN").toString();
                         value[3] = rs.getString("SOTIENTHU");     
                         find_queries[i] = value;
                         i+= 1;
@@ -710,8 +711,14 @@ public class QuanLyPhieuThu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if (evt.getSource() == jButton1) {
-            this.setVisible(false);
-            new Home().setVisible(true);;
+    		if (truycap.quyentruycap.equals("NND01")) {
+    			new Home().setVisible(true);
+    			this.setVisible(false);
+    		}
+    		else if (truycap.quyentruycap.equals("NND02")) {
+    			new Home_NhanVien().setVisible(true);
+    			this.setVisible(false);
+    		}
 	}
     }//GEN-LAST:event_jButton1ActionPerformed
 

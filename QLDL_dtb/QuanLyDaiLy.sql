@@ -381,7 +381,7 @@ AS
     num_nodau NUMBER:=0;
 BEGIN
     begin
-        select sotienno into num_nodau from phieuxuathang 
+        select tongtien into num_nodau from phieuxuathang 
         where EXTRACT(month FROM ngaylap) = thang and EXTRACT(year FROM ngaylap) = nam
         and madaily = var_madl 
         and ((EXTRACT(day FROM ngaylap)) = (select min(EXTRACT(day FROM ngaylap)) from phieuxuathang));
@@ -394,31 +394,13 @@ BEGIN
     RETURN num_nodau;
 END;
 
-CREATE OR REPLACE FUNCTION Func_Nodau(var_madl IN daily.madaily%TYPE,thang IN NUMBER,nam IN NUMBER)
-        RETURN NUMBER
-AS
-    num_nodau NUMBER:=0;
-BEGIN
-    begin
-        select sotienno into num_nodau from phieuxuathang 
-        where EXTRACT(month FROM ngaylap) = thang and EXTRACT(year FROM ngaylap) = nam
-        and madaily = var_madl 
-        and ((EXTRACT(day FROM ngaylap)) = (select min(EXTRACT(day FROM ngaylap)) from phieuxuathang));
-        EXCEPTION
-    wHEN NO_DATA_FOUND THEN
-        num_nodau := 0;
-    
-    end;
-    
-    RETURN num_nodau;
-END;
 CREATE OR REPLACE FUNCTION Func_NodauNam(var_madl IN daily.madaily%TYPE,nam IN NUMBER)
         RETURN NUMBER
 AS
     num_nodau NUMBER:=0;
 BEGIN
     begin
-        select sotienno into num_nodau from phieuxuathang 
+        select tongtien into num_nodau from phieuxuathang 
         where EXTRACT(year FROM ngaylap) = nam and madaily = var_madl 
         and ((EXTRACT(month FROM ngaylap)) = (select min(EXTRACT(month FROM ngaylap)) from phieuxuathang));
         EXCEPTION
@@ -436,7 +418,7 @@ AS
     num_phatsinh NUMBER:=0;
 BEGIN
     begin
-        select sum(sotienno) into num_phatsinh from phieuxuathang 
+        select sum(tongtien) into num_phatsinh from phieuxuathang 
         where EXTRACT(month FROM ngaylap) = thang and EXTRACT(year FROM ngaylap) = nam
         and madaily = var_madl 
         and ((EXTRACT(day FROM ngaylap)) != (select min(EXTRACT(day FROM ngaylap)) from phieuxuathang));
@@ -462,7 +444,7 @@ AS
     num_phatsinh NUMBER:=0;
 BEGIN
     begin
-        select sum(sotienno) into num_phatsinh from phieuxuathang 
+        select sum(tongtien) into num_phatsinh from phieuxuathang 
         where EXTRACT(year FROM ngaylap) = nam
         and madaily = var_madl 
         and ((EXTRACT(month FROM ngaylap)) != (select min(EXTRACT(month FROM ngaylap)) from phieuxuathang));
@@ -479,15 +461,19 @@ BEGIN
     RETURN num_phatsinh;
 END;
 
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('So tien thu: '||Func_PhatSinhNam('DL003',2022));
+END;
 
-CREATE OR REPLACE FUNCTION Func_TienThu(var_madl IN daily.madaily%TYPE,thang IN NUMBER,nam IN NUMBER)
+CREATE OR REPLACE FUNCTION Func_TienThu(var_madl IN VarChar,thang IN NUMBER,nam IN NUMBER)
         RETURN NUMBER
 AS
     num_sotienthu NUMBER:=0;
+    
 BEGIN
     begin
-        select sum(sotienthu) into num_sotienthu from phieuthutien 
-        where EXTRACT(month FROM ngaythutien) = thang and EXTRACT(year FROM ngaythutien) = nam
+        select sum(sotientra) into num_sotienthu from phieuxuathang 
+        where EXTRACT(month FROM ngaylap) = thang and EXTRACT(year FROM ngaylap) = nam
         and madaily = var_madl ;
     EXCEPTION
         wHEN NO_DATA_FOUND THEN
@@ -511,8 +497,8 @@ AS
     num_sotienthu NUMBER:=0;
 BEGIN
     begin
-        select sum(sotienthu) into num_sotienthu from phieuthutien 
-        where EXTRACT(year FROM ngaythutien) = nam 
+        select sum(sotientra) into num_sotienthu from phieuxuathang 
+        where EXTRACT(year FROM ngaylap) = nam 
         and madaily = var_madl ;
     EXCEPTION
         wHEN NO_DATA_FOUND THEN
@@ -527,7 +513,7 @@ BEGIN
 END;
 
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('So tien thu: '||Func_TienThu('DL003',1,2022));
+    DBMS_OUTPUT.PUT_LINE('So tien thu: '||Func_TienThuNam('DL003',2022));
 END;
 
 CREATE OR REPLACE PROCEDURE Pro_BaoCaoCongNo(madl in daily.madaily%TYPE ,nam in Number,thang IN Number,
@@ -551,7 +537,7 @@ BEGIN
 END;
 
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('No phat sinh: '||Func_PhatSinh('DL003',1,2022));
+    DBMS_OUTPUT.PUT_LINE('Tyle: '||Pro_BaoCaoCongNoNam('DL003',1,2022));
 END;
 
 CREATE OR REPLACE FUNCTION Func_SoPhieuXuat(var_madl IN daily.madaily%TYPE,thang IN NUMBER,nam IN NUMBER)

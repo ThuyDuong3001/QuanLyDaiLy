@@ -251,11 +251,11 @@ public class DangNhap extends javax.swing.JFrame {
         			truycap.quyentruycap = quyen;
         			
 	            	if (String.valueOf(jPasswordField2.getPassword()).equals(password)) {
-	            		if (quyen.equals("NND01")) {
+	            		if (truycap.quyentruycap.equals("NND01")) {
 	            			new Home().setVisible(true);
 	            			this.setVisible(false);
 	            		}
-	            		else if (quyen.equals("NND02")) {
+	            		else if (truycap.quyentruycap.equals("NND02")) {
 	            			new Home_NhanVien().setVisible(true);
 	            			this.setVisible(false);
 	            		}

@@ -105,7 +105,7 @@ public class HoSoDaiLy_NhanVien extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Icon_64px.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed1(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -306,16 +306,14 @@ public class HoSoDaiLy_NhanVien extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGap(149, 149, 149)
                                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel9)
+                                        .addComponent(jLabel10)
                                         .addComponent(jLabel7)
-                                        .addComponent(jLabel8)
-                                        .addComponent(jLabel10))
+                                        .addComponent(jLabel8))
                                     .addGap(65, 65, 65)
                                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jPanel5Layout.createSequentialGroup()
                                     .addGap(238, 238, 238)
                                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -342,14 +340,14 @@ public class HoSoDaiLy_NhanVien extends javax.swing.JFrame {
                             .addGap(20, 20, 20)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel5)
-                                .addComponent(jLabel9)
+                                .addComponent(jLabel10)
                                 .addComponent(jComboBox1)
     )
                             .addGap(20, 20, 20)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel6)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                ))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel5Layout.createSequentialGroup()
@@ -361,12 +359,11 @@ public class HoSoDaiLy_NhanVien extends javax.swing.JFrame {
                                         .addComponent(jLabel7)
                                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(20, 20, 20)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel5Layout.createSequentialGroup()
                                     .addGap(5, 5, 5)
                                     .addComponent(jLabel4)))
                             .addGap(18, 18, 18)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, Short.MAX_VALUE)))
                     .addGap(22, 22, 22)
                     .addComponent(jButton7)
@@ -426,19 +423,18 @@ public class HoSoDaiLy_NhanVien extends javax.swing.JFrame {
 		}
 	}
 
-	private void jButton1ActionPerformed1(ActionEvent evt) {
-		// TODO Auto-generated method stub
-		if (evt.getSource() == jButton1) {
-			this.setVisible(false);
-			new Home().setVisible(true);;
-		}
-	}
 
 	private void jButton1ActionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub
 		if (evt.getSource() == jButton1) {
-			this.setVisible(false);
-			new Home().setVisible(true);;
+    		if (truycap.quyentruycap.equals("NND01")) {
+    			new Home().setVisible(true);
+    			this.setVisible(false);
+    		}
+    		else if (truycap.quyentruycap.equals("NND02")) {
+    			new Home_NhanVien().setVisible(true);
+    			this.setVisible(false);
+    		}
 		}
 	}
 
@@ -555,66 +551,6 @@ public class HoSoDaiLy_NhanVien extends javax.swing.JFrame {
 		String abb_quan = address.charAt(position.get(0)+2) + quan.substring(findSpace(quan)+1,quan.length());
 		return abb_quan;
     }
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    	// xoa
-    	if (evt.getSource() == jButton5) {
-    		int row_select = jTable1.getSelectedRow();
-    		if (row_select == -1) {
-                JOptionPane.showMessageDialog(null,
-                        "Vui lòng chọn đại lí cần xóa",
-                        "ERROR",
-                        JOptionPane.ERROR_MESSAGE);
-                return;
-
-    		}
-    		if (row_select >=0 ) {
-        		if (countNull(queries[row_select]) == 9) {
-                    JOptionPane.showMessageDialog(null,
-                            "Vui lòng chọn đại lí tồn tại",
-                            "ERROR",
-                            JOptionPane.ERROR_MESSAGE);
-                    return;
-        		}
-    		}
-
-    		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
-    		{
-                if (conn != null) {
-                    System.out.println("Connected to the database!");
-                    Statement st =  conn.createStatement();
-                    String delete_query = "Delete from daily where madaily = " + "\'" + queries[row_select][0] + "\'";
-                    System.out.println(delete_query);
-                    st.execute(delete_query);
-            		queries = removeElement(queries,row_select);
-
-                    jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                    		queries,
-                            new String [] {
-                                "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
-                            }
-                        ));
-
-                } else {
-                    System.out.println("Failed to make connection!");
-                }
-
-            } catch (SQLException e) {
-                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-                if (e.getSQLState().equals("23000"))
-                    JOptionPane.showMessageDialog(null,
-                            "Lỗi khóa chính/ngoại",
-                            "ERROR",
-                            JOptionPane.ERROR_MESSAGE);
- 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }		
-	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
-	        jButton6.setText("Sửa đổi");
-
-    }
-    }//GEN-LAST:event_jButton6ActionPerformed
     
     private String convertMonth(String month) {
     	switch (month) {
@@ -645,97 +581,84 @@ public class HoSoDaiLy_NhanVien extends javax.swing.JFrame {
     	}
 		return " ";
     }
-    
-    
-	private int current_row = -2;
-	private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    	// thay doi
-    	if (evt.getSource() == jButton6) {
-    		boolean hasq = false;
-    		int row_select = jTable1.getSelectedRow();
-    		
-    		if (row_select >= index) {
-        		jTextField1.setText(null);
-        		jTextField2.setText(null);
-        		jTextField4.setText(null);
-        		jTextField9.setText(null);
-        		jTextField6.setText(null);
-    			jDateChooser2.setDate(null);
-        		jTextField10.setText(null);
-        		
-        		JOptionPane.showMessageDialog(null,
-	        		    "Vui lòng chọn đại lý tồn tại",
-	                    "ERROR",
-	                    JOptionPane.ERROR_MESSAGE);
-        		
-    			current_row = row_select;
-    			
-                return;
-    		}
-    		
-    		if (current_row >= 0 ) {
-    			jTable1.getSelectionModel().setSelectionInterval(current_row, current_row);
 
-    			jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/tick_32px.png"))); // NOI18N
-    	        jButton6.setText("Xác nhận");
-    		}
-    		
-    		if (row_select >= 0) {
-    			if (current_row != row_select) {
-	    			jTextField1.setText(queries[row_select][0]);
-	    			jTextField2.setText(queries[row_select][1]);
-	    			
-	    			jComboBox1.getModel().setSelectedItem(queries[row_select][2].toString().substring(1,queries[row_select][2].length()));
-	    			
-	    			jTextField4.setText(queries[row_select][4]);
-	    			jTextField9.setText(queries[row_select][5]);
-	    			jTextField6.setText(queries[row_select][6]);
-	    			try {
-						jDateChooser2.setDate(new SimpleDateFormat("yyyy-MM-dd").parse(queries[row_select][7]));
-					} catch (ParseException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-	    			jTextField10.setText(queries[row_select][8]);
-    			}
-    			
-    			current_row = row_select;
-    			
-				String num_loaidaily = (String) jComboBox1.getModel().getSelectedItem();
-				String loaidaily = null;
-				if (num_loaidaily.length() == 1)
-					loaidaily = "L0" + num_loaidaily;
-				else
-					loaidaily = "L" + num_loaidaily;
-    			
-    			DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy");
-    			LocalDate localDate1 = LocalDate.parse(jDateChooser2.getDate().toString(),fmt2);
-    			String day = "";
-    			if (String.valueOf(localDate1.getDayOfMonth()).length() == 1)
-    				day = "0" + localDate1.getDayOfMonth();
-    			else
-    				day = String.valueOf(localDate1.getDayOfMonth());
-    			String date = day + "/" + convertMonth(localDate1.getMonth().toString()) + "/" + localDate1.getYear();
-    			    			    			
-    	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
-    	        jButton6.setText("Sửa đổi");
-    	        
-    			try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
-    			{
-    	            if (conn != null) {
-    	                System.out.println("Connected to the database!");
-    	                Statement st =  conn.createStatement();
-    	                
-    	    			String update_query = "Update daily set " + "madaily = " + "\'" +  jTextField1.getText() + "\'"+ ", tendaily = N" + "\'" +  jTextField2.getText() + "\'" + ", maloaidaily = " + "\'" +  loaidaily + "\'"+ ", diachi = N" + "\'" +  jTextField4.getText() + "\'"+ ", maquan = " + "\'" +  Quan(jTextField4.getText()) + "\'" + ", ngaytiepnhan = " + "\'" + date + "\'"+ ", dienthoai = " + "\'" +  jTextField9.getText() + "\'"+ ", email = " + "\'" +  jTextField6.getText() + "\'"+ ", tongno = " + "\'" +  jTextField10.getText() + "\'" + " where madaily = " + "\'" + queries[row_select][0] + "\'";
-    	    			CallableStatement cstmt;
-    	    			cstmt = conn.prepareCall("{call Pro_Update_TongNo(?,?,?)}");
-    	    			cstmt.setString(1, jTextField1.getText());
-    	    			
-    	    			cstmt.setLong(2, Long.parseLong(jTextField10.getText()));
-    	    			cstmt.registerOutParameter(3, Types.INTEGER);
-    	    			cstmt.executeUpdate();
-    	    			
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    	// them
+    	if (evt.getSource() == jButton7) {
+        	if (evt.getSource() == jButton7) {
+        		boolean hasq = false;
+        		String loaidaily = null;
+        		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
+        		{
+        			
+                    if (conn != null) {
+                        System.out.println("Connected to the database!");
+                        Statement st =  conn.createStatement();
+                        ResultSet rs;
+                        String[] value = new String[100];
+                        String date = null;
+            			String pro_date = null;
+            			try {
+            				String num_loaidaily = (String) jComboBox1.getModel().getSelectedItem();
+            				loaidaily = null;
+            				if (num_loaidaily.length() == 1)
+            					loaidaily = "L0" + num_loaidaily;
+            				else
+            					loaidaily = "L" + num_loaidaily;
+
+                            value[0] = jTextField1.getText();
+                            value[1] = jTextField2.getText();
+                            value[2] = loaidaily ;
+                			value[3] = Quan(jTextField4.getText());
+                			
+                            value[4] = jTextField4.getText();
+                            value[5] = jTextField9.getText();
+                            value[6] = jTextField6.getText();
+                            value[8] = "0";
+                			
+                            
+                			DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy");
+                			LocalDate localDate1 = LocalDate.parse(jDateChooser2.getDate().toString(),fmt2);
+                			String day = "";
+                			if (String.valueOf(localDate1.getDayOfMonth()).length() == 1)
+                				day = "0" + localDate1.getDayOfMonth();
+                			else
+                				day = String.valueOf(localDate1.getDayOfMonth());
+
+                			date = localDate1.getYear() + "-" +  convertMonth(localDate1.getMonth().toString()) + "-" + day ;
+                			value[7] = date;
+
+                            if (countBlank(value) >0) {
+                                JOptionPane.showMessageDialog(null,
+                                        "Vui lòng nhập đúng và đầy đủ thông tin về đại lý",
+                                        "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                                return;
+                            }
+                        } 
+            			catch(Exception e) {
+                			
+                            if (countNull(value) >0) {
+                                JOptionPane.showMessageDialog(null,
+                                        "Vui lòng nhập đúng và đầy đủ thông tin về đại lý",
+                                        "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                                return;
+                            }
+            			
+                        }
+            			
+            			// dem so quan dang ton tai
+            			int count1 = 0;
+            			for (int i = 0;i<index;i++) {
+            				if (queries[i][3].equals(Quan(jTextField4.getText().toString())))
+                			{
+            					count1 += 1;
+            				}
+            			}
+
+            			// ktra quan ton tai
             			Statement stq = conn.createStatement();
             			ResultSet rsq = stq.executeQuery("select * from quan");
             			String quan = Quan(jTextField4.getText().toString());
@@ -744,8 +667,44 @@ public class HoSoDaiLy_NhanVien extends javax.swing.JFrame {
             					hasq = true;
             				}
             			}
+            			
+            			if (count1 != 0) {
+        	    			CallableStatement cstmt;
+        	    			cstmt = conn.prepareCall("{call Insert_DAILY(?,?,?,?,?,?,?,?,?,?)}");
+                            st.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY/MM/DD'");
+        
+        	    			cstmt.setString(1, value[0]);
+        	    			cstmt.setString(2,value[1]);
+        	    			cstmt.setString(3,value[2]);
+        	    			cstmt.setString(4,value[4]);
+        	    			cstmt.setString(5,value[3]);
+        
+        	    			cstmt.setString(6, date);
+        	    			cstmt.setString(7,value[5]);
+        	    			cstmt.setString(8, value[6]);
+        	    			cstmt.setLong(9, Long.parseLong(value[8]));
+        	    			
+        	    			cstmt.registerOutParameter(10, Types.INTEGER);
+        	    			cstmt.executeUpdate();
+        	    			
+        	    			if (cstmt.getInt(10) == 0) {
+                            	JOptionPane.showMessageDialog(null,
+                                        "Số đại lý tối đa trong quận đã vượt quá quy định, không thể thêm đại lý",
+                                        "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                            	return;
+        	    			}
+
+            			}
+
+    	    			CallableStatement cstmt;
+    	    			cstmt = conn.prepareCall("{call Pro_Insert_TongNo(?,?,?)}");
+    	    			cstmt.setString(1, loaidaily);
     	    			
-    	    			System.out.println(Long.parseLong(jTextField10.getText()));
+    	    			cstmt.setLong(2, Long.parseLong(value[8]));
+    	    			cstmt.registerOutParameter(3, Types.INTEGER);
+    	    			cstmt.executeUpdate();
+    	    			
     	    			if (cstmt.getInt(3) == 0) {
                         	JOptionPane.showMessageDialog(null,
                                     "Tiền nợ đã vượt quá quy định, không thể Sửa đổi",
@@ -753,240 +712,60 @@ public class HoSoDaiLy_NhanVien extends javax.swing.JFrame {
                                     JOptionPane.ERROR_MESSAGE);
                         	return;
     	    			}
-    	    			
-    	    			System.out.println(update_query);
-    	    			
-    	    			st.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY'");
-    	                st.execute(update_query);
-    	            }
-    	            else {
-    	                System.out.println("Failed to make connection!");
-    	            }
-    	        } 
-    			catch (SQLException e) {
-    	            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+
+                        
+                        String insert_query = "Insert into daily values (\'" + value[0] + "\'" + ',' + "\'" + value[1] + "\'" +  "," +  "\'" + value[2] + "\'" +  "," + "\'" + value[4] + "\'" +  ","+ "\'" + value[3] + "\'" +  ","+ "\'" + date + "\'" +  ","+ "\'" + value[5] + "\'" +  ","+ "\'" + value[6] + "\'" +  ","+ "\'" + value[8] + "\')";
+                        System.out.println(insert_query);
+                        
+                        st.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY/MM/DD'");
+                        st.execute(insert_query);
+                        
+                        queries[index] = value;
+                        index+=1;
+                        
+                        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                                queries,
+                                new String [] {
+                                    "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
+                                }
+                            ));
+                     
+                    } else {
+                        System.out.println("Failed to make connection!");
+                    }
+
+                } catch (SQLException e) {
+                    System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
                     
-    	            if (!hasq) {
+                    if (!hasq) {
                         JOptionPane.showMessageDialog(null,
                                 "Quận không tồn tại",
                                 "ERROR",
                                 JOptionPane.ERROR_MESSAGE);
                         return;
                     }
-    	            
-    	            if (e.getSQLState().equals("23000"))
-                    {    
-                    	JOptionPane.showMessageDialog(null,
+                    
+                    
+                    if (e.getSQLState().equals("23000"))
+                        JOptionPane.showMessageDialog(null,
                                 "Mã đại lý đã tồn tại",
                                 "ERROR",
                                 JOptionPane.ERROR_MESSAGE);
-                    	return;
-                    }
 
-    	        } catch (Exception e) {
+                }
+        		catch (Exception e) {
     	            e.printStackTrace();
                 	JOptionPane.showMessageDialog(null,
                             "Vui lòng nhập đúng định dạng",
                             "ERROR",
                             JOptionPane.ERROR_MESSAGE);
-                	return;
-
-                	
+                	return;            	
     	        }		
-    			
-    			queries[row_select][0] = jTextField1.getText(); // avoid conflict while update
-    			queries[row_select][1] = jTextField2.getText();
-    			queries[row_select][2] = loaidaily;
-    			queries[row_select][3] = Quan(jTextField4.getText());
-    			queries[row_select][4] = jTextField4.getText();
-    			queries[row_select][5] = jTextField9.getText();
-    			queries[row_select][6] = jTextField6.getText();
-    			queries[row_select][7] = localDate1.getYear() + "-" + convertMonth(localDate1.getMonth().toString()) + "-" + day;
-    			queries[row_select][8] = jTextField10.getText();
-
-                jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                        queries,
-                        new String [] {
-                            "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
-                        }
-                    ));
-    		}
-    		}
-    	}
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    	// them
-    	if (evt.getSource() == jButton7) {
-    		boolean hasq = false;
-    		String loaidaily = null;
-    		try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1")) 
-    		{
-                if (conn != null) {
-                    System.out.println("Connected to the database!");
-                    Statement st =  conn.createStatement();
-                    ResultSet rs;
-                    String[] value = new String[100];
-                    String date = null;
-        			String pro_date = null;
-        			try {
-        				String num_loaidaily = (String) jComboBox1.getModel().getSelectedItem();
-        				loaidaily = null;
-        				if (num_loaidaily.length() == 1)
-        					loaidaily = "L0" + num_loaidaily;
-        				else
-        					loaidaily = "L" + num_loaidaily;
-
-                        value[0] = jTextField1.getText();
-                        value[1] = jTextField2.getText();
-                        value[2] = loaidaily ;
-            			value[3] = Quan(jTextField4.getText());
-                        value[4] = jTextField4.getText();
-                        value[5] = jTextField9.getText();
-                        value[6] = jTextField6.getText();
-                        value[8] = jTextField10.getText();
-            			
-            			DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy");
-            			LocalDate localDate1 = LocalDate.parse(jDateChooser2.getDate().toString(),fmt2);
-            			date = localDate1.getYear() + "-" +  convertMonth(localDate1.getMonth().toString()) + "-" + localDate1.getDayOfMonth() ;
-            			value[7] = date;
-
-                        if (countBlank(value) >0) {
-                            JOptionPane.showMessageDialog(null,
-                                    "Vui lòng nhập đúng và đầy đủ thông tin về đại lý",
-                                    "ERROR",
-                                    JOptionPane.ERROR_MESSAGE);
-                            return;
-                        }
-                    } 
-        			catch(Exception e) {
-            			
-                        if (countNull(value) >0) {
-                            JOptionPane.showMessageDialog(null,
-                                    "Vui lòng nhập đúng và đầy đủ thông tin về đại lý",
-                                    "ERROR",
-                                    JOptionPane.ERROR_MESSAGE);
-                            return;
-                        }
-        			
-                    }
-        			
-        			// dem so quan dang ton tai
-        			int count1 = 0;
-        			for (int i = 0;i<index;i++) {
-        				if (queries[i][3].equals(Quan(jTextField4.getText().toString())))
-            			{
-        					count1 += 1;
-        				}
-        			}
-
-        			// ktra quan ton tai
-        			Statement stq = conn.createStatement();
-        			ResultSet rsq = stq.executeQuery("select * from quan");
-        			String quan = Quan(jTextField4.getText().toString());
-        			while (rsq.next()){
-        				if (quan.equals(rsq.getString("maquan"))){
-        					hasq = true;
-        				}
-        			}
-        			
-        			if (count1 != 0) {
-    	    			CallableStatement cstmt;
-    	    			cstmt = conn.prepareCall("{call Insert_DAILY(?,?,?,?,?,?,?,?,?,?)}");
-                        st.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY/MM/DD'");
-    
-    	    			cstmt.setString(1, value[0]);
-    	    			cstmt.setString(2,value[1]);
-    	    			cstmt.setString(3,value[2]);
-    	    			cstmt.setString(4,value[4]);
-    	    			cstmt.setString(5,value[3]);
-    
-    	    			cstmt.setString(6, date);
-    	    			cstmt.setString(7,value[5]);
-    	    			cstmt.setString(8, value[6]);
-    	    			cstmt.setLong(9, Long.parseLong(value[8]));
-    	    			
-    	    			cstmt.registerOutParameter(10, Types.INTEGER);
-    	    			cstmt.executeUpdate();
-    	    			
-    	    			if (cstmt.getInt(10) == 0) {
-                        	JOptionPane.showMessageDialog(null,
-                                    "Số đại lý tối đa trong quận đã vượt quá quy định, không thể thêm đại lý",
-                                    "ERROR",
-                                    JOptionPane.ERROR_MESSAGE);
-                        	return;
-    	    			}
-
-        			}
-
-	    			CallableStatement cstmt;
-	    			cstmt = conn.prepareCall("{call Pro_Insert_TongNo(?,?,?)}");
-	    			cstmt.setString(1, loaidaily);
-	    			
-	    			cstmt.setLong(2, Long.parseLong(jTextField10.getText()));
-	    			cstmt.registerOutParameter(3, Types.INTEGER);
-	    			cstmt.executeUpdate();
-	    			
-	    			if (cstmt.getInt(3) == 0) {
-                    	JOptionPane.showMessageDialog(null,
-                                "Tiền nợ đã vượt quá quy định, không thể Sửa đổi",
-                                "ERROR",
-                                JOptionPane.ERROR_MESSAGE);
-                    	return;
-	    			}
-
-                    
-                    String insert_query = "Insert into daily values (\'" + value[0] + "\'" + ',' + "\'" + value[1] + "\'" +  "," +  "\'" + value[2] + "\'" +  "," + "\'" + value[4] + "\'" +  ","+ "\'" + value[3] + "\'" +  ","+ "\'" + date + "\'" +  ","+ "\'" + value[5] + "\'" +  ","+ "\'" + value[6] + "\'" +  ","+ "\'" + value[8] + "\')";
-                    System.out.println(insert_query);
-                    
-                    st.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY/MM/DD'");
-                    st.execute(insert_query);
-                    
-                    queries[index] = value;
-                    index+=1;
-                    
-                    jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                            queries,
-                            new String [] {
-                                "Mã Đại Lý", "Tên Đại Lý", "Loại Đại Lý", "Quận","Địa Chỉ", "Điện Thoại", "Địa Chỉ Email", "Ngày Tiếp Nhận","Tổng Nợ"
-                            }
-                        ));
-                 
-                } else {
-                    System.out.println("Failed to make connection!");
-                }
-
-            } catch (SQLException e) {
-                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-                
-                if (!hasq) {
-                    JOptionPane.showMessageDialog(null,
-                            "Quận không tồn tại",
-                            "ERROR",
-                            JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-                
-                
-                if (e.getSQLState().equals("23000"))
-                    JOptionPane.showMessageDialog(null,
-                            "Mã đại lý đã tồn tại",
-                            "ERROR",
-                            JOptionPane.ERROR_MESSAGE);
-
-            }
-    		catch (Exception e) {
-	            e.printStackTrace();
-            	JOptionPane.showMessageDialog(null,
-                        "Vui lòng nhập đúng định dạng",
-                        "ERROR",
-                        JOptionPane.ERROR_MESSAGE);
-            	return;            	
-	        }		
-	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
-	        jButton6.setText("Sửa đổi");
-    		
-    	}
+    	        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update_32px.png"))); // NOI18N
+    	        jButton6.setText("Sửa đổi");
+        		
+        	}
+        	}
 
     }//GEN-LAST:event_jButton7ActionPerformed
 

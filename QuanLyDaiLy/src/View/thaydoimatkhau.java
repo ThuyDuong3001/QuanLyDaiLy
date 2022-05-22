@@ -4,6 +4,16 @@
  */
 package View;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author NDAT_UIT
@@ -122,6 +132,11 @@ public class thaydoimatkhau extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add_32px.png"))); // NOI18N
         jButton7.setText("Xác Nhận ");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -232,8 +247,14 @@ public class thaydoimatkhau extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     	if (evt.getSource() == jButton1) {
-    		this.setVisible(false);
-    		new Home().setVisible(true);
+    		if (truycap.quyentruycap.equals("NND01")) {
+    			new Home().setVisible(true);
+    			this.setVisible(false);
+    		}
+    		else if (truycap.quyentruycap.equals("NND02")) {
+    			new Home_NhanVien().setVisible(true);
+    			this.setVisible(false);
+    		}
     	}
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -252,9 +273,67 @@ public class thaydoimatkhau extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     	if (evt.getSource() == jButton5) {
-    		this.setVisible(false);
-    		new Home().setVisible(true);
+    		if (truycap.quyentruycap.equals("NND01")) {
+    			new Home().setVisible(true);
+    			this.setVisible(false);
     		}
+    		else if (truycap.quyentruycap.equals("NND02")) {
+    			new Home_NhanVien().setVisible(true);
+    			this.setVisible(false);
+    		}
+    		}
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+    
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    	if (evt.getSource() == jButton7) {
+            try (Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "system", "1"))
+            {
+                if (conn != null) {
+                    System.out.println("Connected to the database!");
+                    Statement st =  conn.createStatement();
+                    ResultSet rs;
+                    
+                    if (jTextField1.getText().isBlank() || jTextField1.getText().isBlank() || jTextField1.getText().isBlank())
+                    {
+                        JOptionPane.showMessageDialog(null,
+                                "Vui lòng nhập đầy đủ",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    String query_tendn = "Select * from nguoidung where tendangnhap = \'" + tentaikhoan + "\'";
+                    rs = st.executeQuery(query_tendn);
+                    String password = null;
+                    while (rs.next()) {
+                    	password = rs.getString("matkhau");
+                    }
+                    
+                    if (!password.equals(jTextField1.getText())) {
+                        JOptionPane.showMessageDialog(null,
+                                "Mật khẩu cũ không đúng",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    if (!jTextField2.getText().equals(jTextField4.getText())) {
+                        JOptionPane.showMessageDialog(null,
+                                "Mật khẩu mới không trùng khớp",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+
+                    }
+                    String update_query = "update nguoidung set matkhau = \'" +  jTextField2.getText() + "\' where tendangnhap = \'" + tentaikhoan + "\'" ; 
+                    System.out.println(update_query);
+                    st.execute(update_query);
+                }
+            }catch (SQLException ex) {
+                Logger.getLogger(ctnh.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+    	}
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -308,5 +387,7 @@ public class thaydoimatkhau extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
+    String tentaikhoan = truycap.tentaikhoan;
+    String quyentruycap = truycap.quyentruycap;
     // End of variables declaration//GEN-END:variables
 }

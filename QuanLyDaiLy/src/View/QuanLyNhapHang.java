@@ -526,7 +526,7 @@ public class QuanLyNhapHang extends javax.swing.JFrame {
                     while (rs.next()) {
                         String[] value = new String[100];
                         value[0] = rs.getString("MAPHIEUNHAP");
-                        value[1] = rs.getString("NGAYLAP");
+                        value[1] = rs.getDate("NGAYLAP").toString();
                         value[2] = rs.getString("TONGTIEN");
                         value[3] = rs.getString("CMND");            
                         find_queries[i] = value;
@@ -556,8 +556,14 @@ public class QuanLyNhapHang extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if (evt.getSource() == jButton1) {
-            this.setVisible(false);
-            new Home().setVisible(true);;
+    		if (truycap.quyentruycap.equals("NND01")) {
+    			new Home().setVisible(true);
+    			this.setVisible(false);
+    		}
+    		else if (truycap.quyentruycap.equals("NND02")) {
+    			new Home_NhanVien().setVisible(true);
+    			this.setVisible(false);
+    		}
 	}
     }//GEN-LAST:event_jButton1ActionPerformed
 

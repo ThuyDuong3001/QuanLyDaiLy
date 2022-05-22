@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.event.WindowEvent;
+
 import javax.swing.JFrame;
 
 /**
@@ -205,7 +207,7 @@ public class Home extends javax.swing.JFrame {
                         .addGap(20, 20, 20))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+                        .addComponent(jButton9, 350, 350, 350 )
                         .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
@@ -257,14 +259,20 @@ public class Home extends javax.swing.JFrame {
         jMenu1.setText("  Hệ Thống  ");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/login_32px.png"))); // NOI18N
-        jMenuItem1.setText("Đăng Nhập");
-        jMenu1.add(jMenuItem1);
+//        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+//        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/login_32px.png"))); // NOI18N
+//        jMenuItem1.setText("Đăng Nhập");
+//        jMenu1.add(jMenuItem1);
 
         jMenuItem2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logout_32px.png"))); // NOI18N
         jMenuItem2.setText("Đăng Xuất");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -307,6 +315,12 @@ public class Home extends javax.swing.JFrame {
         jMenuItem4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/exit_32px.png"))); // NOI18N
         jMenuItem4.setText("Thoát");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+
         jMenu1.add(jMenuItem4);
 
         jMenuBar1.add(jMenu1);
@@ -318,21 +332,45 @@ public class Home extends javax.swing.JFrame {
         jMenuItem5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hoso_32px.png"))); // NOI18N
         jMenuItem5.setText("Hồ Sơ Đại Lý");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+
         jMenu2.add(jMenuItem5);
 
         jMenuItem6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/nhaphang_32px.png"))); // NOI18N
         jMenuItem6.setText("Quản Lý Nhập Hàng");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+
         jMenu2.add(jMenuItem6);
 
         jMenuItem7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/xuathang_32px.png"))); // NOI18N
         jMenuItem7.setText("Quản Lý Xuất Hàng");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+
         jMenu2.add(jMenuItem7);
 
         jMenuItem8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/phieuthu_32px.png"))); // NOI18N
         jMenuItem8.setText("Quản Lý Phiếu Thu");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+
         jMenu2.add(jMenuItem8);
 
         jMenuBar1.add(jMenu2);
@@ -474,29 +512,104 @@ public class Home extends javax.swing.JFrame {
     	}
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    	if (evt.getSource() == jMenuItem2) {
+    		new DangNhap().setVisible(true);
+    		this.setVisible(false);
+    	}
+
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
+    	if (evt.getSource() == jMenuItem3) {
+    		new thaydoimatkhau().setVisible(true);
+    		this.setVisible(false);
+    	}
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    	if (evt.getSource() == jMenuItem4) {
+    		this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+
+    	}
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    	if (evt.getSource() == jMenuItem5) {
+    		new HoSoDaiLy().setVisible(true);
+    		this.setVisible(false);
+    	}
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    	if (evt.getSource() == jMenuItem6) {
+    		new QuanLyNhapHang().setVisible(true);
+    		this.setVisible(false);
+    	}
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    	if (evt.getSource() == jMenuItem7) {
+    		new QLXH().setVisible(true);
+    		this.setVisible(false);
+    	}
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    	if (evt.getSource() == jMenuItem8) {
+    		new QuanLyPhieuThu().setVisible(true);
+    		this.setVisible(false);
+    	}
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
+    	if (evt.getSource() == jMenuItem9) {
+    		new BaoCaoDoanhSo().setVisible(true);
+    		this.setVisible(false);
+    	}
+
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
+    	if (evt.getSource() == jMenuItem10) {
+    		new BaoCaoCongNo().setVisible(true);
+    		this.setVisible(false);
+    	}
+
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
+    	if (evt.getSource() == jMenuItem11) {
+    		new thongtinsanpham().setVisible(true);
+    		this.setVisible(false);
+    	}
+
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         // TODO add your handling code here:
+    	if (evt.getSource() == jMenuItem12) {
+    		new QuyCheToChuc_MH().setVisible(true);
+    		this.setVisible(false);
+    	}
+
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         // TODO add your handling code here:
+    	if (evt.getSource() == jMenuItem13) {
+    		new QuyCheToChuc().setVisible(true);
+    		this.setVisible(false);
+    	}
+
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
 
