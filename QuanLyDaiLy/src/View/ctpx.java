@@ -501,7 +501,6 @@ public class ctpx extends javax.swing.JFrame {
 	                                JOptionPane.ERROR_MESSAGE);
 	                        return;
 	                    }
-
 	                   }
                     catch (Exception e) {
         	            e.printStackTrace();
@@ -513,14 +512,17 @@ public class ctpx extends javax.swing.JFrame {
 	                        return;
 
                     }
-                    
-                    
+
                     String query1 = "insert into chitietphieuxuat values (" + "\'" + mactpx + "\'" + "," + "\'" + mapx + "\'" + "," + "\'" + mathang + "\'" + "," + soluong + "," + dongiaxuat +","+ value[5] + ")";
                     st1.executeUpdate(query1);
                     String query2 = "update mathang set soluongton = soluongton - " + soluong + "where mamathang = " + "\'" + mathang +"\'";
                     st1.executeUpdate(query2);
+
                     String query3 = "update phieuxuathang set tongtien = tongtien + " + value[5] + "where MAPHIEUXUAT = " + "\'" + mapx +"\'";
                     st2.executeUpdate(query3);
+                    
+                    String queryx = "update phieuxuathang set sotienno = tongtien - sotientra "  + "where MAPHIEUXUAT = " + "\'" + mapx +"\'";
+                    st2.executeUpdate(queryx);
                     
                     String query4 = "select madaily from phieuxuathang where maphieuxuat = " + "\'"+ mapx +"\'";
                     rs = st1.executeQuery(query4);

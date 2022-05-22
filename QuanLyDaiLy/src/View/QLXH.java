@@ -481,7 +481,9 @@ public class QLXH extends javax.swing.JFrame {
 	                    value[2] = date;
 	                    value[3] = "0";
 	                    value[4] = "0";
+	                    
 	                    value[5] = "0";
+	                    
 	                    value[6] = cmnd;
 	                    
 	                    if (countBlank(value) >0) {
