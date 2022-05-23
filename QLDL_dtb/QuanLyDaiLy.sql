@@ -381,7 +381,7 @@ AS
     num_nodau NUMBER:=0;
 BEGIN
     begin
-        select tongtien into num_nodau from phieuxuathang 
+        select sum(tongtien) into num_nodau from phieuxuathang 
         where EXTRACT(month FROM ngaylap) = thang and EXTRACT(year FROM ngaylap) = nam
         and madaily = var_madl 
         and ((EXTRACT(day FROM ngaylap)) = (select min(EXTRACT(day FROM ngaylap)) from phieuxuathang));
@@ -400,7 +400,7 @@ AS
     num_nodau NUMBER:=0;
 BEGIN
     begin
-        select tongtien into num_nodau from phieuxuathang 
+        select sum(tongtien) into num_nodau from phieuxuathang 
         where EXTRACT(year FROM ngaylap) = nam and madaily = var_madl 
         and ((EXTRACT(month FROM ngaylap)) = (select min(EXTRACT(month FROM ngaylap)) from phieuxuathang));
         EXCEPTION
