@@ -40,11 +40,15 @@ Chức năng cho nhân viên bình thường:
 ##CÁC BƯỚC CHẠY PHẦN MỀM
 
 B1: Clone project về máy
+
 B2: Cài đặt hệ quản trị cơ sở dữ liệu Oracle 19C
 
 + https://www.oracle.com/database/technologies/oracle19c-windows-downloads.html
+
 B3: Setup database, tạo user trên sqlplus
+
 B4: Cài đặt các thư viện và plugin đã neu ở trên, chạy chương trình 
+
 Tài khoản để đăng nhập vào chương trình
 - Tải khoản Admin: qldl123 (Mật khẩu: 123456)
 - Tài khoản nhân viên: nv123 (Mật khẩu: 654321)
