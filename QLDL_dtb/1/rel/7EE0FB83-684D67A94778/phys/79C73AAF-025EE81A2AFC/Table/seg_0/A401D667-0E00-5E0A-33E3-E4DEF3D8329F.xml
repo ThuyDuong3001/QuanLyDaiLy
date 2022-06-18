@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="DAILY" directorySegmentName="seg_0" id="A401D667-0E00-5E0A-33E3-E4DEF3D8329F">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:16 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<schemaObject>5EE736CF-B522-4F3B-134F-01D031AFEAA2</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>FA8E4501-B630-DD53-F37F-F10BB1FBECB3</segment>
+<tableSpace>FE320BAE-B202-1FA4-D6A4-D6B58F16FFBB</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="MAQUAN" id="034470C1-2C0D-484D-12CE-D80C79876D83">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DIACHI" id="2B82FFA2-828E-4E57-53AA-4C07B1005FAF">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TONGNO" id="33922048-AECA-B9FD-16FC-47F7281B7EF1">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DIENTHOAI" id="3AFABC87-0576-ABC1-73F3-4C1BDADF65E6">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NGAYTIEPNHAN" id="565D0519-D939-93D3-6018-45748BAF8779">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TENDAILY" id="8F5140F6-3330-56C6-9DED-D7B17752B39B">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="EMAIL" id="C0B19313-52DF-A5F5-E004-C3A83B5CA940">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MADAILY" id="DAA7F098-1333-712C-F407-F0EE4A3D7E58">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MALOAIDAILY" id="DF04C4FB-AD05-BC4A-971E-3DA8D6F6188B">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK02_DAILY_QUAN" id="B50115F5-DF5E-71EE-8963-E3544F07B042">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:18 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK01_DAILY_LOAIDAILY" id="EF273D50-8118-36DF-B307-49749B3E9CE1">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:18 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="DAILY_PK" id="7542A07C-7A50-31F8-4C1B-D4F50A992B1A">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:18 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<schemaObject>5EE736CF-B522-4F3B-134F-01D031AFEAA2</schemaObject>
+<segment>B9C4B069-B677-AA8E-0996-65FAF756EA53</segment>
+<tableSpace>FE320BAE-B202-1FA4-D6A4-D6B58F16FFBB</tableSpace>
+<indexSegment>B9C4B069-B677-AA8E-0996-65FAF756EA53</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="PHIEUXUATHANG" directorySegmentName="seg_0" id="0CD05F3C-83B8-B134-4EBF-01916338D6CA">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:16 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<schemaObject>5EE736CF-B522-4F3B-134F-01D031AFEAA2</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>FA8E4501-B630-DD53-F37F-F10BB1FBECB3</segment>
+<tableSpace>FE320BAE-B202-1FA4-D6A4-D6B58F16FFBB</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="SOTIENNO" id="03BD5FCE-AC7A-9F12-85C1-E02FD341FF54">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SOTIENTRA" id="2946D1C0-DDCB-04D6-6AEF-A2B82981A1FE">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MAPHIEUXUAT" id="669D0B76-3D5F-5F8F-2922-D3288BD82450">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TONGTIEN" id="8AAD383C-3298-A976-7B39-047549727FE0">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MADAILY" id="ADF7BB83-AF63-5C0A-F30F-4C016E2E9FD5">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CMND" id="C7848D53-AE4B-0FEF-1395-C8C67DB63669">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NGAYLAP" id="E1004F0B-46C7-9138-A2C4-DBBB3BCC0AB5">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:17 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK01_PHIEUXUATHANG_NHANVIEN" id="31E08668-194D-40A0-9E54-6126B1D1E998">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:18 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_PHIEUXUATHANG_DAILY" id="C0F0FDC9-D29D-8A1D-A029-59C12195832E">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:18 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PHIEUXUATHANG_PK" id="879C8516-F00F-EAE8-4EA7-49351833E577">
+<createdBy>quypr</createdBy>
+<createdTime>2022-05-10 15:54:18 UTC</createdTime>
+<ownerDesignName>1</ownerDesignName>
+<schemaObject>5EE736CF-B522-4F3B-134F-01D031AFEAA2</schemaObject>
+<segment>B9C4B069-B677-AA8E-0996-65FAF756EA53</segment>
+<tableSpace>FE320BAE-B202-1FA4-D6A4-D6B58F16FFBB</tableSpace>
+<indexSegment>B9C4B069-B677-AA8E-0996-65FAF756EA53</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>
