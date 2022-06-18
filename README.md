@@ -15,6 +15,7 @@ Chức năng cho Admin/Quản lý:
 - Thay đổi quy dịnh
 - Thay đổi mật khẩu
 - Quản lý nhân viên
+
 Chức năng cho nhân viên bình thường:
 - Quản lý thông tin đại lý
 - Quản lý thông tin nhập hàng
@@ -37,6 +38,7 @@ Chức năng cho nhân viên bình thường:
 - Hồ Anh Khôi
 
 ##CÁC BƯỚC CHẠY PHẦN MỀM
+
 B1: Clone project về máy
 B2: Cài đặt hệ quản trị cơ sở dữ liệu Oracle 19C
 
